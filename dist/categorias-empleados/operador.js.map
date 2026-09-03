@@ -1,0 +1,1 @@
+{"version":3,"file":"operador.js","sourceRoot":"","sources":["../../src/categorias-empleados/operador.ts"],"names":[],"mappings":";;;AAAA,+DAA2D;AAE3D,MAAa,QAAS,SAAQ,wCAAkB;IAEpC,SAAS,CAAS;IAE1B;QACI,MAAM,UAAU,GAAG,KAAK,CAAC;QACzB,KAAK,CAAC,UAAU,CAAC,CAAC;QAClB,IAAI,CAAC,SAAS,GAAG,UAAU,CAAC;IAChC,CAAC;IAES,cAAc;QACpB,OAAO,IAAI,CAAC,SAAS,CAAC;IAC1B,CAAC;CAEH;AAdF,4BAcE"}

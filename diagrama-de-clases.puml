@@ -1,0 +1,9 @@
+@startuml
+
+title Diagrama de Clases - Trabajo practico
+
+skinparam classAttributeIconSize 0
+
+
+
+@enduml

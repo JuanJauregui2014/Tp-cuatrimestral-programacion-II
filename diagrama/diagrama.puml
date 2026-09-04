@@ -1,0 +1,61 @@
+@startuml
+title -Proyecto-
+abstract class Pedido{
+    -numeroPedido: int
+    -nombreCliente: String
+    -fecha: Date
+    -estado: EstadoPedido
+    -itemes: List<Item>
+}
+class PedidoSalon{
+    -numeroMesa: int
+    -mozo: String
+}
+class PedidoRetirar{
+    -horarioRetiro: Date
+}
+class PedidoEnvioPropio{
+    -direccion: String
+    -costoEnvio: int
+
+}
+
+class Item{
+
+}
+class Producto{
+
+}
+class Combo{
+
+}
+class Categoria{
+
+}
+class Estacion{
+
+}
+
+class Menu{
+    -categorias: List<Categoria>
+    -combos: List<Combo>
+    -productos: List<Producto>
+
+}
+class MedioDePago{
+
+}
+enum EstadoPedido {
+    EN_CONSTRUCCION,
+    CONFIRMADO,
+    LISTO,
+    FACTURADO
+}
+Pedido <|-l- PedidoSalon
+Pedido <|-- PedidoRetirar
+Pedido <|-r- PedidoEnvioPropio
+Menu o-l- Categoria
+Producto *-d- Menu
+Menu *-- Combo
+Estacion -- Item
+@enduml

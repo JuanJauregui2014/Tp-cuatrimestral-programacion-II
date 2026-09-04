@@ -1,0 +1,1 @@
+{"version":3,"file":"gerente.js","sourceRoot":"","sources":["../../src/categorias-empleados/gerente.ts"],"names":[],"mappings":";;;AAAA,+DAA2D;AAE3D,MAAa,OAAQ,SAAQ,wCAAkB;IAEnC,SAAS,CAAS;IAE1B;QACI,MAAM,UAAU,GAAG,MAAM,CAAC;QAC1B,KAAK,CAAC,UAAU,CAAC,CAAC;QAClB,IAAI,CAAC,SAAS,GAAG,SAAS,CAAC;IAC/B,CAAC;IAES,cAAc;QACpB,OAAO,IAAI,CAAC,SAAS,CAAC;IAC1B,CAAC;CAEJ;AAdD,0BAcC"}

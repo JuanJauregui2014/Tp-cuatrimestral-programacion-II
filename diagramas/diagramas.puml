@@ -1,0 +1,48 @@
+@startuml
+title diagrama de clases - Micros
+
+abstract class Empleado{
+    -Jefe:Empleado
+
+    +getEsJefe():boolean
+    +puedeSubir(m:Micro):boolean
+    +puedeBajar():boolean
+}
+class Apurados{
+
+}
+class Claustrofobicos{
+
+}
+class Fiacas{
+
+}
+class Moderados{
+
+}
+class Obsecuentes{
+
+
+}
+
+
+class Micro{
+    -LugaresSentados:number
+    -lugaresParados:number
+    -volumenMicro:number
+
+    +puedeSubir(empleado:Empleado):boolean
+    +getCapacidadMicro()
+    +primeroEnSubir()
+    +getVolumen()
+    +getLugaresParados()
+    +getLugaresSentados()
+    +getLugaresLibres()
+}
+Micro o--Empleado
+Empleado <|-r- Apurados
+Empleado <|-l- Claustrofobicos
+Empleado <|-- Fiacas
+Empleado <|-- Moderados
+Empleado <|-- Obsecuentes
+@enduml

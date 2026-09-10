@@ -1,48 +1,199 @@
 @startuml
-title diagrama de clases - Micros
 
-abstract class Empleado{
-    -Jefe:Empleado
+title -Proyecto-
 
-    +getEsJefe():boolean
-    +puedeSubir(m:Micro):boolean
-    +puedeBajar():boolean
-}
-class Apurados{
+interface ElementoMenu {
 
-}
-class Claustrofobicos{
+    +getPrecio():number
 
-}
-class Fiacas{
+    +getNombre():String
 
-}
-class Moderados{
-
-}
-class Obsecuentes{
 
 
 }
 
+abstract class Pedido{
 
-class Micro{
-    -LugaresSentados:number
-    -lugaresParados:number
-    -volumenMicro:number
+    -numeroPedido: int
 
-    +puedeSubir(empleado:Empleado):boolean
-    +getCapacidadMicro()
-    +primeroEnSubir()
-    +getVolumen()
-    +getLugaresParados()
-    +getLugaresSentados()
-    +getLugaresLibres()
+    -nombreCliente: String
+
+    -fecha: Date
+
+    -estado: EstadoPedido
+
+    -item: List<Item>
+
+
+
+    +agregarItem(item:Item)
+
+    +quitarItem(item:Item)
+
+    +registrarPedido()
+
+    +deshacerModificacion()
+
+    +confirmarPedido()
+
+    +puedeFacturable()
+
+    +totalPedido()
+
 }
-Micro o--Empleado
-Empleado <|-r- Apurados
-Empleado <|-l- Claustrofobicos
-Empleado <|-- Fiacas
-Empleado <|-- Moderados
-Empleado <|-- Obsecuentes
+
+class PedidoSalon{
+
+    -numeroMesa: int
+
+    -mozo: String
+
+}
+
+class PedidoRetirar{
+
+    -horarioRetiro: Date
+
+}
+
+class PedidoEnvioPropio{
+
+    -direccion: String
+
+    -costoEnvio: int
+
+
+
+}
+
+
+
+class Item{
+
+    -estado:EstadioItem
+
+
+
+    +avanzarEstado()
+
+    +esModificable()
+
+
+
+}
+
+class Producto implements ElementoMenu{
+
+    -nombre: String
+
+    -precioDeVenta:number
+
+
+
+    +getPrecio(): number
+
+    +getNombre(): String
+
+
+
+   
+
+}
+
+class Combo implements ElementoMenu {
+
+    -nombre: String
+
+    -productos: List<Producto>
+
+    -precioEspecial: number
+
+    +getPrecio(): number
+
+    +getNombre(): String
+
+}
+
+class Categoria{
+
+
+
+}
+
+class Estacion{
+
+    -nombre: String
+
+    -items:List<Item>
+
+
+
+    +agregarItem(item:Item)
+
+    +avanzarItem(item:Item)
+
+
+
+}
+
+
+
+class Menu{
+
+    -categorias: List<Categoria>
+
+    -combos: List<Combo>
+
+    -productos: List<Producto>
+
+
+
+}
+
+'preguntas si conviene  tenerlo como clase abstracta y que hereden los distintos medios de pagos'
+
+class MedioDePago{
+
+
+
+}
+
+enum EstadoPedido {
+
+    EN_CONSTRUCCION,
+
+    CONFIRMADO,
+
+    LISTO,
+
+    FACTURADO
+
+}
+
+enum EstadioItem{
+
+    PENDIENTE,
+
+    EN_PREPARACION,
+
+    LISTO
+
+}
+
+Pedido <|-l- PedidoSalon
+
+Pedido <|-- PedidoRetirar
+
+Pedido <|-r- PedidoEnvioPropio
+
+Menu o-l- Categoria
+
+Producto *-d- Menu
+
+Menu *-- Combo
+
+Estacion -- Item
+
+Item --> ElementoMenu
+
 @enduml

@@ -108,6 +108,8 @@ class Combo implements ElementoMenu {
 
     -precioEspecial: number
 
+    -calcularTotal(): number
+
     +getPrecio(): number
 
     +getNombre(): String

@@ -10,9 +10,9 @@ export class Combo {
     private productos: Producto[];
     private precioEspecial: number;
 
-    public constructor(nombre: string, productos: Producto[], precioEspecial?: number) {
+    public constructor(nombre: string, productos: Producto[]) {
         this.nombre = nombre;
-        this.precioEspecial = precioEspecial ?? CERO;
+        this.precioEspecial = CERO;
         this.productos = productos;
     }
 

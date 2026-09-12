@@ -120,7 +120,9 @@ class Combo {
 
 class Categoria{
 
+    -nombre: String
 
+    +getNombre(): String
 
 }
 
@@ -190,15 +192,15 @@ Pedido <|-- PedidoRetirar
 
 Pedido <|-r- PedidoEnvioPropio
 
-Menu o-- Categoria
+Menu o-d- Categoria
 
-Menu o-l- Producto
+Menu o-u- Producto
 
-Menu o-r- Combo
+Menu o-l- Combo
 
-ElementoMenu <|.l. Producto
+ElementoMenu <|.. Producto
 
-ElementoMenu <|.l. Combo
+ElementoMenu <|.. Combo
 
 Estacion -- Item
 

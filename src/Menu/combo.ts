@@ -28,4 +28,5 @@ export class Combo {
     public getNombre(): string {
         return this.nombre;
     }
+    
 }

@@ -2,6 +2,8 @@
 
 title -Proyecto-
 
+skinparam linetype ortho
+
 interface ElementoMenu {
 
     +getPrecio():number
@@ -82,7 +84,7 @@ class Item{
 
 }
 
-class Producto implements ElementoMenu{
+class Producto{
 
     -nombre: String
 
@@ -100,13 +102,15 @@ class Producto implements ElementoMenu{
 
 }
 
-class Combo implements ElementoMenu {
+class Combo {
 
     -nombre: String
 
     -productos: List<Producto>
 
     -precioEspecial: number
+
+    -calcularTotal(): number
 
     +getPrecio(): number
 
@@ -116,7 +120,9 @@ class Combo implements ElementoMenu {
 
 class Categoria{
 
+    -nombre: String
 
+    +getNombre(): String
 
 }
 
@@ -186,14 +192,18 @@ Pedido <|-- PedidoRetirar
 
 Pedido <|-r- PedidoEnvioPropio
 
-Menu o-l- Categoria
+Menu o-d- Categoria
 
-Producto *-d- Menu
+Menu o-u- Producto
 
-Menu *-- Combo
+Menu o-l- Combo
+
+ElementoMenu <|.. Producto
+
+ElementoMenu <|.. Combo
 
 Estacion -- Item
 
-Item --> ElementoMenu
+'Item --> ElementoMenu
 
 @enduml

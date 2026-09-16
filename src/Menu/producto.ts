@@ -1,4 +1,6 @@
-export class Producto {
+import { ElementoMenu } from "./elemento-menu";
+
+export class Producto implements ElementoMenu {
     
     private nombre: string;
     private precioDeVenta: number;

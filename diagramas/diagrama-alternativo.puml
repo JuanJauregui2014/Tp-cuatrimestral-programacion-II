@@ -1,0 +1,204 @@
+@startuml Trabajo Practico
+
+title Fogon del Barrio
+
+class Restaurante {
+    - menu: Menu
+    - estaciones: Map<TipoEstacion, Estacion>
+    - pedidosPendientes: Map<number, Pedido>
+    - descuentos: Descuento[]
+    - pedidosFacturados: Map<number, Pedido>
+
+    + addPedido(pedido: Pedido): void
+    + quitarPedido(pedidoId: number): void
+    + procesarPedido(pedidoId: number): void
+    + facturarPedido(pedidoId: number): void
+    + procesarPedidosPendientes(): void
+    + facturarPedidosPendientes(): void
+    + getPedidosFacturados(): Pedido[]
+    + getMenu(): Menu
+}
+
+abstract class Pedido {
+    - pedidoId: number
+    - fecha: Date
+    - items: Map<number, Item>
+    - medioDePago: MedioDePago
+    - descuento: Descuento | undefined
+    - estado: EstadoPedido
+
+    + esModificable(): boolean
+    + addItem(item: Item): void
+    + quitarItem(itemId: number): void
+    + estaListo(): boolean
+    + deshacerUltimaModificacion(): void
+    + setDescuento(descuentos: Descuento[]): void
+    + getPrecioTotal(): number
+    + getPrecioFinal(): number
+    + setEstado(estado: EstadoPedido): void
+    + getEstado(): EstadoPedido
+    + getFecha(): Date
+    + getMedioDePago(): MedioDePago
+    + getItems(): Item[]
+    + getId(): number
+}
+class PedidoSalon {
+    - mesa: string
+
+    + getMesa(): string
+}
+class PedidoRetirar {
+    - telefono: string
+    - horario: string
+
+    + getTelefono(): string
+    + getHorario(): string
+}
+class PedidoEnvio {
+    - direccion: string
+    - costoEnvio: number
+
+    + getDireccion(): string
+    + getCostoEnvio(): number
+}
+
+interface Item {
+    + getId(): number
+    + getEstado(): EstadoItem
+    + getPrecio(): number
+    + procesarItem(estacion: Estacion): void
+    + sePuedeProcesar(estacion: Estacion): boolean
+}
+class Producto {
+    - productoId: number
+    - precio: number
+    - estado: EstadoItem
+    - categoria: Categoria
+
+    + setEstado(estado: EstadoItem): void
+    + getCategoria(): Categoria
+}
+class Combo {
+    - comboId: number
+    - productos: Producto[]
+    - beneficio: ComboBeneficio
+
+    + getPrecioTotalProductos(): number {}
+}
+interface ComboBeneficio {
+    + aplicarBeneficio(combo: Combo): number
+}
+class ComboBeneficioPorcentual {}
+class ComboBeneficioPrecioFijo {}
+
+class Menu {
+    - items: Map<number, Item>
+
+    + getItems(): Item[]
+}
+
+abstract class Estacion {
+    - tipo: TipoEstacion
+    - categorias: Set<Categoria>
+
+    + getTipo(): TipoEstacion
+    + getCategorias(): Set<Categoria>
+    + procesarPedido(pedido: Pedido): void
+    + pedidoProcesable(pedido: Pedido): boolean
+    + productoProcesable(producto: Producto): boolean
+}
+class Parrilla {}
+class CocinaFria {}
+class Barra {}
+class CocinaDulce {}
+
+interface Descuento {
+    + aplicable(pedido: Pedido): boolean
+    + aplicarDescuento(pedido: Pedido): number
+}
+class DescuentoEfectivo {
+    - efectivo: MedioDePago
+    - porcentajeDescuento: number
+}
+class DescuentoEspecialDia {
+    - diaDescuento: DiaSemana
+    - porcentajeDescuento: number
+}
+
+enum EstadoItem {
+    PENDIENTE,
+    EN_PREPARACION,
+    LISTO
+}
+
+enum EstadoPedido {
+    EN_CONSTRUCCION,
+    CONFIRMADO,
+    LISTO,
+    FACTURADO
+}
+
+enum Categoria {
+    ENTRADA,
+    PLATO_PRINCIPAL,
+    BEBIDA, 
+    POSTRE,
+    CARNE,
+    ENSALADA
+}
+
+enum MedioDePago {
+    EFECTIVO,
+    BILLETERA_VIRTUAL,
+    TARJETA_DE_DEBITO,
+    TARJETA_DE_CREDITO
+}
+
+enum DiaSemana {
+  DOMINGO,
+  LUNES,
+  MARTES,
+  MIERCOLES,
+  JUEVES,
+  VIERNES,
+  SABADO
+}
+
+enum TipoEstacion {
+    BARRA,
+    COCINA_DULCE,
+    COCINA_FRIA,
+    PARRILLA
+}
+
+Pedido <|-u- PedidoSalon
+Pedido <|-u- PedidoRetirar
+Pedido <|-l- PedidoEnvio
+
+Item <|.. Producto
+Item <|.. Combo
+
+Combo *-l- Producto
+
+Pedido *-- Item
+Pedido o-u- Descuento
+Restaurante *-u- Descuento
+
+Menu *-l- Item
+
+Restaurante *-l- Pedido
+Restaurante *-r- Estacion
+Restaurante *-- Menu
+
+Descuento <|.u. DescuentoEfectivo
+Descuento <|.u. DescuentoEspecialDia
+
+Estacion <|-- Parrilla
+Estacion <|-- CocinaFria
+Estacion <|-- Barra
+Estacion <|-- CocinaDulce
+
+Combo *-r- ComboBeneficio
+ComboBeneficio <|.. ComboBeneficioPorcentual
+ComboBeneficio <|.. ComboBeneficioPrecioFijo
+@enduml

@@ -1,25 +1,25 @@
 export class Item {
     private cantidad: number;
-    private estado: estadoItem;
+    private estado: EstadoItem;
 
-    constructor(cantidad: number, estado: estadoItem) {
+    constructor(cantidad: number /*private elemento: ElementoMenu*/) {
         this.cantidad = cantidad;
-        this.estado = estadoItem.PENDIENTE;
+        this.estado = EstadoItem.PENDIENTE;
     }
 
     public avanzarEstado(): void {
-        if (this.estado === estadoItem.PENDIENTE) {
-            this.estado = estadoItem.EN_PREPARACION;
-        } else if (this.estado === estadoItem.EN_PREPARACION) {
-            this.estado = estadoItem.LISTO;
+        if (this.estado === EstadoItem.PENDIENTE) {
+            this.estado = EstadoItem.EN_PREPARACION;
+        } else if (this.estado === EstadoItem.EN_PREPARACION) {
+            this.estado = EstadoItem.LISTO;
         }
     }
     public esModificable(): boolean {
-        return this.estado === estadoItem.PENDIENTE;
+        return this.estado === EstadoItem.PENDIENTE;
     }
 }
 
-enum estadoItem {
+enum EstadoItem {
     PENDIENTE,
     EN_PREPARACION,
     LISTO

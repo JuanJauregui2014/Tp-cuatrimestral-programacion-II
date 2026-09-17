@@ -152,7 +152,17 @@ class Menu{
 
     -productos: List<Producto>
 
+    + getCategorias(): Categoria[]
 
+    + getCombos(): Combo[]
+
+    + getProductos(): Producto[]
+
+    + setCategorias(): void
+
+    + setCombos(): void
+
+    + setProductos(): void
 
 }
 

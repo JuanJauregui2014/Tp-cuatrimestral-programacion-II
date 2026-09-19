@@ -1,199 +1,184 @@
 @startuml
+title -Gestión de Pedidos:-
+class Restaurante {
+    -nombre: String
+    -menu: Menu
+    -estaciones: List<Estacion>
+    -pedidosActivos: List<Pedido>
+    -pedidosFinalizados: List<Pedido>
 
-title -Proyecto-
+    +agregarPedido(pedido: Pedido)
+    +consultarHistorial(): List<Pedido>
+    +facturarPedido(pedido: Pedido)
+}
+
+class Menu {
+    -categorias: List<Categoria>
+    -productos: List<Producto>
+    -combos: List<Combo>
+}
+
+class Categoria {
+    -nombre: String
+}
 
 interface ElementoMenu {
-
-    +getPrecio():number
-
-    +getNombre():String
-
-
-
-}
-
-abstract class Pedido{
-
-    -numeroPedido: int
-
-    -nombreCliente: String
-
-    -fecha: Date
-
-    -estado: EstadoPedido
-
-    -item: List<Item>
-
-
-
-    +agregarItem(item:Item)
-
-    +quitarItem(item:Item)
-
-    +registrarPedido()
-
-    +deshacerModificacion()
-
-    +confirmarPedido()
-
-    +puedeFacturable()
-
-    +totalPedido()
-
-}
-
-class PedidoSalon{
-
-    -numeroMesa: int
-
-    -mozo: String
-
-}
-
-class PedidoRetirar{
-
-    -horarioRetiro: Date
-
-}
-
-class PedidoEnvioPropio{
-
-    -direccion: String
-
-    -costoEnvio: int
-
-
-
-}
-
-
-
-class Item{
-
-    -estado:EstadioItem
-
-
-
-    +avanzarEstado()
-
-    +esModificable()
-
-
-
-}
-
-class Producto implements ElementoMenu{
-
-    -nombre: String
-
-    -precioDeVenta:number
-
-
-
     +getPrecio(): number
-
     +getNombre(): String
-
-
-
-   
-
 }
 
 class Combo implements ElementoMenu {
-
     -nombre: String
-
     -productos: List<Producto>
-
-    -precioEspecial: number
-
     +getPrecio(): number
-
     +getNombre(): String
-
 }
 
-class Categoria{
-
-
-
+abstract class ComboBeneficio {
+    +aplicarBeneficio(productos: List<Producto>): number
 }
 
-class Estacion{
+class ComboPorcentual extends ComboBeneficio {
+    -porcentajeDescuento: number
+    +aplicarBeneficio(productos: List<Producto>): number
+}
 
+class ComboPrecioFijo extends ComboBeneficio {
+    -precioFijo: number
+    +aplicarBeneficio(productos: List<Producto>): number
+}
+
+abstract class Pedido {
+    -numeroPedido: int
+    -nombreCliente: String
+    -fecha: Date
+    -estado: EstadoPedido
+    -items: List<Item>
+    -historialModificaciones: Stack<Item>
+
+    +agregarItem(elemento: ElementoMenu, cantidad: int)
+    +quitarItem(item: Item)
+    +deshacerUltimaModificacion()
+    +confirmarPedido()
+    +puedeFacturarse(): boolean
+    +calcularTotalBruto(): number
+    +aplicarDescuento(): number
+    +calcularTotalFinal(medioPago: MedioDePago, diaActual: DiaSemana): number
+}
+
+class PedidoSalon {
+    -numeroMesa: int
+    -mozo: String
+}
+
+class PedidoRetirar {
+    -horarioRetiro: Date
+}
+
+class PedidoEnvioPropio {
+    -direccion: String
+    -costoEnvio: number
+}
+
+class Item {
+    -cantidad: int
+    -estado: EstadioItem
+    
+    +avanzarEstado()
+    +esModificable(): boolean
+}
+
+class Estacion {
     -nombre: String
-
-    -items:List<Item>
-
-
-
-    +agregarItem(item:Item)
-
-    +avanzarItem(item:Item)
-
-
-
-}
-
-
-
-class Menu{
-
     -categorias: List<Categoria>
+    -items: List<Item>
 
-    -combos: List<Combo>
-
-    -productos: List<Producto>
-
-
-
+    +agregarItem(item: Item)
+    +avanzarItem(item: Item)
+    +aceptaCategoria(categoria: Categoria): boolean
 }
 
-'preguntas si conviene  tenerlo como clase abstracta y que hereden los distintos medios de pagos'
+class Producto implements ElementoMenu {
+    -nombre: String
+    -precioDeVenta: number
+    -categoria: Categoria
+    
+    +getCategoria(): Categoria
+    +getPrecio(): number
+    +getNombre(): String
+}
 
-class MedioDePago{
+abstract class MedioDePago {
+    +procesarPago(monto: number): boolean
+}
 
+class Efectivo extends MedioDePago {
+    -aplicaDescuentoEfectivo: boolean
+}
 
+class TarjetaDebito extends MedioDePago {
+    -numeroTarjeta: String
+}
 
+class TarjetaCredito extends MedioDePago {
+    -numeroTarjeta: String
+    -cuotas: int
+}
+
+class BilleteraVirtual extends MedioDePago {
+    -alias: String
+}
+
+abstract class Descuento {
+     +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
+     +calcularMontoDescuento(pedido: Pedido): number
+}
+
+class DescuentoEfectivo extends Descuento {
+    -porcentaje: number
+    +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
+    +calcularMontoDescuento(pedido: Pedido): number
+}
+
+class DescuentoDiaEspecial extends Descuento {
+    -diaObjetivo: DiaSemana
+    -porcentaje: number
+    +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
+    +calcularMontoDescuento(pedido: Pedido): number
 }
 
 enum EstadoPedido {
-
     EN_CONSTRUCCION,
-
     CONFIRMADO,
-
     LISTO,
-
     FACTURADO
-
 }
 
-enum EstadioItem{
-
+enum EstadioItem {
     PENDIENTE,
-
     EN_PREPARACION,
-
     LISTO
-
 }
 
-Pedido <|-l- PedidoSalon
+enum DiaSemana {
+    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO
+}
 
+' Relaciones Estructurales
+Restaurante *-- Menu
+Restaurante  *-- Estacion
+Restaurante *--  Pedido
+Menu  *-- Categoria
+Menu  *-- Producto
+Menu  *--Combo
+Combo  *--  ComboBeneficio
+Pedido  *--  Item
+Item  *--  ElementoMenu
+Estacion  *-- Item
+
+Pedido <|-- PedidoSalon
 Pedido <|-- PedidoRetirar
+Pedido <|-- PedidoEnvioPropio
 
-Pedido <|-r- PedidoEnvioPropio
-
-Menu o-l- Categoria
-
-Producto *-d- Menu
-
-Menu *-- Combo
-
-Estacion -- Item
-
-Item --> ElementoMenu
-
+Pedido -->  MedioDePago
 @enduml

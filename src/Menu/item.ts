@@ -1,9 +1,13 @@
+import { ElementoMenu } from "./elemento-menu";
+
 export class Item {
     private cantidad: number;
     private estado: EstadoItem;
+    private elemento: ElementoMenu; // representa el elemento del menu
 
-    constructor(cantidad: number /*private elemento: ElementoMenu*/) {
+    constructor(cantidad: number, elemento: ElementoMenu) {
         this.cantidad = cantidad;
+        this.elemento = elemento;
         this.estado = EstadoItem.PENDIENTE;
     }
 

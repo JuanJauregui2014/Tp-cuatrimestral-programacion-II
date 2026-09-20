@@ -74,7 +74,7 @@ class Item{
 
     -estado:EstadioItem
 
-
+    -cantidad: int
 
     +avanzarEstado()
 
@@ -90,7 +90,7 @@ class Producto{
 
     -precioDeVenta:number
 
-
+    -estacion: Estacion
 
     +getPrecio(): number
 
@@ -152,7 +152,17 @@ class Menu{
 
     -productos: List<Producto>
 
+    + getCategorias(): Categoria[]
 
+    + getCombos(): Combo[]
+
+    + getProductos(): Producto[]
+
+    + setCategorias(): void
+
+    + setCombos(): void
+
+    + setProductos(): void
 
 }
 
@@ -205,5 +215,7 @@ ElementoMenu <|.. Combo
 Estacion -- Item
 
 'Item --> ElementoMenu
+
+Producto --> Estacion 
 
 @enduml

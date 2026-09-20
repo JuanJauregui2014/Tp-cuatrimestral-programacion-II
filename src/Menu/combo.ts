@@ -1,8 +1,9 @@
+import { ElementoMenu } from "./elemento-menu";
 import { Producto } from "./producto";
 
 const CERO = 0;
 
-export class Combo {
+export class Combo implements ElementoMenu {
 
     private static readonly porcentaje90 = 0.9;
 

@@ -34,16 +34,16 @@ class Combo implements ElementoMenu {
     +getNombre(): String
 }
 
-abstract class ComboBeneficio {
+interface ComboBeneficio {
     +aplicarBeneficio(productos: List<Producto>): number
 }
 
-class ComboPorcentual extends ComboBeneficio {
+class ComboPorcentual implements ComboBeneficio {
     -porcentajeDescuento: number
     +aplicarBeneficio(productos: List<Producto>): number
 }
 
-class ComboPrecioFijo extends ComboBeneficio {
+class ComboPrecioFijo implements ComboBeneficio {
     -precioFijo: number
     +aplicarBeneficio(productos: List<Producto>): number
 }
@@ -108,24 +108,24 @@ class Producto implements ElementoMenu {
     +getNombre(): String
 }
 
-abstract class MedioDePago {
+ interface MedioDePago {
     +procesarPago(monto: number): boolean
 }
 
-class Efectivo extends MedioDePago {
+class Efectivo implements MedioDePago {
     -aplicaDescuentoEfectivo: boolean
 }
 
-class TarjetaDebito extends MedioDePago {
+class TarjetaDebito implements MedioDePago {
     -numeroTarjeta: String
 }
 
-class TarjetaCredito extends MedioDePago {
+class TarjetaCredito implements MedioDePago {
     -numeroTarjeta: String
     -cuotas: int
 }
 
-class BilleteraVirtual extends MedioDePago {
+class BilleteraVirtual implements MedioDePago {
     -alias: String
 }
 

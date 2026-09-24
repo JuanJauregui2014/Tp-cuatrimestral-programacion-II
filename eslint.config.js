@@ -1,8 +1,8 @@
 // @ts-check
+
 const js = require('@eslint/js');
 const tseslint = require('typescript-eslint');
 const stylistic = require('@stylistic/eslint-plugin');
-
 module.exports = tseslint.config(
   {
     ignores: ['dist/**', 'node_modules/**', 'coverage/**'],
@@ -79,7 +79,16 @@ module.exports = tseslint.config(
       // --- OOP-specific rules ---
 
       // every field/method must declare public/private/protected -> explicit encapsulation
-      '@typescript-eslint/explicit-member-accessibility': ['error', { accessibility: 'explicit' }],
+      // every field/method must declare public/private/protected -> explicit encapsulation
+      '@typescript-eslint/explicit-member-accessibility': [
+        'error',
+        {
+          accessibility: 'explicit',
+          overrides: {
+            constructors: 'no-public',
+          },
+        },
+      ],
 
       // a method that never uses `this` is probably meant to be `static`
       'class-methods-use-this': 'off',

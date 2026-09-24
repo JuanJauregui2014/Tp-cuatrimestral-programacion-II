@@ -1,4 +1,4 @@
-import { ElementoMenu } from "./elemento-menu";
+import ElementoMenu from "./elemento_menu";
 
 export class Item {
     private cantidad: number;
@@ -9,6 +9,30 @@ export class Item {
         this.cantidad = cantidad;
         this.elemento = elemento;
         this.estado = EstadoItem.PENDIENTE;
+    }
+
+    public getCantidad(): number {
+        return this.cantidad;
+    }
+
+    public getEstado(): EstadoItem {
+        return this.estado;
+    }
+
+    public getElemento(): ElementoMenu {
+        return this.elemento;
+    }
+
+    public setCantidad(cantidad: number): void {
+        this.cantidad = cantidad;
+    }
+
+    public setEstado(estado: EstadoItem): void {
+        this.estado = estado;
+    }
+
+    public setElemento(elemento: ElementoMenu): void {
+        this.elemento = elemento;
     }
 
     public avanzarEstado(): void {

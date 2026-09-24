@@ -1,4 +1,4 @@
-import  Producto from "./producto";
-export default interface ComboBeneficio {
-    aplicarBeneficio(productos: Producto[]): number;
+
+export default interface MedioDePago {
+    procesarPago(monto: number): boolean;
 }

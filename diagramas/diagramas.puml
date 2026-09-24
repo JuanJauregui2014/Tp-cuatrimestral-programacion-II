@@ -11,7 +11,18 @@ interface ElementoMenu {
     +getNombre():String
 
 
+interface ComboBeneficio {
+    +aplicarBeneficio(precioBase: number): number
+}
 
+class ComboPorcentual implements ComboBeneficio {
+    -porcentajeDescuento: number
+    +aplicarBeneficio(precioBase: number): number
+}
+
+class ComboPrecioFijo implements ComboBeneficio {
+    -precioFijo: number
+    +aplicarBeneficio(precioBase: number): number
 }
 
 abstract class Pedido{
@@ -116,14 +127,25 @@ class Combo {
 
     +getNombre(): String
 
+ interface MedioDePago {
+    +procesarPago(monto: number): boolean
 }
 
-class Categoria{
+class Efectivo implements MedioDePago {
+    -aplicaDescuentoEfectivo: boolean
+}
 
-    -nombre: String
+class TarjetaDebito implements MedioDePago {
+    -numeroTarjeta: String
+}
 
-    +getNombre(): String
+class TarjetaCredito implements MedioDePago {
+    -numeroTarjeta: String
+    -cuotas: int
+}
 
+class BilleteraVirtual implements MedioDePago {
+    -alias: String
 }
 
 class Estacion{

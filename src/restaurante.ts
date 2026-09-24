@@ -1,6 +1,8 @@
 import Menu from "./menu";
-import Estacion from ./estacion;
+import { Estacion } from "./estacion";
 import Pedido from "./#pedido";
+
+const AGREGO_UNO = 1;
 
 export default class Restaurante {
     private nombre: string;
@@ -48,34 +50,36 @@ export default class Restaurante {
             ultimoNroDePedido = nroDePedidoCargado;
         });
 
-        this.pedidosActivos.set(ultimoNroDePedido + 1, pedido);
+        this.pedidosActivos.set(ultimoNroDePedido + AGREGO_UNO, pedido);
     }
 
     public consultarHistorial(): void {
         //Nro de pedido y fecha
-        //Lista de items "con precio" (ver si agregamos o no el precio individual)
+        //Lista de items con precio
         //Coste total del pedido
         
         this.pedidosFinalizados.forEach((pedido, nroDePedido) => {
             console.log(`Nro de pedido: ${nroDePedido} - Fecha: ${pedido.getFecha()}`);
-            console.log(`${pedido.getItems()}`);
             //Probablemente haya que cambiar esta linea más adelante
             //Porque getItems() te devuelve los objetos de tipo Item, nosé si se puedan imprimir
             //Pienso en hacer que items sea un Map en pedido y agregarle un nombre a Item para que sea la key, 
             //ya que también hay que manejar cantidad de items
+            for (const item of pedido.getItems()) {
+                console.log(`Elemento: ${item.getElemento().getNombre()} - Precio: ${item.getElemento().getPrecio()}`);
+            }
             console.log(`Costo total del pedido: ${pedido.calcularTotalBruto()}`);
             console.log(`Descuento aplicado: ${pedido.aplicarDescuento()}`);
             console.log(`Total abonado: `);
-            //Total abonado falta desarrollar
-            //Ya que en pedido, al calcular el total, se deben ingresar medio de pago y dia, eso obstruye para agregarlo directamente acá
+            //Total abonado falta desarrollar, ya que en pedido, al calcular el total, 
+            //se deben ingresar medio de pago y dia, eso obstruye para agregarlo directamente acá
         });
 
     }
 
-    public facturarPedido(pedido: Pedido): void {
+    /* public facturarPedido(pedido: Pedido): void {
 
         //Falta la lógica de facturacion
 
-    }
+    } */
 
 }

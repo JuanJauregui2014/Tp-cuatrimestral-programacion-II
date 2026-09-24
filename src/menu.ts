@@ -4,38 +4,38 @@ import Producto from "./producto";
 
 export default class Menu {
 
-    private categorias: Categoria[];
-    private combos: Combo[];
-    private productos: Producto[];
+    private categorias: Map<string, Categoria>;
+    private combos: Map<string, Combo>;
+    private productos: Map<string, Producto>;
 
-    constructor(categorias?: Categoria[], combos?: Combo[], productos?: Producto[]) {
-        this.categorias = categorias ?? [];
-        this.combos = combos ?? [];
-        this.productos = productos ?? [];
+    constructor(categorias?: Map<string, Categoria>, combos?: Map<string, Combo>, productos?: Map<string, Producto>) {
+        this.categorias = categorias ?? new Map();
+        this.combos = combos ?? new Map();
+        this.productos = productos ?? new Map();
     }
 
-    public getCategorias(): Categoria[] {
+    public getCategorias(): Map<string, Categoria> {
         return this.categorias;
     }
 
-    public getCombos(): Combo[] {
+    public getCombos(): Map<string, Combo> {
         return this.combos;
     }
 
-    public getProductos(): Producto[] {
+    public getProductos(): Map<string, Producto> {
         return this.productos;
     }
 
-    public setCategorias(pCategorias: Categoria[]): void {
-        this.categorias = pCategorias;
+    public setCategorias(categorias: Map<string, Categoria>): void {
+        this.categorias = categorias;
     }
 
-    public setCombos(pCombos: Combo[]): void {
-        this.combos = pCombos;
+    public setCombos(combos: Map<string, Combo>): void {
+        this.combos = combos;
     }
 
-    public setProductos(pProductos: Producto[]): void {
-        this.productos = pProductos;
+    public setProductos(productos: Map<string, Producto>): void {
+        this.productos = productos;
     }
 
 }

@@ -34,16 +34,16 @@ class Combo implements ElementoMenu {
     +getNombre(): String
 }
 
-abstract class ComboBeneficio {
+interface ComboBeneficio {
     +aplicarBeneficio(productos: List<Producto>): number
 }
 
-class ComboPorcentual extends ComboBeneficio {
+class ComboPorcentual implements ComboBeneficio {
     -porcentajeDescuento: number
     +aplicarBeneficio(productos: List<Producto>): number
 }
 
-class ComboPrecioFijo extends ComboBeneficio {
+class ComboPrecioFijo implements ComboBeneficio {
     -precioFijo: number
     +aplicarBeneficio(productos: List<Producto>): number
 }
@@ -108,28 +108,28 @@ class Producto implements ElementoMenu {
     +getNombre(): String
 }
 
-abstract class MedioDePago {
+interface MedioDePago {
     +procesarPago(monto: number): boolean
 }
 
-class Efectivo extends MedioDePago {
+class Efectivo implements MedioDePago {
     -aplicaDescuentoEfectivo: boolean
 }
 
-class TarjetaDebito extends MedioDePago {
+class TarjetaDebito implements MedioDePago {
     -numeroTarjeta: String
 }
 
-class TarjetaCredito extends MedioDePago {
+class TarjetaCredito implements MedioDePago {
     -numeroTarjeta: String
     -cuotas: int
 }
 
-class BilleteraVirtual extends MedioDePago {
+class BilleteraVirtual implements MedioDePago {
     -alias: String
 }
 
-abstract class Descuento {
+/' abstract class Descuento {
      +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
      +calcularMontoDescuento(pedido: Pedido): number
 }
@@ -145,7 +145,7 @@ class DescuentoDiaEspecial extends Descuento {
     -porcentaje: number
     +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
     +calcularMontoDescuento(pedido: Pedido): number
-}
+} '/
 
 enum EstadoPedido {
     EN_CONSTRUCCION,
@@ -167,7 +167,8 @@ enum DiaSemana {
 ' Relaciones Estructurales
 Restaurante *-- Menu
 Restaurante  *-- Estacion
-Restaurante *--  Pedido
+Restaurante *-l-  Pedido
+Restaurante *-r- MedioDePago
 Menu  *-- Categoria
 Menu  *-- Producto
 Menu  *--Combo
@@ -180,5 +181,4 @@ Pedido <|-- PedidoSalon
 Pedido <|-- PedidoRetirar
 Pedido <|-- PedidoEnvioPropio
 
-Pedido -->  MedioDePago
 @enduml

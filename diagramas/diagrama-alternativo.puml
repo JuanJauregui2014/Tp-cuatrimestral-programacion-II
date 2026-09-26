@@ -5,16 +5,15 @@ title Fogon del Barrio
 class Restaurante {
     - menu: Menu
     - estaciones: Map<TipoEstacion, Estacion>
-    - pedidosPendientes: Map<number, Pedido>
     - descuentos: Descuento[]
-    - pedidosFacturados: Map<number, Pedido>
+    - pedidos: Map<number, Pedido>
 
     + addPedido(pedido: Pedido): void
     + quitarPedido(pedidoId: number): void
     + procesarPedido(pedidoId: number): void
     + facturarPedido(pedidoId: number): void
     + procesarPedidosPendientes(): void
-    + facturarPedidosPendientes(): void
+    + facturarPedidosListos(): void
     + getPedidosFacturados(): Pedido[]
     + getMenu(): Menu
 }
@@ -26,6 +25,7 @@ abstract class Pedido {
     - medioDePago: MedioDePago
     - descuento: Descuento | undefined
     - estado: EstadoPedido
+    - modificasiones: number[]
 
     + esModificable(): boolean
     + addItem(item: Item): void
@@ -39,7 +39,7 @@ abstract class Pedido {
     + getEstado(): EstadoPedido
     + getFecha(): Date
     + getMedioDePago(): MedioDePago
-    + getItems(): Item[]
+    + getItems(): Map<number, Item>
     + getId(): number
 }
 class PedidoSalon {
@@ -94,7 +94,7 @@ class ComboBeneficioPrecioFijo {}
 class Menu {
     - items: Map<number, Item>
 
-    + getItems(): Item[]
+    + getItems(): Map<number, Item>
 }
 
 abstract class Estacion {

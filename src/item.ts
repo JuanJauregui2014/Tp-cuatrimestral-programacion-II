@@ -1,14 +1,13 @@
 import ElementoMenu from "./elemento_menu";
-
-export class Item {
+import EstadoItem from "./estado_item";
+export default class Item {
     private cantidad: number;
-    private estado: EstadoItem;
+    private estado: EstadoItem = EstadoItem.PENDIENTE; // Estado inicial del item
     private elemento: ElementoMenu; // representa el elemento del menu
 
     constructor(cantidad: number, elemento: ElementoMenu) {
         this.cantidad = cantidad;
         this.elemento = elemento;
-        this.estado = EstadoItem.PENDIENTE;
     }
 
     public getCantidad(): number {
@@ -18,20 +17,25 @@ export class Item {
     public getEstado(): EstadoItem {
         return this.estado;
     }
+   
 
     public getElemento(): ElementoMenu {
         return this.elemento;
     }
 
     public setCantidad(cantidad: number): void {
+        //aca manejamos el error de que no se pueda modificar la cantidad de un item que no esta pendiente
+        if (!this.esModificable()) {
+            throw new Error("No se puede modificar la cantidad de un item que no está pendiente.");
+        }
         this.cantidad = cantidad;
     }
 
-    public setEstado(estado: EstadoItem): void {
-        this.estado = estado;
-    }
-
     public setElemento(elemento: ElementoMenu): void {
+        //aca manejamos el error de que no se pueda modificar el elemento de un item que no esta pendiente
+        if (!this.esModificable()) {
+            throw new Error("No se puede modificar el elemento de un item que no está pendiente.");
+        }
         this.elemento = elemento;
     }
 
@@ -47,8 +51,3 @@ export class Item {
     }
 }
 
-enum EstadoItem {
-    PENDIENTE,
-    EN_PREPARACION,
-    LISTO
-}

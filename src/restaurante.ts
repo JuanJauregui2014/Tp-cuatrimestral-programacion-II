@@ -1,5 +1,5 @@
 import Menu from "./menu";
-import { Estacion } from "./estacion";
+import  Estacion  from "./estacion";
 import Pedido from "./#pedido";
 
 const AGREGO_UNO = 1;

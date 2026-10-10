@@ -1,4 +1,4 @@
-import Pedido from "./pedido";
+import Pedido from "./#pedido";
 
 export default class PedidoEnvioPropio extends Pedido {
 

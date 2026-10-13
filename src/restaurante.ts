@@ -1,6 +1,7 @@
 import Menu from "./menu";
-import { Estacion } from "./estacion";
+import Estacion from "./estacion";
 import Pedido from "./#pedido";
+import MedioDePago from "./medio_de_pago";
 
 const AGREGO_UNO = 1;
 
@@ -67,19 +68,35 @@ export default class Restaurante {
             for (const item of pedido.getItems()) {
                 console.log(`Elemento: ${item.getElemento().getNombre()} - Precio: ${item.getElemento().getPrecio()}`);
             }
-            console.log(`Costo total del pedido: ${pedido.calcularTotalBruto()}`);
-            console.log(`Descuento aplicado: ${pedido.aplicarDescuento()}`);
-            console.log(`Total abonado: `);
+            console.log(`Costo total del pedido: ${pedido.getTotalBruto()}`);
+            console.log(`Descuento aplicado: ${pedido.getDescuento()}`);
+            console.log(`Total abonado: ${pedido.getTotalCobrado()}`);
             //Total abonado falta desarrollar, ya que en pedido, al calcular el total, 
             //se deben ingresar medio de pago y dia, eso obstruye para agregarlo directamente acá
         });
 
     }
 
-    /* public facturarPedido(pedido: Pedido): void {
+    public facturarPedido(nroDePedido: number, medioPago: MedioDePago): void {
 
-        //Falta la lógica de facturacion
+        const pedido = this.pedidosActivos.get(nroDePedido);
+        
+        if (pedido === undefined) {
+            throw new Error(`No existe un pedido activo con el código ${nroDePedido}`);
+        }
 
-    } */
+        if (!pedido.puedeFacturarse()) {
+            throw new Error("No se puede facturar el pedido");
+        }
+        
+        pedido.calcularTotalBruto();
+        pedido.aplicarDescuento(medioPago);
+        pedido.calcularTotalFinal();
+
+        medioPago.procesarPago(pedido.getTotalCobrado()); // Procesa el pago seleccionado
+
+        this.pedidosActivos.delete(nroDePedido); //Eliminamos el pedido de la lista de pedidos activos
+        this.pedidosFinalizados.set(nroDePedido, pedido); //Y lo ingresamos a la lista de pedidos finalizados
+    }
 
 }

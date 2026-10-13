@@ -1,5 +1,5 @@
-export enum EstadioItem {
-    PENDIENTE = "PENDIENTE",
-    EN_PREPARACION = "EN_PREPARACION",
-    LISTO = "LISTO"
+export enum EstadoItem {
+    PENDIENTE,
+    EN_PREPARACION,
+    LISTO
 }

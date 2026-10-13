@@ -1,4 +1,5 @@
 import ElementoMenu from "./elemento_menu";
+import { EstadoItem } from "./estado_item";
 
 export class Item {
     private cantidad: number;
@@ -45,10 +46,4 @@ export class Item {
     public esModificable(): boolean {
         return this.estado === EstadoItem.PENDIENTE;
     }
-}
-
-enum EstadoItem {
-    PENDIENTE,
-    EN_PREPARACION,
-    LISTO
 }

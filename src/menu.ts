@@ -4,38 +4,38 @@ import Producto from "./producto";
 
 export default class Menu {
 
-    private categorias: Map<string, Categoria>;
-    private combos: Map<string, Combo>;
-    private productos: Map<string, Producto>;
+    private categorias:Categoria[];
+    private combos: Combo[];
+    private productos: Producto[];
 
-    constructor(categorias?: Map<string, Categoria>, combos?: Map<string, Combo>, productos?: Map<string, Producto>) {
-        this.categorias = categorias ?? new Map();
-        this.combos = combos ?? new Map();
-        this.productos = productos ?? new Map();
+    constructor(categorias?: Categoria[], combos?: Combo[], productos?: Producto[]) {
+        this.categorias = categorias ?? [];
+        this.combos = combos ?? [];
+        this.productos = productos ?? [];
     }
 
-    public getCategorias(): Map<string, Categoria> {
+    public getCategorias(): Categoria[] {
         return this.categorias;
     }
 
-    public getCombos(): Map<string, Combo> {
+    public getCombos(): Combo[] {
         return this.combos;
     }
 
-    public getProductos(): Map<string, Producto> {
+    public getProductos(): Producto[] {
         return this.productos;
     }
+    //elimine los set de categorias,
+    // combos y productos ya que no se pueden cambiar una vez creado el menu, solo se pueden agregar nuevos elementos
 
-    public setCategorias(categorias: Map<string, Categoria>): void {
-        this.categorias = categorias;
+    //metodos para agregar una nueva categoria, combo o producto al menu
+    public agregarCategoria(categoria: Categoria): void {
+        this.categorias.push(categoria);
     }
-
-    public setCombos(combos: Map<string, Combo>): void {
-        this.combos = combos;
+    public agregarCombo(combo: Combo): void {
+        this.combos.push(combo);
     }
-
-    public setProductos(productos: Map<string, Producto>): void {
-        this.productos = productos;
+    public agregarProducto(producto: Producto): void {
+        this.productos.push(producto);
     }
-
 }

@@ -1,5 +1,5 @@
 import { EstadoPedido } from "./estado_pedido";
-import { Item } from "./item"; //nos falta
+import  Item  from "./item"; //nos falta
 import ElementoMenu from "./elemento_menu"; 
 import MedioDePago from "./medio_de_pago"; 
 import { DiaSemana } from "./dia_semana"; 

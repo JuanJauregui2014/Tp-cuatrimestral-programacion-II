@@ -1,5 +1,5 @@
 import Categoria from "./categoria";
-import { Item } from "./item";
+import  Item  from "./item";
 
 export default class Estacion {
     private nombre: string;
@@ -19,24 +19,11 @@ export default class Estacion {
     public getCategorias(): Categoria[] {
         return this.categorias;
     }
-
+    //metodo para obtener los items de la estacion, pero que no se puedan modificar desde afuera,
+    //esto lo logramos con readonlyArray, que es un tipo de array que no permite modificar sus elementos
     public getItems(): ReadonlyArray<Item> {
         return this.items;
     }
-
-    public setNombre(nombre: string): void {
-        this.nombre = nombre;
-    }
-
-    public setCategorias(categorias: Categoria[]): void {
-        this.categorias = categorias;
-    }
-
-    public setItems(items: Item[]): void {
-        this.items = items;
-    }
-
-
     public agregarItem(item: Item): void {
         this.items.push(item);
     }

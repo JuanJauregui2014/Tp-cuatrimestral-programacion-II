@@ -1,11 +1,8 @@
 import { EstadoPedido } from "./estado_pedido";
-import { Item } from "./item";
-import ElementoMenu from "./elemento_menu";
-import { EstadoItem } from "./estado_item";
-import MedioDePago from "./medio_de_pago";
-import { DiaSemana } from "./dia_semana";
-
-const CERO = 0;
+import  Item  from "./item"; //nos falta
+import ElementoMenu from "./elemento_menu"; 
+import MedioDePago from "./medio_de_pago"; 
+import { DiaSemana } from "./dia_semana"; 
 
 export default abstract class Pedido { // Abstracta porque no existe un pedido genérico
 

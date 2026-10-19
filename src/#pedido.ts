@@ -3,6 +3,9 @@ import  Item  from "./item"; //nos falta
 import ElementoMenu from "./elemento_menu"; 
 import MedioDePago from "./medio_de_pago"; 
 import { DiaSemana } from "./dia_semana"; 
+import EstadoItem from "./estado_item";
+
+const CERO = 0;
 
 export default abstract class Pedido { // Abstracta porque no existe un pedido genérico
 
@@ -46,9 +49,7 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
             return; // Solo se puede modificar antes de confirmar
         }
 
-        this.items = this.items.filter(
-            actual => actual !== item
-        ); // Elimina el item recibido
+        this.items = this.items.filter(actual => actual !== item); // Elimina el item recibido
     }
 
     public deshacerUltimaModificacion(): void {
@@ -79,6 +80,12 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     public calcularTotalBruto(): void {
 
         this.totalBruto = this.items.reduce((total, item) => total + item.getElemento().getPrecio(), CERO);
+
+        /* const costoEnvioPorPedido = 5000;
+
+        if (this.doGetTipoDePedido() === "Pedido con envio") {
+            this.totalBruto += 
+        } */
 
         // Suma el subtotal de todos los items
         // Ejemplo: hamburguesa + bebida + postre
@@ -138,4 +145,8 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     public getTotalCobrado(): number {
         return this.totalCobrado;
     }
+
+/*     protected abstract doGetTipoDePedido(): string;
+
+    protected abstract obtenerCostoEnvio(): number; */
 }

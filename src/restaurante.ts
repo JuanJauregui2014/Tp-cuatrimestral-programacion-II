@@ -3,16 +3,16 @@ import Estacion from "./estacion";
 import Pedido from "./#pedido";
 import MedioDePago from "./medio_de_pago";
 
-const AGREGO_UNO = 1;
+const VACIO = 0;
 
 export default class Restaurante {
     private nombre: string;
     private menu: Menu;
-    private estaciones: Map<string, Estacion>;
+    private estaciones: Estacion[];
     private pedidosActivos: Map<number, Pedido>;
     private pedidosFinalizados: Map<number, Pedido>;
 
-    constructor(nombre: string, menu: Menu, estaciones: Map<string, Estacion>) {
+    constructor(nombre: string, menu: Menu, estaciones: Estacion[]) {
         this.nombre = nombre;
         this.menu = menu;
         this.estaciones = estaciones;
@@ -28,8 +28,16 @@ export default class Restaurante {
         return this.menu;
     }
 
-    public getEstaciones(): Map<string, Estacion> {
+    public getEstaciones(): Estacion[] {
         return this.estaciones;
+    }
+
+    public getPedidosActivos(): Map<number, Pedido> {
+        return this.pedidosActivos;
+    }
+
+    public getPedidosFinalizados(): Map<number, Pedido> {
+        return this.pedidosFinalizados;
     }
 
     public setNombre(nombre: string): void {
@@ -40,25 +48,21 @@ export default class Restaurante {
         this.menu = menu;
     }
 
-    public setEstaciones(estaciones: Map<string, Estacion>): void {
+    public setEstaciones(estaciones: Estacion[]): void {
         this.estaciones = estaciones;
     }
 
     public agregarPedido(pedido: Pedido): void {
-        let ultimoNroDePedido = 0;
 
-        this.pedidosActivos.forEach((_pedidoCargado, nroDePedidoCargado) => {
-            ultimoNroDePedido = nroDePedidoCargado;
-        });
-
-        this.pedidosActivos.set(ultimoNroDePedido + AGREGO_UNO, pedido);
+        this.pedidosActivos.set(pedido.getNumeroPedido(), pedido);
     }
 
     public consultarHistorial(): void {
-        //Nro de pedido y fecha
-        //Lista de items con precio
-        //Coste total del pedido
-        
+
+        if (this.pedidosFinalizados.size === VACIO) {
+            throw new Error("No hay pedidos finalizados. No hay nada para mostrar");
+        }
+
         this.pedidosFinalizados.forEach((pedido, nroDePedido) => {
             console.log(`Nro de pedido: ${nroDePedido} - Fecha: ${pedido.getFecha()}`);
             //Probablemente haya que cambiar esta linea más adelante
@@ -82,11 +86,11 @@ export default class Restaurante {
         const pedido = this.pedidosActivos.get(nroDePedido);
         
         if (pedido === undefined) {
-            throw new Error(`No existe un pedido activo con el código ${nroDePedido}`);
+            throw new Error("No se encuentra el número de pedido ingresado");
         }
 
         if (!pedido.puedeFacturarse()) {
-            throw new Error("No se puede facturar el pedido");
+            throw new Error("No se puede facturar el pedido, sus items no estan terminados");
         }
         
         pedido.calcularTotalBruto();

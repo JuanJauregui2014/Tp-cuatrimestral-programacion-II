@@ -1,16 +1,11 @@
-import Pedido from "./pedido";
+import Pedido from "./#pedido";
 
 export default class PedidoSalon extends Pedido {
 
     private numeroMesa: number; // Mesa donde está sentado el cliente
     private mozo: string; // Mozo responsable del pedido
 
-    constructor(
-        numeroPedido: number,
-        nombreCliente: string,
-        numeroMesa: number,
-        mozo: string
-    ) {
+    constructor(numeroPedido: number, nombreCliente: string, numeroMesa: number, mozo: string) {
         super(numeroPedido, nombreCliente); // Inicializa lo heredado
 
         this.numeroMesa = numeroMesa;

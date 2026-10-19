@@ -12,7 +12,7 @@ export default class Combo implements ElementoMenu {
         this.productos = productos;
         this.beneficio = beneficio;
     }
-/* cree esto xq me tiraba error de numero maigo,sino ponia el 0,
+/* cree esto xq me tiraba error de numero magicoo,sino ponia el 0,
 total es la alcancia donde se suman los valores,producto producto el elemento que se lee
 y total + producto.getPrecio() agarra la alcancia y se lo suma al precio del producto
 y bueno despues le aplicamos el beneficio */

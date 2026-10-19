@@ -35,17 +35,17 @@ class Combo implements ElementoMenu {
 }
 
 interface ComboBeneficio {
-    +aplicarBeneficio(productos: List<Producto>): number
+    +aplicarBeneficio(precio: number): number
 }
 
 class ComboPorcentual implements ComboBeneficio {
     -porcentajeDescuento: number
-    +aplicarBeneficio(productos: List<Producto>): number
+    +aplicarBeneficio(precio: number): number
 }
 
 class ComboPrecioFijo implements ComboBeneficio {
     -precioFijo: number
-    +aplicarBeneficio(productos: List<Producto>): number
+    +aplicarBeneficio(precio: number): number
 }
 
 abstract class Pedido {

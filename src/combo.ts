@@ -4,7 +4,7 @@ import  ComboBeneficio  from "./combo_beneficio";
 
 export default class Combo implements ElementoMenu {
     private nombre: string;
-    private productos: Producto[];
+    private productos: ReadonlyArray<Producto>;
     private beneficio: ComboBeneficio;
 
     constructor(nombre: string, productos: Producto[], beneficio: ComboBeneficio) {
@@ -24,14 +24,9 @@ y bueno despues le aplicamos el beneficio */
         );
         return this.beneficio.aplicarBeneficio(precioTotal);
     }
-
     public getNombre(): string {
         return this.nombre;
     }
-
-    public getProductos(): Producto[] { return this.productos; }
-    public setProductos(productos: Producto[]): void { this.productos = productos; }
+    public getProductos(): ReadonlyArray<Producto> { return this.productos; }
     public getBeneficio(): ComboBeneficio { return this.beneficio; }
-    public setBeneficio(beneficio: ComboBeneficio): void { this.beneficio = beneficio; }
-    public setNombre(nombre: string): void { this.nombre = nombre; }
 }

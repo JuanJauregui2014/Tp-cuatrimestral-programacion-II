@@ -23,16 +23,4 @@ export default class Producto implements ElementoMenu {
     public getCategoria(): Categoria {
         return this.categoria;
     }
-
-    public setCategoria(categoria: Categoria): void {
-        this.categoria = categoria;
-    }
-
-    public setNombre(nombre: string): void {
-        this.nombre = nombre;
-    }
-
-    public setPrecioDeVenta(precioDeVenta: number): void {
-        this.precioDeVenta = precioDeVenta;
-    }
 }

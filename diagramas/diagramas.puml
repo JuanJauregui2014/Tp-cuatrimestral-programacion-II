@@ -82,7 +82,7 @@ class PedidoEnvioPropio {
 
 class Item {
     -cantidad: int
-    -estado: EstadioItem
+    -estado: EstadoItem
     
     +avanzarEstado()
     +esModificable(): boolean

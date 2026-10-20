@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.67% </span>
+                <span class="strong">93.75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>28/37</span>
+                <span class='fraction'>30/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.22% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/9</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75.67% </span>
+                <span class="strong">93.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>28/37</span>
+                <span class='fraction'>30/32</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -94,12 +94,15 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -120,19 +123,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import  ElementoMenu  from "./elemento_menu";
@@ -141,7 +131,7 @@ import  ComboBeneficio  from "./combo_beneficio";
 &nbsp;
 export default class Combo implements ElementoMenu {
     private nombre: string;
-    private productos: Producto[];
+    private productos: ReadonlyArray&lt;Producto&gt;;
     private beneficio: ComboBeneficio;
 &nbsp;
     constructor(nombre: string, productos: Producto[], beneficio: ComboBeneficio) {
@@ -153,24 +143,19 @@ export default class Combo implements ElementoMenu {
 total es la alcancia donde se suman los valores,producto producto el elemento que se lee
 y total + producto.getPrecio() agarra la alcancia y se lo suma al precio del producto
 y bueno despues le aplicamos el beneficio */
- public <span class="fstat-no" title="function not covered" >getPrecio(): number {</span>
-<span class="cstat-no" title="statement not covered" >        const valorInicialAcumulador = 0;</span>
-<span class="cstat-no" title="statement not covered" >        const precioTotal = this.productos.reduce(</span>
-<span class="cstat-no" title="statement not covered" >            (total, producto) =&gt; total + producto.getPrecio(),</span>
-<span class="cstat-no" title="statement not covered" >            valorInicialAcumulador</span>
-<span class="cstat-no" title="statement not covered" >        );</span>
-<span class="cstat-no" title="statement not covered" >        return this.beneficio.aplicarBeneficio(precioTotal);</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-&nbsp;
+ public getPrecio(): number {
+        const valorInicialAcumulador = 0;
+        const precioTotal = this.productos.reduce(
+            (total, producto) =&gt; total + producto.getPrecio(),
+            valorInicialAcumulador
+        );
+        return this.beneficio.aplicarBeneficio(precioTotal);
+    }
     public <span class="fstat-no" title="function not covered" >getNombre(): string {</span>
 <span class="cstat-no" title="statement not covered" >        return this.nombre;</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-&nbsp;
-    public <span class="fstat-no" title="function not covered" >getProductos(): Producto[] { return this.productos; }</span>
-    public <span class="fstat-no" title="function not covered" >setProductos(productos: Producto[]): void { this.productos = productos; }</span>
+    public <span class="fstat-no" title="function not covered" >getProductos(): ReadonlyArray&lt;Producto&gt; { return this.productos; }</span>
     public <span class="fstat-no" title="function not covered" >getBeneficio(): ComboBeneficio { return this.beneficio; }</span>
-    public <span class="fstat-no" title="function not covered" >setBeneficio(beneficio: ComboBeneficio): void { this.beneficio = beneficio; }</span>
-    public <span class="fstat-no" title="function not covered" >setNombre(nombre: string): void { this.nombre = nombre; }</span>
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -178,7 +163,7 @@ y bueno despues le aplicamos el beneficio */
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-10T14:55:48.134Z
+                at 2026-10-18T01:59:41.965Z
             </div>
         <script src="prettify.js"></script>
         <script>

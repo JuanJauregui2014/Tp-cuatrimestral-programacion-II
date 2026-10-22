@@ -1,24 +1,27 @@
 import { EstadoPedido } from "./estado_pedido";
-import  Item  from "./item"; //nos falta
-import ElementoMenu from "./elemento_menu"; 
-import MedioDePago from "./medio_de_pago"; 
-import { DiaSemana } from "./dia_semana"; 
+import Item from "./item"; //nos falta
+import ElementoMenu from "./elemento_menu";
+import { MedioDePago } from "./medio_de_pago";
+import { DiaSemana } from "./dia_semana";
 
 export default abstract class Pedido { // Abstracta porque no existe un pedido genérico
 
-    protected numeroPedido: number; 
-    protected nombreCliente: string; 
-    protected fecha: Date; 
+    protected numeroPedido: number;
+    protected nombreCliente: string;
+    protected fecha: Date;
     protected estado: EstadoPedido; // Estado actual del pedido
     protected items: Item[]; // Lista de productos y combos agregados
     protected historialModificaciones: Item[]; // Funciona como pila para deshacer cambios
+    protected medioDePago: MedioDePago;
 
     constructor(
         numeroPedido: number,
-        nombreCliente: string
+        nombreCliente: string,
+        medioDePago: MedioDePago
     ) {
         this.numeroPedido = numeroPedido;
         this.nombreCliente = nombreCliente;
+        this.medioDePago = medioDePago;
         this.fecha = new Date(); // Guarda fecha y hora actual
         this.estado = EstadoPedido.EN_CONSTRUCCION; // Todo pedido comenzaria así, para consultar en quitar item
         this.items = []; // Inicializa colección vacía
@@ -127,5 +130,9 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
     public getItems(): Item[] {
         return this.items;
+    }
+
+    public getMedioDePago(): MedioDePago {
+        return this.medioDePago;
     }
 }

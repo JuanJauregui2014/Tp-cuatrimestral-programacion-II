@@ -1,4 +1,4 @@
-@startuml
+@startuml -Gestión de Pedidos:-
 title -Gestión de Pedidos:-
 class Restaurante {
     -nombre: String

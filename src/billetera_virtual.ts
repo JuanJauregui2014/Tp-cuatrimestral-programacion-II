@@ -1,12 +1,13 @@
-import { MedioDePago } from "./medio_de_pago";
-import { MetodoDePago } from "./metodo_de_pago";
-export default class BilleteraVirtual implements MetodoDePago {
-    public tipo: MedioDePago.BVIRTUAL;
+import MedioDePago from "./medio_de_pago";
+export default class BilleteraVirtual implements MedioDePago {
     private alias: string;
 
-    public constructor(alias: string, tipo: MedioDePago) {
+    public constructor(alias: string) {
         this.alias = alias;
-        this.tipo = MedioDePago.BVIRTUAL;
+    }
+
+    public getTipoDePago(): string {
+        return "BILLETERA VIRTUAL";
     }
 
     procesarPago(monto: number): boolean {

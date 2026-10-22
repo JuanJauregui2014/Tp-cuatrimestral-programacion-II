@@ -1,14 +1,14 @@
-import { MedioDePago } from "./medio_de_pago";
-import { MetodoDePago } from "./metodo_de_pago";
-export default class TarjetaDeDebito implements MetodoDePago {
-    public tipo: MedioDePago.DEBITO;
+import MedioDePago from "./medio_de_pago";
+export default class TarjetaDeDebito implements MedioDePago {
     private numeroTarjeta: number;
 
-    public constructor(numeroTarjeta: number, tipo: MedioDePago) {
+    public constructor(numeroTarjeta: number) {
         this.numeroTarjeta = numeroTarjeta;
-        this.tipo = MedioDePago.DEBITO;
     }
 
+    public getTipoDePago(): string {
+        return "TARJETA DE DEBITO";
+    }
     procesarPago(monto: number): boolean {
         
         return true;

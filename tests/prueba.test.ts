@@ -1,12 +1,5 @@
-describe("Primer test", () => {
-
-  beforeEach(() => {
-  });
-
-  afterEach(() => {
-  });
-
-  test("happy path", () => {
-    expect(2+2).toEqual(4);
-  })
-})
+describe("Prueba", () => {
+    test("placeholder", () => {
+        expect(true).toBe(true);
+    });
+});

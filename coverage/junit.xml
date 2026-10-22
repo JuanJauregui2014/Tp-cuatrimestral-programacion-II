@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="2" failures="0" errors="0" time="5.338">
-  <testsuite name="Test de la clase Item" errors="0" failures="0" skipped="0" timestamp="2026-10-10T16:25:16" time="4.955" tests="2">
-    <testcase classname="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" name="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" time="0.003">
-    </testcase>
-    <testcase classname="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" name="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" time="0.011">
-    </testcase>
-  </testsuite>
-</testsuites>

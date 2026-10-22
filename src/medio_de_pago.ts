@@ -1,6 +1,5 @@
-export enum MedioDePago {
-    EFECTIVO = "EFECTIVO",
-    DEBITO = "DEBITO",
-    CREDITO = "CREDITO",
-    BVIRTUAL = "BVIRTUAL"
+
+export default interface MedioDePago {
+    procesarPago(monto: number): void;
+    getTipoDePago(): string;
 }

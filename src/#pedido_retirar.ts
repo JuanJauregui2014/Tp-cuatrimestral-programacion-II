@@ -4,11 +4,7 @@ export default class PedidoRetirar extends Pedido {
 
     private horarioRetiro: Date; // Hora para retirar el pedido
 
-    constructor(
-        numeroPedido: number,
-        nombreCliente: string,
-        horarioRetiro: Date
-    ) {
+    constructor(numeroPedido: number, nombreCliente: string, horarioRetiro: Date) {
         super(numeroPedido, nombreCliente);
 
         this.horarioRetiro = horarioRetiro;
@@ -18,9 +14,7 @@ export default class PedidoRetirar extends Pedido {
         return this.horarioRetiro;
     }
 
-    public setHorarioRetiro(
-        horarioRetiro: Date
-    ): void {
+    public setHorarioRetiro(horarioRetiro: Date): void {
         this.horarioRetiro = horarioRetiro;
     }
 }

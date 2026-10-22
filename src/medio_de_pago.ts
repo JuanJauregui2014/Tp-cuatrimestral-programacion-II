@@ -1,4 +1,6 @@
-
-export default interface MedioDePago {
-    procesarPago(monto: number): boolean;
+export enum MedioDePago {
+    EFECTIVO = "EFECTIVO",
+    DEBITO = "DEBITO",
+    CREDITO = "CREDITO",
+    BVIRTUAL = "BVIRTUAL"
 }

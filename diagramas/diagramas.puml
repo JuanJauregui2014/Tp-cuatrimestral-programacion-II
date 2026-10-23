@@ -50,32 +50,49 @@ class ComboPrecioFijo implements ComboBeneficio {
 
 abstract class Pedido {
     -numeroPedido: int
+
     -nombreCliente: String
+
     -fecha: Date
+
     -estado: EstadoPedido
-    -items: List<Item>
-    -historialModificaciones: Stack<Item>
 
-    +agregarItem(elemento: ElementoMenu, cantidad: int)
-    +quitarItem(item: Item)
-    +deshacerUltimaModificacion()
+    -item: List<Item>
+
+
+
+    +agregarItem(item:Item)
+
+    +quitarItem(item:Item)
+
+    +registrarPedido()
+
+    +deshacerModificacion()
+
     +confirmarPedido()
-    +puedeFacturarse(): boolean
-    +calcularTotalBruto(): number
-    +aplicarDescuento(): number
-    +calcularTotalFinal(medioPago: MedioDePago, diaActual: DiaSemana): number
+
+    +puedeFacturable()
+
+    +totalPedido()
+
 }
 
-class PedidoSalon {
+class PedidoSalon{
+
     -numeroMesa: int
+
     -mozo: String
+
 }
 
-class PedidoRetirar {
+class PedidoRetirar{
+
     -horarioRetiro: Date
+
 }
 
-class PedidoEnvioPropio {
+class PedidoEnvioPropio{
+
     -direccion: String
     -costoEnvio: number
 }
@@ -85,100 +102,125 @@ class Item {
     -estado: EstadoItem
     
     +avanzarEstado()
-    +esModificable(): boolean
+
+    +esModificable()
+
+
+
 }
 
-class Estacion {
-    -nombre: String
-    -categorias: List<Categoria>
-    -items: List<Item>
+class Producto implements ElementoMenu{
 
-    +agregarItem(item: Item)
-    +avanzarItem(item: Item)
-    +aceptaCategoria(categoria: Categoria): boolean
-}
-
-class Producto implements ElementoMenu {
     -nombre: String
-    -precioDeVenta: number
-    -categoria: Categoria
-    
-    +getCategoria(): Categoria
+
+    -precioDeVenta:number
+
+
+
     +getPrecio(): number
+
     +getNombre(): String
+
+
+
+   
+
 }
 
-interface MedioDePago {
-    +procesarPago(monto: number): boolean
+class Combo implements ElementoMenu {
+
+    -nombre: String
+
+    -productos: List<Producto>
+
+    -precioEspecial: number
+
+    +getPrecio(): number
+
+    +getNombre(): String
+
 }
 
-class Efectivo implements MedioDePago {
-    -aplicaDescuentoEfectivo: boolean
+class Categoria{
+
+
+
 }
 
-class TarjetaDebito implements MedioDePago {
-    -numeroTarjeta: String
+class Estacion{
+
+    -nombre: String
+
+    -items:List<Item>
+
+
+
+    +agregarItem(item:Item)
+
+    +avanzarItem(item:Item)
+
+
+
 }
 
-class TarjetaCredito implements MedioDePago {
-    -numeroTarjeta: String
-    -cuotas: int
+
+
+class Menu{
+
+    -categorias: List<Categoria>
+
+    -combos: List<Combo>
+
+    -productos: List<Producto>
+
+
+
 }
 
-class BilleteraVirtual implements MedioDePago {
-    -alias: String
-}
+'preguntas si conviene  tenerlo como clase abstracta y que hereden los distintos medios de pagos'
 
-/' abstract class Descuento {
-     +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
-     +calcularMontoDescuento(pedido: Pedido): number
-}
+class MedioDePago{
 
-class DescuentoEfectivo extends Descuento {
-    -porcentaje: number
-    +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
-    +calcularMontoDescuento(pedido: Pedido): number
-}
 
-class DescuentoDiaEspecial extends Descuento {
-    -diaObjetivo: DiaSemana
-    -porcentaje: number
-    +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
-    +calcularMontoDescuento(pedido: Pedido): number
-} '/
+
+}
 
 enum EstadoPedido {
+
     EN_CONSTRUCCION,
+
     CONFIRMADO,
+
     LISTO,
+
     FACTURADO
+
 }
 
-enum EstadioItem {
+enum EstadioItem{
+
     PENDIENTE,
+
     EN_PREPARACION,
+
     LISTO
+
 }
 
-enum DiaSemana {
-    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO
-}
+Pedido <|-l- PedidoSalon
 
-' Relaciones Estructurales
-Restaurante *-- Menu
-Restaurante  *-- Estacion
-Restaurante *-l-  Pedido
-Restaurante *-r- MedioDePago
-Menu  *-- Categoria
-Menu  *-- Producto
-Menu  *--Combo
-Combo  *--  ComboBeneficio
-Pedido  *--  Item
-Item  *--  ElementoMenu
-Estacion  *-- Item
-
-Pedido <|-- PedidoSalon
 Pedido <|-- PedidoRetirar
-Pedido <|-- PedidoEnvioPropio
+
+Pedido <|-r- PedidoEnvioPropio
+
+Menu o-l- Categoria
+
+Producto *-d- Menu
+
+Menu *-- Combo
+
+Estacion -- Item
+
+Item --> ElementoMenu
 
 @enduml

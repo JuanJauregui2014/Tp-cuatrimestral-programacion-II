@@ -23,6 +23,7 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     constructor(numeroPedido: number, nombreCliente: string) {
         this.numeroPedido = numeroPedido;
         this.nombreCliente = nombreCliente;
+        this.medioDePago = medioDePago;
         this.fecha = new Date(); // Guarda fecha y hora actual
         this.estado = EstadoPedido.EN_CONSTRUCCION; // Todo pedido comenzaria así, para consultar en quitar item
         this.items = []; // Inicializa colección vacía

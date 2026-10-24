@@ -1,4 +1,4 @@
-@startuml -Gestión de Pedidos:-
+@startuml
 title -Gestión de Pedidos:-
 class Restaurante {
     -nombre: String
@@ -35,17 +35,17 @@ class Combo implements ElementoMenu {
 }
 
 interface ComboBeneficio {
-    +aplicarBeneficio(precio: number): number
+    +aplicarBeneficio(productos: List<Producto>): number
 }
 
 class ComboPorcentual implements ComboBeneficio {
     -porcentajeDescuento: number
-    +aplicarBeneficio(precio: number): number
+    +aplicarBeneficio(productos: List<Producto>): number
 }
 
 class ComboPrecioFijo implements ComboBeneficio {
     -precioFijo: number
-    +aplicarBeneficio(precio: number): number
+    +aplicarBeneficio(productos: List<Producto>): number
 }
 
 abstract class Pedido {
@@ -82,7 +82,7 @@ class PedidoEnvioPropio {
 
 class Item {
     -cantidad: int
-    -estado: EstadoItem
+    -estado: EstadioItem
     
     +avanzarEstado()
     +esModificable(): boolean
@@ -132,7 +132,7 @@ class BilleteraVirtual implements MedioDePago {
 /' abstract class Descuento {
      +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
      +calcularMontoDescuento(pedido: Pedido): number
-}
+}   
 
 class DescuentoEfectivo extends Descuento {
     -porcentaje: number

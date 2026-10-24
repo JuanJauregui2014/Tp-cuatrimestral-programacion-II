@@ -4,7 +4,7 @@ export default class Efectivo implements MedioDePago {
 
     private tipoDePago: string;
 
-    constructor() {
+    public constructor() {
         this.tipoDePago = "Efectivo";
     }
 

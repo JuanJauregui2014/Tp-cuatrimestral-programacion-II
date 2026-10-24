@@ -1,4 +1,4 @@
-@startuml -Gestión de Pedidos:-
+@startuml
 title -Gestión de Pedidos:-
 class Restaurante {
     -nombre: String
@@ -50,177 +50,135 @@ class ComboPrecioFijo implements ComboBeneficio {
 
 abstract class Pedido {
     -numeroPedido: int
-
     -nombreCliente: String
-
     -fecha: Date
-
     -estado: EstadoPedido
+    -items: List<Item>
+    -historialModificaciones: Stack<Item>
 
-    -item: List<Item>
-
-
-
-    +agregarItem(item:Item)
-
-    +quitarItem(item:Item)
-
-    +registrarPedido()
-
-    +deshacerModificacion()
-
+    +agregarItem(elemento: ElementoMenu, cantidad: int)
+    +quitarItem(item: Item)
+    +deshacerUltimaModificacion()
     +confirmarPedido()
-
-    +puedeFacturable()
-
-    +totalPedido()
-
+    +puedeFacturarse(): boolean
+    +calcularTotalBruto(): number
+    +aplicarDescuento(): number
+    +calcularTotalFinal(medioPago: MedioDePago, diaActual: DiaSemana): number
 }
 
-class PedidoSalon{
-
+class PedidoSalon {
     -numeroMesa: int
-
     -mozo: String
-
 }
 
-class PedidoRetirar{
-
+class PedidoRetirar {
     -horarioRetiro: Date
-
 }
 
-class PedidoEnvioPropio{
-
+class PedidoEnvioPropio {
     -direccion: String
     -costoEnvio: number
 }
 
 class Item {
     -cantidad: int
-    -estado: EstadoItem
+    -estado: EstadioItem
     
     +avanzarEstado()
-
-    +esModificable()
-
-
-
+    +esModificable(): boolean
 }
 
-class Producto implements ElementoMenu{
-
+class Estacion {
     -nombre: String
-
-    -precioDeVenta:number
-
-
-
-    +getPrecio(): number
-
-    +getNombre(): String
-
-
-
-   
-
-}
-
-class Combo implements ElementoMenu {
-
-    -nombre: String
-
-    -productos: List<Producto>
-
-    -precioEspecial: number
-
-    +getPrecio(): number
-
-    +getNombre(): String
-
-}
-
-class Categoria{
-
-
-
-}
-
-class Estacion{
-
-    -nombre: String
-
-    -items:List<Item>
-
-
-
-    +agregarItem(item:Item)
-
-    +avanzarItem(item:Item)
-
-
-
-}
-
-
-
-class Menu{
-
     -categorias: List<Categoria>
+    -items: List<Item>
 
-    -combos: List<Combo>
-
-    -productos: List<Producto>
-
-
-
+    +agregarItem(item: Item)
+    +avanzarItem(item: Item)
+    +aceptaCategoria(categoria: Categoria): boolean
 }
 
-'preguntas si conviene  tenerlo como clase abstracta y que hereden los distintos medios de pagos'
-
-class MedioDePago{
-
-
-
+class Producto implements ElementoMenu {
+    -nombre: String
+    -precioDeVenta: number
+    -categoria: Categoria
+    
+    +getCategoria(): Categoria
+    +getPrecio(): number
+    +getNombre(): String
 }
+
+interface MedioDePago {
+    +procesarPago(monto: number): boolean
+}
+
+class Efectivo implements MedioDePago {
+    -aplicaDescuentoEfectivo: boolean
+}
+
+class TarjetaDebito implements MedioDePago {
+    -numeroTarjeta: String
+}
+
+class TarjetaCredito implements MedioDePago {
+    -numeroTarjeta: String
+    -cuotas: int
+}
+
+class BilleteraVirtual implements MedioDePago {
+    -alias: String
+}
+
+/' abstract class Descuento {
+     +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
+     +calcularMontoDescuento(pedido: Pedido): number
+}
+
+class DescuentoEfectivo extends Descuento {
+    -porcentaje: number
+    +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
+    +calcularMontoDescuento(pedido: Pedido): number
+}
+
+class DescuentoDiaEspecial extends Descuento {
+    -diaObjetivo: DiaSemana
+    -porcentaje: number
+    +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
+    +calcularMontoDescuento(pedido: Pedido): number
+} '/
 
 enum EstadoPedido {
-
     EN_CONSTRUCCION,
-
     CONFIRMADO,
-
     LISTO,
-
     FACTURADO
-
 }
 
-enum EstadioItem{
-
+enum EstadioItem {
     PENDIENTE,
-
     EN_PREPARACION,
-
     LISTO
-
 }
 
-Pedido <|-l- PedidoSalon
+enum DiaSemana {
+    LUNES, MARTES, MIERCOLES, JUEVES, VIERNES, SABADO, DOMINGO
+}
 
+' Relaciones Estructurales
+Restaurante *-- Menu
+Restaurante  *-- Estacion
+Restaurante *-l-  Pedido
+Restaurante *-r- MedioDePago
+Menu  *-- Categoria
+Menu  *-- Producto
+Menu  *--Combo
+Combo  *--  ComboBeneficio
+Pedido  *--  Item
+Item  *--  ElementoMenu
+Estacion  *-- Item
+
+Pedido <|-- PedidoSalon
 Pedido <|-- PedidoRetirar
-
-Pedido <|-r- PedidoEnvioPropio
-
-Menu o-l- Categoria
-
-Producto *-d- Menu
-
-Menu *-- Combo
-
-Estacion -- Item
-
-Item --> ElementoMenu
+Pedido <|-- PedidoEnvioPropio
 
 @enduml

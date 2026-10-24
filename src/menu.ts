@@ -8,7 +8,7 @@ export default class Menu {
     private combos: Combo[];
     private productos: Producto[];
 
-    constructor(categorias?: Categoria[], combos?: Combo[], productos?: Producto[]) {
+    public constructor(categorias?: Categoria[], combos?: Combo[], productos?: Producto[]) {
         this.categorias = categorias ?? [];
         this.combos = combos ?? [];
         this.productos = productos ?? [];

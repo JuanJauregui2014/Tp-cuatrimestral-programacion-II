@@ -6,7 +6,7 @@ export default class Estacion {
     private categorias: Categoria[];
     private items: Item[];
 
-    constructor(nombre: string, categorias: Categoria[]) {
+    public constructor(nombre: string, categorias: Categoria[]) {
         this.nombre = nombre;
         this.categorias = categorias;
         this.items = [];

@@ -12,7 +12,7 @@ export default class Restaurante {
     private pedidosActivos: Map<number, Pedido>;
     private pedidosFinalizados: Map<number, Pedido>;
 
-    constructor(nombre: string, menu: Menu, estaciones: Estacion[]) {
+    public constructor(nombre: string, menu: Menu, estaciones: Estacion[]) {
         this.nombre = nombre;
         this.menu = menu;
         this.estaciones = estaciones;

@@ -5,7 +5,7 @@ export default class PedidoEnvioPropio extends Pedido {
     private direccion: string; // Dirección de entrega
     private costoEnvio: number; // Cargo adicional por reparto, era así?
 
-    constructor(numeroPedido: number, nombreCliente: string, direccion: string, costoEnvio: number) {
+    public constructor(numeroPedido: number, nombreCliente: string, direccion: string, costoEnvio: number) {
         super(numeroPedido, nombreCliente);
 
         this.direccion = direccion;

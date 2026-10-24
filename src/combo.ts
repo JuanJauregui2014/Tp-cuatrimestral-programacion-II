@@ -7,7 +7,7 @@ export default class Combo implements ElementoMenu {
     private productos: ReadonlyArray<Producto>;
     private beneficio: ComboBeneficio;
 
-    constructor(nombre: string, productos: Producto[], beneficio: ComboBeneficio) {
+    public constructor(nombre: string, productos: Producto[], beneficio: ComboBeneficio) {
         this.nombre = nombre;
         this.productos = productos;
         this.beneficio = beneficio;

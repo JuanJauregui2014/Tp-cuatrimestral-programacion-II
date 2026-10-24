@@ -6,7 +6,7 @@ export default class Producto implements ElementoMenu {
     private precioDeVenta: number;
     private categoria: Categoria;
 
-    constructor(nombre: string, precioDeVenta: number, categoria: Categoria) {
+    public constructor(nombre: string, precioDeVenta: number, categoria: Categoria) {
         this.nombre = nombre;
         this.precioDeVenta = precioDeVenta;
         this.categoria = categoria;

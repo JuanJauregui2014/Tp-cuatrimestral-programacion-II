@@ -2,7 +2,7 @@ import  ComboBeneficio  from "./combo_beneficio";
 export default class ComboPorcentual implements ComboBeneficio {
     private porcentajeDescuento: number;
 
-    constructor(porcentajeDescuento: number) {
+    public constructor(porcentajeDescuento: number) {
         this.porcentajeDescuento = porcentajeDescuento;
     }
 

@@ -5,7 +5,7 @@ export default class Item {
     private estado: EstadoItem = EstadoItem.PENDIENTE; // Estado inicial del item
     private elemento: ElementoMenu; // representa el elemento del menu
 
-    constructor(cantidad: number, elemento: ElementoMenu) {
+    public constructor(cantidad: number, elemento: ElementoMenu) {
         this.cantidad = cantidad;
         this.elemento = elemento;
     }

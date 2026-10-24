@@ -1,7 +1,7 @@
 import ComboBeneficio from "./combo_beneficio";
 export default class ComboPrecioFijo implements ComboBeneficio {
     private precioFijo: number;
-    constructor(precioFijo: number) {
+    public constructor(precioFijo: number) {
         this.precioFijo = precioFijo;
     }
 

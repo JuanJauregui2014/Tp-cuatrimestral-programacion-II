@@ -1,6 +1,6 @@
 export default class Categoria {
     private nombre: string;
-    constructor(nombre: string) {
+    public constructor(nombre: string) {
         this.nombre = nombre;
     }
 

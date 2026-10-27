@@ -1,6 +1,6 @@
 import Menu from "./menu";
 import Estacion from "./estacion";
-import Pedido from "./#pedido";
+import Pedido from "./pedido";
 import MedioDePago from "./medio_de_pago";
 
 const VACIO = 0;

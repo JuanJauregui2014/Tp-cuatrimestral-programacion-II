@@ -4,7 +4,7 @@ export default class TarjetaDeCredito implements MedioDePago {
     private cuotas: number;
     private tipoDePago: string;
 
-    public constructor(numeroTarjeta: number, cuotas: number, tipoDePago: string) {
+    public constructor(numeroTarjeta: number, cuotas: number) {
         this.numeroTarjeta = numeroTarjeta;
         this.cuotas = cuotas;
         this.tipoDePago = "Tarjeta de credito"
@@ -14,7 +14,7 @@ export default class TarjetaDeCredito implements MedioDePago {
         return this.tipoDePago;
     }
 
-    procesarPago(monto: number): void {
+    public procesarPago(monto: number): void {
         console.log(`Monto a cobrar: ${monto} --- Tipo de pago: ${this.tipoDePago}`);
         console.log("---Pago procesado---");
     }

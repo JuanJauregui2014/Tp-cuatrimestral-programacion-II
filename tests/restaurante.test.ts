@@ -1,10 +1,11 @@
-import PedidoSalon from "../src/#pedido_salon";
+import PedidoSalon from "../src/pedido_salon";
+import Pedido from "../src/pedido";
 import Categoria from "../src/categoria";
 import Efectivo from "../src/efectivo";
 import Estacion from "../src/estacion";
 import Menu from "../src/menu";
 import Restaurante from "../src/restaurante";
-import { pedidoCompletoMock } from "./mocks";
+import { MockProxy, mock} from "jest-mock-extended";
 
 // eslint-disable-next-line max-lines-per-function
 describe("Test de la clase restaurante", () => {
@@ -16,9 +17,11 @@ describe("Test de la clase restaurante", () => {
     const estacionCocina = new Estacion("Cocina", categoriasParaCocinar);
     const estaciones = [estacionCocina];
     let restaurante: Restaurante;
+    let pedidoCompletoMock: MockProxy<Pedido>;
 
     beforeEach(() => {
         restaurante = new Restaurante("Parrilla lo de Pepe", menu, estaciones);
+        pedidoCompletoMock = mock<Pedido>();
     });
 
     test("Verifico que sea instancia de Restaurante", () => {

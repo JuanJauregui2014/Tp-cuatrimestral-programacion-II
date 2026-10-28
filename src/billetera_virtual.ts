@@ -12,7 +12,7 @@ export default class BilleteraVirtual implements MedioDePago {
         return this.tipoDePago;
     }
 
-    procesarPago(monto: number): void {
+    public procesarPago(monto: number): void {
         console.log(`Monto a cobrar: ${monto} --- Tipo de pago: ${this.tipoDePago}`);
         console.log("---Pago procesado---");
     }

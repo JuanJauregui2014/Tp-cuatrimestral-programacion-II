@@ -73,7 +73,7 @@ __ Getters y Setters __
     +puedeFacturarse(): boolean
     +calcularTotalBruto(): number
     +aplicarDescuento(): number
-    +calcularTotalFinal(medioPago: MedioDePago, diaActual: DiaSemana): number
+    +calcularTotalFinal(): number
 }
 
 class PedidoSalon {

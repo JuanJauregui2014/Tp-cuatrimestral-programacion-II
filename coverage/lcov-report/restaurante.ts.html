@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.03% </span>
+                <span class="strong">76.08% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>70/106</span>
+                <span class='fraction'>70/92</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.03% </span>
+                <span class="strong">76.08% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>70/106</span>
+                <span class='fraction'>70/92</span>
             </div>
         
             
@@ -154,21 +154,7 @@
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a>
-<a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -232,20 +218,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -332,27 +304,13 @@ export default class Restaurante {
         this.pedidosActivos.set(pedido.getNumeroPedido(), pedido);
     }
 &nbsp;
-    public consultarHistorial(): void {
+    public consultarHistorial(): Map&lt;number, Pedido&gt; {
 &nbsp;
         if (this.pedidosFinalizados.size === VACIO) {
             throw new Error("No hay pedidos finalizados. No hay nada para mostrar");
         }
 <span class="cstat-no" title="statement not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span>
-<span class="cstat-no" title="statement not covered" >        this.pedidosFinalizados.forEach((pedido, nroDePedido) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            console.log(`Nro de pedido: ${nroDePedido} - Fecha: ${pedido.getFecha()}`);</span>
-<span class="cstat-no" title="statement not covered" >            //Probablemente haya que cambiar esta linea más adelante</span>
-<span class="cstat-no" title="statement not covered" >            //Porque getItems() te devuelve los objetos de tipo Item, nosé si se puedan imprimir</span>
-<span class="cstat-no" title="statement not covered" >            //Pienso en hacer que items sea un Map en pedido y agregarle un nombre a Item para que sea la key, </span>
-<span class="cstat-no" title="statement not covered" >            //ya que también hay que manejar cantidad de items</span>
-<span class="cstat-no" title="statement not covered" >            for (const item of pedido.getItems()) {</span>
-<span class="cstat-no" title="statement not covered" >                console.log(`Elemento: ${item.getElemento().getNombre()} - Precio: ${item.getElemento().getPrecio()}`);</span>
-<span class="cstat-no" title="statement not covered" >            }</span>
-<span class="cstat-no" title="statement not covered" >            console.log(`Costo total del pedido: ${pedido.getTotalBruto()}`);</span>
-<span class="cstat-no" title="statement not covered" >            console.log(`Descuento aplicado: ${pedido.getDescuento()}`);</span>
-<span class="cstat-no" title="statement not covered" >            console.log(`Total abonado: ${pedido.getTotalCobrado()}`);</span>
-<span class="cstat-no" title="statement not covered" >            //Total abonado falta desarrollar, ya que en pedido, al calcular el total, </span>
-<span class="cstat-no" title="statement not covered" >            //se deben ingresar medio de pago y dia, eso obstruye para agregarlo directamente acá</span>
-<span class="cstat-no" title="statement not covered" >        });</span>
+<span class="cstat-no" title="statement not covered" >        return this.getPedidosFinalizados();</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    }</span>
 &nbsp;
@@ -385,7 +343,7 @@ export default class Restaurante {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-27T19:39:31.567Z
+                at 2026-10-27T22:09:28.718Z
             </div>
         <script src="prettify.js"></script>
         <script>

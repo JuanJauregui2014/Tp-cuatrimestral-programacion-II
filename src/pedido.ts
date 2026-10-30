@@ -1,8 +1,8 @@
 import { EstadoPedido } from "./estado_pedido";
-import  Item  from "./item"; //nos falta
-import ElementoMenu from "./elemento_menu"; 
-import MedioDePago from "./medio_de_pago"; 
-import { DiaSemana } from "./dia_semana"; 
+import Item from "./item";
+import ElementoMenu from "./elemento_menu";
+import MedioDePago from "./medio_de_pago";
+import { DiaSemana } from "./dia_semana";
 import EstadoItem from "./estado_item";
 
 const CERO = 0;
@@ -14,7 +14,9 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     private fecha: Date;
     private estado: EstadoPedido; // Estado actual del pedido
     private items: Item[]; // Lista de productos y combos agregados
-    private historialModificaciones: Item[]; // Funciona como pila para deshacer cambios
+    private historialAgregaciones: Item[]; // Funciona como pila para deshacer cambios
+    private historialEliminaciones: Item[];
+    private historialAcciones: boolean[];
     private totalBruto: number;
     private descuento: number;
     private totalCobrado: number;
@@ -26,43 +28,90 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         this.fecha = new Date(); // Guarda fecha y hora actual
         this.estado = EstadoPedido.EN_CONSTRUCCION; // Todo pedido comenzaria así, para consultar en quitar item
         this.items = []; // Inicializa colección vacía
-        this.historialModificaciones = []; // Inicializa historial vacío
+        this.historialAgregaciones = []; // Inicializa historial vacío
+        this.historialEliminaciones = [];
         this.totalBruto = CERO;
         this.descuento = CERO;
         this.totalCobrado = CERO;
+        this.historialAcciones = [];
     }
 
     public agregarItem(elemento: ElementoMenu, cantidad: number): void {
 
-        const item = new Item(cantidad, elemento); // Creo el item - (falta clase, la doy por hecho)
-
-        this.items.push(item); // Agrega el item al pedido - esta bien usado el push??
-
-        if (this.estado === EstadoPedido.EN_CONSTRUCCION) {
-            this.historialModificaciones.push(item); // Guarda el cambio para poder deshacerlo - chequear
+        if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
+            throw new Error("Pedido no se encuentra en construcción. No se puede agregar item");
         }
+
+        const item = new Item(cantidad, elemento);
+
+        this.items.push(item); // Agrega el item al pedido
+
+        this.historialAgregaciones.push(item); // Guarda el cambio para poder deshacerlo
+
+        this.historialAcciones.push(false);
     }
 
     public quitarItem(item: Item): void {
 
         if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
-            return; // Solo se puede modificar antes de confirmar
+            throw new Error(
+                "Pedido no se encuentra en construcción. No se puede agregar item"
+            ); // Solo se puede modificar o quitar un item antes de confirmar el pedido
+        }
+
+        if (item.getEstado() !== EstadoItem.PENDIENTE) {
+            throw new Error(
+                "Item ya no está pendiente. No se puede modificar"
+            ); // Solo se puede modificar o quitar un item antes de que esté en preparación
         }
 
         this.items = this.items.filter(actual => actual !== item); // Elimina el item recibido
+
+        this.historialEliminaciones.push(item);
+
+        this.historialAcciones.push(true);
     }
 
     public deshacerUltimaModificacion(): void {
 
         if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
-            return; // Solo se puede deshacer antes de confirmar
+            throw new Error(
+                "Pedido no se encuentra en construcción. No se puede deshacer las modificaciones"
+            ); // Solo se puede deshacer una modificacion antes de confirmar el pedido
         }
 
-        const ultimo = this.historialModificaciones.pop(); // Obtiene la última modificación realizada
+        const esEliminacion = this.historialAcciones.pop();
 
-        if (ultimo) {
-            this.items = this.items.filter(actual => actual !== ultimo); // Elimina ese último item agregado
+        if (esEliminacion === undefined) {
+            throw new Error("No hay ninguna acción que deshacer");
         }
+
+        if (esEliminacion) {
+            this.deshacerEliminacion();
+        } else {
+            this.deshacerAgregacion();
+        }
+
+    }
+
+    private deshacerEliminacion(): void {
+
+        const ultimaEliminacion = this.historialAgregaciones.pop(); // Obtiene la última agregación realizada
+
+        if (ultimaEliminacion) {
+            this.items = this.items.filter(actual => actual !== ultimaEliminacion); // Elimina ese último item agregado
+        }
+
+    }
+
+    private deshacerAgregacion(): void {
+
+        const ultimaAgregacion = this.historialAgregaciones.pop(); // Obtiene la última agregación realizada
+
+        if (ultimaAgregacion) {
+            this.items = this.items.filter(actual => actual !== ultimaAgregacion); // Elimina ese último item agregado
+        }
+
     }
 
     public confirmarPedido(): void {
@@ -72,14 +121,13 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     public puedeFacturarse(): boolean {
 
         return this.items.every(item => item.getEstado() === EstadoItem.LISTO);
-
         // Verifica que TODOS los items estén listos
-        // every() devuelve true solamente si todos cumplen la condición?
     }
 
     public calcularTotalBruto(): void {
 
-        this.totalBruto = this.items.reduce((total, item) => total + item.getElemento().getPrecio(), CERO);
+        this.totalBruto = this.items.reduce(
+            (total, item) => total + (item.getElemento().getPrecio() * item.getCantidad()), CERO);
 
         /* const costoEnvioPorPedido = 5000;
 
@@ -87,8 +135,8 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
             this.totalBruto += 
         } */
 
-        // Suma el subtotal de todos los items
-        // Ejemplo: hamburguesa + bebida + postre
+        // Suma el subtotal de todos los items con sus respectivas cantidades
+        // Ejemplo: (hamburguesa * cantHamburguesas) + (bebida * cantBebida) + etc...
     }
 
     public aplicarDescuento(medioPago: MedioDePago): void {
@@ -146,7 +194,4 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         return this.totalCobrado;
     }
 
-/*     protected abstract doGetTipoDePedido(): string;
-
-    protected abstract obtenerCostoEnvio(): number; */
 }

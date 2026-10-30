@@ -54,7 +54,7 @@ describe("Test de la clase restaurante", () => {
         expect(() => restaurante.consultarHistorial()).toThrow("No hay pedidos finalizados. No hay nada para mostrar");
     });
 
-    test("Verificamos que, al facturar un pedido, se guarde en el historial de pedidos", () => {
+    test("Verifico que, al facturar un pedido, se guarde en el historial de pedidos", () => {
         restaurante.agregarPedido(pedidoCompletoMock);
 
         const metodoPago: Efectivo = new Efectivo();
@@ -81,8 +81,9 @@ describe("Test de la clase restaurante", () => {
 
         const metodoPago: Efectivo = new Efectivo();
         const nroPedidoFactura = 6;
-        // eslint-disable-next-line @stylistic/max-len
-        expect(() => restaurante.facturarPedido(nroPedidoFactura, metodoPago)).toThrow("No se encuentra el número de pedido ingresado");
+        expect(
+            () => restaurante.facturarPedido(nroPedidoFactura, metodoPago)
+        ).toThrow("No se encuentra el número de pedido ingresado");
     });
 
     test("El pedido que se desea facturar no tiene sus items listos", () => {
@@ -93,8 +94,9 @@ describe("Test de la clase restaurante", () => {
 
         const metodoPago: Efectivo = new Efectivo();
         const nroPedidoFactura = pedidoCompletoMock.getNumeroPedido();
-        // eslint-disable-next-line @stylistic/max-len
-        expect(() => restaurante.facturarPedido(nroPedidoFactura, metodoPago)).toThrow("No se puede facturar el pedido, sus items no estan terminados");
+        expect(
+            () => restaurante.facturarPedido(nroPedidoFactura, metodoPago)
+        ).toThrow("No se puede facturar el pedido, sus items no estan terminados");
     });
 
 });

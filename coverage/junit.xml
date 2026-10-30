@@ -1,55 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="19" failures="0" errors="0" time="4.607">
-  <testsuite name="test para laclase combo" errors="0" failures="0" skipped="0" timestamp="2026-10-27T22:09:23" time="1.636" tests="1">
-    <testcase classname="test para laclase combo deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio" name="test para laclase combo deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio" time="0.004">
+<testsuites name="jest tests" tests="30" failures="0" errors="0" time="6.048">
+  <testsuite name="Test de la clase Pedido" errors="0" failures="0" skipped="0" timestamp="2026-10-30T15:48:14" time="3.263" tests="10">
+    <testcase classname="Test de la clase Pedido Verifico que sea instancia de Pedido Verifico que sea instancia de Pedido" name="Test de la clase Pedido Verifico que sea instancia de Pedido Verifico que sea instancia de Pedido" time="0.005">
+    </testcase>
+    <testcase classname="Test de la clase Pedido Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente" name="Test de la clase Pedido Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente" time="0.002">
+    </testcase>
+    <testcase classname="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden agregar más items El pedido se encuentra en construcción, por lo que no se pueden agregar más items" name="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden agregar más items El pedido se encuentra en construcción, por lo que no se pueden agregar más items" time="0.013">
+    </testcase>
+    <testcase classname="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de items Verifico que, al agregar un item, se guarde en la lista de items" name="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de items Verifico que, al agregar un item, se guarde en la lista de items" time="0">
+    </testcase>
+    <testcase classname="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de agregaciones por si se quiere deshacer Verifico que, al agregar un item, se guarde en la lista de agregaciones por si se quiere deshacer" name="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de agregaciones por si se quiere deshacer Verifico que, al agregar un item, se guarde en la lista de agregaciones por si se quiere deshacer" time="0">
+    </testcase>
+    <testcase classname="Test de la clase Pedido Verifico que, al agregar un item, se guarde la accion en el historial de acciones Verifico que, al agregar un item, se guarde la accion en el historial de acciones" name="Test de la clase Pedido Verifico que, al agregar un item, se guarde la accion en el historial de acciones Verifico que, al agregar un item, se guarde la accion en el historial de acciones" time="0">
+    </testcase>
+    <testcase classname="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden eliminar el item El pedido se encuentra en construcción, por lo que no se pueden eliminar el item" name="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden eliminar el item El pedido se encuentra en construcción, por lo que no se pueden eliminar el item" time="0">
+    </testcase>
+    <testcase classname="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de items Verifico que, al agregar un item, se guarde en la lista de items" name="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de items Verifico que, al agregar un item, se guarde en la lista de items" time="0">
+    </testcase>
+    <testcase classname="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de agregaciones por si se quiere deshacer Verifico que, al agregar un item, se guarde en la lista de agregaciones por si se quiere deshacer" name="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de agregaciones por si se quiere deshacer Verifico que, al agregar un item, se guarde en la lista de agregaciones por si se quiere deshacer" time="0">
+    </testcase>
+    <testcase classname="Test de la clase Pedido Verifico que, al agregar un item, se guarde la accion en el historial de acciones Verifico que, al agregar un item, se guarde la accion en el historial de acciones" name="Test de la clase Pedido Verifico que, al agregar un item, se guarde la accion en el historial de acciones Verifico que, al agregar un item, se guarde la accion en el historial de acciones" time="0">
     </testcase>
   </testsuite>
-  <testsuite name="test de la clase Menu" errors="0" failures="0" skipped="0" timestamp="2026-10-27T22:09:25" time="0.196" tests="4">
-    <testcase classname="test de la clase Menu crear un menu con categorias, combos y productos crear un menu con categorias, combos y productos" name="test de la clase Menu crear un menu con categorias, combos y productos crear un menu con categorias, combos y productos" time="0.001">
-    </testcase>
-    <testcase classname="test de la clase Menu agregar una categoria al menu agregar una categoria al menu" name="test de la clase Menu agregar una categoria al menu agregar una categoria al menu" time="0">
-    </testcase>
-    <testcase classname="test de la clase Menu agregar un combo al menu agregar un combo al menu" name="test de la clase Menu agregar un combo al menu agregar un combo al menu" time="0">
-    </testcase>
-    <testcase classname="test de la clase Menu agregar un producto al menu agregar un producto al menu" name="test de la clase Menu agregar un producto al menu agregar un producto al menu" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="Test de la clase restaurante" errors="0" failures="0" skipped="0" timestamp="2026-10-27T22:09:25" time="1.465" tests="6">
+  <testsuite name="Test de la clase restaurante" errors="0" failures="0" skipped="0" timestamp="2026-10-30T15:48:18" time="0.552" tests="7">
     <testcase classname="Test de la clase restaurante Verifico que sea instancia de Restaurante Verifico que sea instancia de Restaurante" name="Test de la clase restaurante Verifico que sea instancia de Restaurante Verifico que sea instancia de Restaurante" time="0.002">
     </testcase>
-    <testcase classname="Test de la clase restaurante Verifico que se haya creado el restaurante con su nombre, menú y estaciones Verifico que se haya creado el restaurante con su nombre, menú y estaciones" name="Test de la clase restaurante Verifico que se haya creado el restaurante con su nombre, menú y estaciones Verifico que se haya creado el restaurante con su nombre, menú y estaciones" time="0.001">
+    <testcase classname="Test de la clase restaurante Verifico que se haya creado el restaurante con su nombre, menú y estaciones Verifico que se haya creado el restaurante con su nombre, menú y estaciones" name="Test de la clase restaurante Verifico que se haya creado el restaurante con su nombre, menú y estaciones Verifico que se haya creado el restaurante con su nombre, menú y estaciones" time="0.002">
     </testcase>
     <testcase classname="Test de la clase restaurante Verifico que un pedido se haya agregado a la lista de pedidos activos Verifico que un pedido se haya agregado a la lista de pedidos activos" name="Test de la clase restaurante Verifico que un pedido se haya agregado a la lista de pedidos activos Verifico que un pedido se haya agregado a la lista de pedidos activos" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase restaurante No hay pedidos finalizados por lo que no se puede mostrar el historial No hay pedidos finalizados por lo que no se puede mostrar el historial" name="Test de la clase restaurante No hay pedidos finalizados por lo que no se puede mostrar el historial No hay pedidos finalizados por lo que no se puede mostrar el historial" time="0.007">
+    <testcase classname="Test de la clase restaurante No hay pedidos finalizados por lo que no se puede mostrar el historial No hay pedidos finalizados por lo que no se puede mostrar el historial" name="Test de la clase restaurante No hay pedidos finalizados por lo que no se puede mostrar el historial No hay pedidos finalizados por lo que no se puede mostrar el historial" time="0.009">
+    </testcase>
+    <testcase classname="Test de la clase restaurante Verifico que, al facturar un pedido, se guarde en el historial de pedidos Verifico que, al facturar un pedido, se guarde en el historial de pedidos" name="Test de la clase restaurante Verifico que, al facturar un pedido, se guarde en el historial de pedidos Verifico que, al facturar un pedido, se guarde en el historial de pedidos" time="0.004">
     </testcase>
     <testcase classname="Test de la clase restaurante El pedido que se desea facturar no existe El pedido que se desea facturar no existe" name="Test de la clase restaurante El pedido que se desea facturar no existe El pedido que se desea facturar no existe" time="0.001">
     </testcase>
     <testcase classname="Test de la clase restaurante El pedido que se desea facturar no tiene sus items listos El pedido que se desea facturar no tiene sus items listos" name="Test de la clase restaurante El pedido que se desea facturar no tiene sus items listos El pedido que se desea facturar no tiene sus items listos" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="Test de la clase Item" errors="0" failures="0" skipped="0" timestamp="2026-10-27T22:09:27" time="0.266" tests="2">
-    <testcase classname="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" name="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" time="0.001">
+  <testsuite name="test de la clase Producto" errors="0" failures="0" skipped="0" timestamp="2026-10-30T15:48:18" time="0.318" tests="2">
+    <testcase classname="test de la clase Producto crear un producto con nombre, precio y categoria crear un producto con nombre, precio y categoria" name="test de la clase Producto crear un producto con nombre, precio y categoria crear un producto con nombre, precio y categoria" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" name="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" time="0.005">
+    <testcase classname="test de la clase Producto obtener el precio, nombre y categoria de un producto obtener el precio, nombre y categoria de un producto" name="test de la clase Producto obtener el precio, nombre y categoria de un producto obtener el precio, nombre y categoria de un producto" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="test de la clase Estacion" errors="0" failures="0" skipped="0" timestamp="2026-10-27T22:09:27" time="0.278" tests="3">
-    <testcase classname="test de la clase Estacion crear una estacion con nombre y categorias crear una estacion con nombre y categorias" name="test de la clase Estacion crear una estacion con nombre y categorias crear una estacion con nombre y categorias" time="0.002">
+  <testsuite name="test de la clase Menu" errors="0" failures="0" skipped="0" timestamp="2026-10-30T15:48:19" time="0.328" tests="4">
+    <testcase classname="test de la clase Menu crear un menu con categorias, combos y productos crear un menu con categorias, combos y productos" name="test de la clase Menu crear un menu con categorias, combos y productos crear un menu con categorias, combos y productos" time="0.002">
+    </testcase>
+    <testcase classname="test de la clase Menu agregar una categoria al menu agregar una categoria al menu" name="test de la clase Menu agregar una categoria al menu agregar una categoria al menu" time="0">
+    </testcase>
+    <testcase classname="test de la clase Menu agregar un combo al menu agregar un combo al menu" name="test de la clase Menu agregar un combo al menu agregar un combo al menu" time="0">
+    </testcase>
+    <testcase classname="test de la clase Menu agregar un producto al menu agregar un producto al menu" name="test de la clase Menu agregar un producto al menu agregar un producto al menu" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test de la clase Item" errors="0" failures="0" skipped="0" timestamp="2026-10-30T15:48:19" time="0.341" tests="2">
+    <testcase classname="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" name="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" time="0.002">
+    </testcase>
+    <testcase classname="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" name="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="test de la clase Estacion" errors="0" failures="0" skipped="0" timestamp="2026-10-30T15:48:19" time="0.314" tests="3">
+    <testcase classname="test de la clase Estacion crear una estacion con nombre y categorias crear una estacion con nombre y categorias" name="test de la clase Estacion crear una estacion con nombre y categorias crear una estacion con nombre y categorias" time="0.001">
     </testcase>
     <testcase classname="test de la clase Estacion agregar un item a la estacion agregar un item a la estacion" name="test de la clase Estacion agregar un item a la estacion agregar un item a la estacion" time="0.001">
     </testcase>
     <testcase classname="test de la clase Estacion avanzar el estado de un item en la estacion avanzar el estado de un item en la estacion" name="test de la clase Estacion avanzar el estado de un item en la estacion avanzar el estado de un item en la estacion" time="0">
     </testcase>
   </testsuite>
-  <testsuite name="Prueba" errors="0" failures="0" skipped="0" timestamp="2026-10-27T22:09:27" time="0.253" tests="1">
-    <testcase classname="Prueba placeholder placeholder" name="Prueba placeholder placeholder" time="0.002">
+  <testsuite name="test para laclase combo" errors="0" failures="0" skipped="0" timestamp="2026-10-30T15:48:20" time="0.335" tests="1">
+    <testcase classname="test para laclase combo deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio" name="test para laclase combo deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="test de la clase Producto" errors="0" failures="0" skipped="0" timestamp="2026-10-27T22:09:28" time="0.27" tests="2">
-    <testcase classname="test de la clase Producto crear un producto con nombre, precio y categoria crear un producto con nombre, precio y categoria" name="test de la clase Producto crear un producto con nombre, precio y categoria crear un producto con nombre, precio y categoria" time="0.001">
-    </testcase>
-    <testcase classname="test de la clase Producto obtener el precio, nombre y categoria de un producto obtener el precio, nombre y categoria de un producto" name="test de la clase Producto obtener el precio, nombre y categoria de un producto obtener el precio, nombre y categoria de un producto" time="0.001">
+  <testsuite name="Prueba" errors="0" failures="0" skipped="0" timestamp="2026-10-30T15:48:20" time="0.341" tests="1">
+    <testcase classname="Prueba placeholder placeholder" name="Prueba placeholder placeholder" time="0.002">
     </testcase>
   </testsuite>
 </testsuites>

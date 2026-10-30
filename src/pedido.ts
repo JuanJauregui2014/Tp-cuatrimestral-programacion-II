@@ -1,6 +1,5 @@
 import { EstadoPedido } from "./estado_pedido";
 import Item from "./item";
-import ElementoMenu from "./elemento_menu";
 import MedioDePago from "./medio_de_pago";
 import { DiaSemana } from "./dia_semana";
 import EstadoItem from "./estado_item";
@@ -11,68 +10,71 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
     private numeroPedido: number;
     private nombreCliente: string;
+    private costoEnvio: number;
     private fecha: Date;
     private estado: EstadoPedido; // Estado actual del pedido
     private items: Item[]; // Lista de productos y combos agregados
     private historialAgregaciones: Item[]; // Funciona como pila para deshacer cambios
     private historialEliminaciones: Item[];
-    private historialAcciones: boolean[];
+    private posicionesDeEliminaciones: number[]
     private totalBruto: number;
     private descuento: number;
     private totalCobrado: number;
 
 
-    public constructor(numeroPedido: number, nombreCliente: string) {
+    public constructor(numeroPedido: number, nombreCliente: string, costoEnvio: number) {
         this.numeroPedido = numeroPedido;
         this.nombreCliente = nombreCliente;
+        this.costoEnvio = costoEnvio;
         this.fecha = new Date(); // Guarda fecha y hora actual
         this.estado = EstadoPedido.EN_CONSTRUCCION; // Todo pedido comenzaria así, para consultar en quitar item
         this.items = []; // Inicializa colección vacía
         this.historialAgregaciones = []; // Inicializa historial vacío
-        this.historialEliminaciones = [];
+        this.historialEliminaciones = []; // Inicializa historial vacío
+        this.posicionesDeEliminaciones = []; // Inicializa vacío
         this.totalBruto = CERO;
         this.descuento = CERO;
         this.totalCobrado = CERO;
-        this.historialAcciones = [];
     }
 
-    public agregarItem(elemento: ElementoMenu, cantidad: number): void {
+    public agregarItem(item: Item): void {
 
         if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
-            throw new Error("Pedido no se encuentra en construcción. No se puede agregar item");
+            throw new Error("Pedido no se encuentra en construcción. No se puede agregar el item");
         }
-
-        const item = new Item(cantidad, elemento);
 
         this.items.push(item); // Agrega el item al pedido
 
         this.historialAgregaciones.push(item); // Guarda el cambio para poder deshacerlo
 
-        this.historialAcciones.push(false);
     }
 
     public quitarItem(item: Item): void {
 
-        if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
-            throw new Error(
-                "Pedido no se encuentra en construcción. No se puede agregar item"
-            ); // Solo se puede modificar o quitar un item antes de confirmar el pedido
-        }
-
         if (item.getEstado() !== EstadoItem.PENDIENTE) {
             throw new Error(
-                "Item ya no está pendiente. No se puede modificar"
+                "Item ya pasó a preparación. No se puede modificar"
             ); // Solo se puede modificar o quitar un item antes de que esté en preparación
         }
 
+        if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
+            throw new Error(
+                "Pedido no se encuentra en construcción. No se puede eliminar el item"
+            ); // Solo se puede modificar o quitar un item antes de confirmar el pedido
+        }
+
+        this.historialEliminaciones.push(item); // Lo agrega al historia lde eliminaciones
+
+        this.posicionesDeEliminaciones.push(this.historialAgregaciones.findIndex(actual => actual === item));
+        // Guarda la posicion en la que estaba el item por si se deshace la eliminación
+
         this.items = this.items.filter(actual => actual !== item); // Elimina el item recibido
 
-        this.historialEliminaciones.push(item);
-
-        this.historialAcciones.push(true);
+        this.historialAgregaciones = this.historialAgregaciones.filter(actual => actual !== item);
+        // Elimina el item del historial de agregaciones
     }
 
-    public deshacerUltimaModificacion(): void {
+    public deshacerEliminacion(): void {
 
         if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
             throw new Error(
@@ -80,36 +82,36 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
             ); // Solo se puede deshacer una modificacion antes de confirmar el pedido
         }
 
-        const esEliminacion = this.historialAcciones.pop();
+        const ultimaEliminacion = this.historialEliminaciones.pop(); 
+        // Obtengo la última eliminación realizada
+        const posicionDeUltimaEliminacion = this.posicionesDeEliminaciones.pop();
+        // Obtengo la posicion de la última eliminación realizada
 
-        if (esEliminacion === undefined) {
-            throw new Error("No hay ninguna acción que deshacer");
-        }
+        const parametroParaInsertar = 0; //Este parámetro "0" le indica al método splice que solo debe insertar el dato
 
-        if (esEliminacion) {
-            this.deshacerEliminacion();
-        } else {
-            this.deshacerAgregacion();
-        }
-
-    }
-
-    private deshacerEliminacion(): void {
-
-        const ultimaEliminacion = this.historialAgregaciones.pop(); // Obtiene la última agregación realizada
-
-        if (ultimaEliminacion) {
-            this.items = this.items.filter(actual => actual !== ultimaEliminacion); // Elimina ese último item agregado
+        if (ultimaEliminacion && posicionDeUltimaEliminacion) {
+            this.items.splice(posicionDeUltimaEliminacion, parametroParaInsertar, ultimaEliminacion);
+            // Agrega nuevamente ese último item eliminado en la posición exacta en la que estaba
+            this.historialAgregaciones.splice(posicionDeUltimaEliminacion, parametroParaInsertar, ultimaEliminacion);
+            // Se agrega al historial de agregaciones, porque se entiende que se volvió a agregar el item, en la 
+            // posicion exacta en la que estaba
         }
 
     }
 
-    private deshacerAgregacion(): void {
+    public deshacerAgregacion(): void {
+
+        if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
+            throw new Error(
+                "Pedido no se encuentra en construcción. No se puede deshacer las modificaciones"
+            ); // Solo se puede deshacer una modificacion antes de confirmar el pedido
+        }
 
         const ultimaAgregacion = this.historialAgregaciones.pop(); // Obtiene la última agregación realizada
 
         if (ultimaAgregacion) {
-            this.items = this.items.filter(actual => actual !== ultimaAgregacion); // Elimina ese último item agregado
+            this.items = this.items.filter(actual => actual !== ultimaAgregacion);
+            // Elimina ese último item agregado
         }
 
     }
@@ -127,16 +129,15 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     public calcularTotalBruto(): void {
 
         this.totalBruto = this.items.reduce(
-            (total, item) => total + (item.getElemento().getPrecio() * item.getCantidad()), CERO);
-
-        /* const costoEnvioPorPedido = 5000;
-
-        if (this.doGetTipoDePedido() === "Pedido con envio") {
-            this.totalBruto += 
-        } */
-
+            (total, item) => total + (item.getElemento().getPrecio() * item.getCantidad()), CERO
+        );
         // Suma el subtotal de todos los items con sus respectivas cantidades
         // Ejemplo: (hamburguesa * cantHamburguesas) + (bebida * cantBebida) + etc...
+
+        this.totalBruto += this.costoEnvio;
+        //Sumo al subtotal el costo de envío.
+        //Dependiendo el tipo de pedido, se sumará el envío cargado o quedará igual.
+
     }
 
     public aplicarDescuento(medioPago: MedioDePago): void {
@@ -162,12 +163,17 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         this.totalCobrado = this.totalBruto - this.descuento;
     }
 
+    // Getters
     public getNumeroPedido(): number {
         return this.numeroPedido;
     }
 
     public getNombreCliente(): string {
         return this.nombreCliente;
+    }
+
+    public getCostoEnvio(): number {
+        return this.costoEnvio;
     }
 
     public getFecha(): Date {
@@ -182,6 +188,18 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         return this.items;
     }
 
+    public getHistorialAgregaciones(): Item[] {
+        return this.historialAgregaciones;
+    }
+
+    public getHistorialEliminaciones(): Item[] {
+        return this.historialEliminaciones;
+    }
+
+    public getPosicionesDeEliminaciones(): number[] {
+        return this.posicionesDeEliminaciones;
+    }
+
     public getTotalBruto(): number {
         return this.totalBruto;
     }
@@ -192,6 +210,27 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
     public getTotalCobrado(): number {
         return this.totalCobrado;
+    }
+
+    // Setters
+    public setNumeroPedido(numeroPedido: number): void {
+        this.numeroPedido = numeroPedido;
+    }
+
+    public setNombreCliente(nombreCliente: string): void {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public setCostoEnvio(costoEnvio: number): void {
+        this.costoEnvio = costoEnvio;
+    }
+
+    public setFecha(fecha: Date): void {
+        this.fecha = fecha;
+    }
+
+    public setEstado(estado: EstadoPedido): void {
+        this.estado = estado;
     }
 
 }

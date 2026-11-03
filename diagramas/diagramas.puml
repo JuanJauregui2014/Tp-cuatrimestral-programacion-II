@@ -8,6 +8,7 @@ class Restaurante {
     -estaciones: List<Estacion>
     -pedidosActivos: List<Pedido>
     -pedidosFinalizados: List<Pedido>
+    -descuentos: List<Descuento>
 __ Getters y Setters __
     +agregarPedido(pedido: Pedido)
     +consultarHistorial(): List<Pedido>
@@ -149,24 +150,25 @@ class BilleteraVirtual {
 __ Getters y Setters __
 }
 
-abstract class Descuento {
-     +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
-     +calcularMontoDescuento(pedido: Pedido): number
+interface Descuento {
+     +aplicable(pedido: Pedido, medioPago: MedioDePago): boolean
+     +calcularMontoDescuento(pedido: Pedido, medioPago: MedioDePago): number
 }
 
-class DescuentoEfectivo extends Descuento {
-    -porcentaje: number
+class DescuentoEfectivo implements Descuento {
+     -efectivo: string
+     -porcentajeDescuento: number
 __ Getters y Setters __
-    +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
-    +calcularMontoDescuento(pedido: Pedido): number
+     +aplicable(pedido: Pedido, medioPago: MedioDePago): boolean
+     +calcularMontoDescuento(pedido: Pedido, medioPago: MedioDePago): number
 }
 
-class DescuentoDiaEspecial extends Descuento {
-    -diaObjetivo: DiaSemana
-    -porcentaje: number
+class DescuentoDiaEspecial implements Descuento {
+     -diaDescuento: DiaSemana
+     -porcentajeDescuento: number
 __ Getters y Setters __
-    +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
-    +calcularMontoDescuento(pedido: Pedido): number
+     +aplicable(pedido: Pedido, medioPago: MedioDePago): boolean
+     +calcularMontoDescuento(pedido: Pedido, medioPago: MedioDePago): number
 }
 
 enum EstadoPedido {

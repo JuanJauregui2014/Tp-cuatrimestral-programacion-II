@@ -83,7 +83,7 @@ export default class Restaurante {
         }
         
         pedido.calcularTotalBruto();
-        pedido.aplicarDescuento(medioPago);
+        pedido.aplicarDescuento(medioPago, this.descuentos);
         pedido.calcularTotalFinal();
 
         medioPago.procesarPago(pedido.getTotalCobrado()); // Procesa el pago seleccionado

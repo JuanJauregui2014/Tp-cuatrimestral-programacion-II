@@ -139,23 +139,14 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         // Ejemplo: (hamburguesa * cantHamburguesas) + (bebida * cantBebida) + etc...
     }
 
-    public aplicarDescuento(medioPago: MedioDePago): void {
-        const descuentoEfectivo = 0.1;
-        const descuentoDiaDeSemana = 0.2;
+    public aplicarDescuento(medioPago: MedioDePago, descuentos: Descuento[]): void {
         let mejorDescuento = CERO;
-
-        if (medioPago.getTipoDePago() === "Efectivo") {
-            mejorDescuento = this.totalBruto * descuentoEfectivo;
+        for (const descuento of descuentos) {
+            if (descuento.aplicable(this, medioPago) && descuento.aplicarDescuento(this, medioPago) > mejorDescuento) {
+                mejorDescuento = descuento.aplicarDescuento(this, medioPago);
+            }
         }
-
-        if (this.fecha.getDay() === DiaSemana.MIERCOLES) {
-            mejorDescuento = this.totalBruto * descuentoDiaDeSemana;
-        }
-
         this.descuento = mejorDescuento;
-
-        // Se implementará más adelante cuando desarrollemos
-        // DescuentoEfectivo y DescuentoDiaEspecial
     }
 
     public calcularTotalFinal(): void {

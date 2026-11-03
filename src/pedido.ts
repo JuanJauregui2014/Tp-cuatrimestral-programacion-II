@@ -4,6 +4,7 @@ import ElementoMenu from "./elemento_menu";
 import MedioDePago from "./medio_de_pago";
 import { DiaSemana } from "./dia_semana";
 import EstadoItem from "./estado_item";
+import Descuento from "./descuento";
 
 const CERO = 0;
 

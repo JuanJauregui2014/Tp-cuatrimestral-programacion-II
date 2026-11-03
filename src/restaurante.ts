@@ -2,6 +2,7 @@ import Menu from "./menu";
 import Estacion from "./estacion";
 import Pedido from "./pedido";
 import MedioDePago from "./medio_de_pago";
+import Descuento from "./descuento";
 
 const VACIO = 0;
 

@@ -3,5 +3,5 @@ import Pedido from "./pedido";
 
 export default interface Descuento {
     aplicable(pedido: Pedido, medioPago: MedioDePago): boolean;
-    aplicarDescuento(pedido: Pedido, medioPago: MedioDePago): number;
+    calcularMontoDescuento(pedido: Pedido, medioPago: MedioDePago): number;
 }

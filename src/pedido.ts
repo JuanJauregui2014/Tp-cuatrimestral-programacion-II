@@ -142,8 +142,8 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     public aplicarDescuento(medioPago: MedioDePago, descuentos: Descuento[]): void {
         let mejorDescuento = CERO;
         for (const descuento of descuentos) {
-            if (descuento.aplicable(this, medioPago) && descuento.aplicarDescuento(this, medioPago) > mejorDescuento) {
-                mejorDescuento = descuento.aplicarDescuento(this, medioPago);
+            if (descuento.aplicable(this, medioPago) && descuento.calcularMontoDescuento(this, medioPago) > mejorDescuento) {
+                mejorDescuento = descuento.calcularMontoDescuento(this, medioPago);
             }
         }
         this.descuento = mejorDescuento;

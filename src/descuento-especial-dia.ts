@@ -15,7 +15,7 @@ export default class DescuentoEspecialDia implements Descuento {
     public aplicable(pedido: Pedido, medioPago: MedioDePago): boolean {
         return pedido.getFecha().getDay() === this.diaDescuento;
     }
-    public aplicarDescuento(pedido: Pedido, medioPago: MedioDePago): number {
+    public calcularMontoDescuento(pedido: Pedido, medioPago: MedioDePago): number {
         return pedido.getTotalBruto() * this.porcentajeDescuento;
     }
 }

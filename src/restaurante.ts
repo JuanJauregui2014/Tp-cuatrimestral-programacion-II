@@ -11,13 +11,15 @@ export default class Restaurante {
     private estaciones: Estacion[];
     private pedidosActivos: Map<number, Pedido>;
     private pedidosFinalizados: Map<number, Pedido>;
+    private descuentos: Descuento[];
 
-    public constructor(nombre: string, menu: Menu, estaciones: Estacion[]) {
+    public constructor(nombre: string, menu: Menu, estaciones: Estacion[], descuentos: Descuento[]) {
         this.nombre = nombre;
         this.menu = menu;
         this.estaciones = estaciones;
         this.pedidosActivos = new Map();
         this.pedidosFinalizados = new Map();
+        this.descuentos = descuentos;
     }
 
     public getNombre(): string {

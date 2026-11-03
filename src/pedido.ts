@@ -2,7 +2,6 @@ import { EstadoPedido } from "./estado_pedido";
 import Item from "./item";
 import ElementoMenu from "./elemento_menu";
 import MedioDePago from "./medio_de_pago";
-import { DiaSemana } from "./dia_semana";
 import EstadoItem from "./estado_item";
 import Descuento from "./descuento";
 

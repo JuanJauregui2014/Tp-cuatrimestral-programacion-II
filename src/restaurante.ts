@@ -83,6 +83,7 @@ export default class Restaurante {
         }
         
         pedido.calcularTotalBruto();
+        pedido.setMedioDePago(medioPago);
         pedido.aplicarDescuento(medioPago, this.descuentos);
         pedido.calcularTotalFinal();
 

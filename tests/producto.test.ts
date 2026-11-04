@@ -1,6 +1,6 @@
 import { describe, expect, test } from "@jest/globals";
-import Categoria from "../src/categoria";
-import Producto from "../src/producto";
+import Categoria from "../src/componentes_del_menu/categoria";
+import Producto from "../src/componentes_del_menu/producto";
 
 describe("test de la clase Producto", () => {
     test("crear un producto con nombre, precio y categoria", () => {

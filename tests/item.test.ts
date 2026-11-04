@@ -1,6 +1,6 @@
-import Item from "../src/item";
-import EstadoItem from "../src/estado_item";
-import ElementoMenu from "../src/elemento_menu";
+import Item from "../src/items/item";
+import EstadoItem from "../src/items/estado_item";
+import ElementoMenu from "../src/componentes_del_menu/elemento_menu";
 
 describe("Test de la clase Item", () => {
     

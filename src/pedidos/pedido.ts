@@ -1,8 +1,9 @@
-import { EstadoPedido } from "./estado_pedido";
-import Item from "./item";
-import MedioDePago from "./medio_de_pago";
-import { DiaSemana } from "./dia_semana";
-import EstadoItem from "./estado_item";
+import EstadoPedido from "./estado_pedido";
+import Item from "../items/item";
+import MedioDePago from "../medios_de_pago/medio_de_pago";
+import EstadoItem from "../items/estado_item";
+import Descuento from "../descuentos/descuento";
+import Efectivo from "../medios_de_pago/efectivo";
 
 const CERO = 0;
 
@@ -20,6 +21,7 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     private totalBruto: number;
     private descuento: number;
     private totalCobrado: number;
+    private medioPagoElegido: MedioDePago;
 
 
     public constructor(numeroPedido: number, nombreCliente: string, costoEnvio: number) {
@@ -35,6 +37,7 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         this.totalBruto = CERO;
         this.descuento = CERO;
         this.totalCobrado = CERO;
+        this.medioPagoElegido = new Efectivo(); //Al crear un pedido nuevo, el medio de pago predeterminado es efectivo
     }
 
     public agregarItem(item: Item): void {
@@ -145,23 +148,15 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
     }
 
-    public aplicarDescuento(medioPago: MedioDePago): void {
-        const descuentoEfectivo = 0.1;
-        const descuentoDiaDeSemana = 0.2;
+    public aplicarDescuento(descuentos: Descuento[]): void {
         let mejorDescuento = CERO;
-
-        if (medioPago.getTipoDePago() === "Efectivo") {
-            mejorDescuento = this.totalBruto * descuentoEfectivo;
+        for (const descuento of descuentos) {
+            if (descuento.aplicable(this) && 
+                descuento.calcularMontoDescuento(this) > mejorDescuento) {
+                mejorDescuento = descuento.calcularMontoDescuento(this);
+            }
         }
-
-        if (this.fecha.getDay() === DiaSemana.MIERCOLES) {
-            mejorDescuento = this.totalBruto * descuentoDiaDeSemana;
-        }
-
         this.descuento = mejorDescuento;
-
-        // Se implementará más adelante cuando desarrollemos
-        // DescuentoEfectivo y DescuentoDiaEspecial
     }
 
     public calcularTotalFinal(): void {
@@ -217,6 +212,10 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         return this.totalCobrado;
     }
 
+    public getMedioDePago(): MedioDePago {
+        return this.medioPagoElegido;
+    }
+
     // Setters
     public setNumeroPedido(numeroPedido: number): void {
         this.numeroPedido = numeroPedido;
@@ -236,6 +235,10 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
     public setEstado(estado: EstadoPedido): void {
         this.estado = estado;
+    }
+
+    public setMedioDePago(medioPago: MedioDePago): void {
+        this.medioPagoElegido = medioPago;
     }
 
 }

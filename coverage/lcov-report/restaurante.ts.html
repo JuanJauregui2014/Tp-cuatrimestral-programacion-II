@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.47% </span>
+                <span class="strong">94% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>86/92</span>
+                <span class='fraction'>94/100</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">76.92% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>10/13</span>
+                <span class='fraction'>11/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.47% </span>
+                <span class="strong">94% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>86/92</span>
+                <span class='fraction'>94/100</span>
             </div>
         
             
@@ -154,7 +154,16 @@
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -166,9 +175,11 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
@@ -195,6 +206,10 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -232,6 +247,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -249,6 +265,7 @@
 import Estacion from "./estacion";
 import Pedido from "./pedido";
 import MedioDePago from "./medio_de_pago";
+import Descuento from "./descuento";
 &nbsp;
 const VACIO = 0;
 &nbsp;
@@ -258,13 +275,15 @@ export default class Restaurante {
     private estaciones: Estacion[];
     private pedidosActivos: Map&lt;number, Pedido&gt;;
     private pedidosFinalizados: Map&lt;number, Pedido&gt;;
+    private descuentos: Descuento[];
 &nbsp;
-    public constructor(nombre: string, menu: Menu, estaciones: Estacion[]) {
+    public constructor(nombre: string, menu: Menu, estaciones: Estacion[], descuentos: Descuento[]) {
         this.nombre = nombre;
         this.menu = menu;
         this.estaciones = estaciones;
         this.pedidosActivos = new Map();
         this.pedidosFinalizados = new Map();
+        this.descuentos = descuentos;
     }
 &nbsp;
     public getNombre(): string {
@@ -285,6 +304,10 @@ export default class Restaurante {
 &nbsp;
     public getPedidosFinalizados(): Map&lt;number, Pedido&gt; {
         return this.pedidosFinalizados;
+    }
+&nbsp;
+    public getDescuentos(): Descuento[] {
+        return this.descuentos;
     }
 &nbsp;
     public <span class="fstat-no" title="function not covered" >setNombre(nombre: string): void {</span>
@@ -327,7 +350,8 @@ export default class Restaurante {
         }
         
         pedido.calcularTotalBruto();
-        pedido.aplicarDescuento(medioPago);
+        pedido.setMedioDePago(medioPago);
+        pedido.aplicarDescuento(this.descuentos);
         pedido.calcularTotalFinal();
 &nbsp;
         medioPago.procesarPago(pedido.getTotalCobrado()); // Procesa el pago seleccionado
@@ -343,7 +367,7 @@ export default class Restaurante {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-11-03T23:50:31.526Z
+                at 2026-11-04T02:13:58.379Z
             </div>
         <script src="prettify.js"></script>
         <script>

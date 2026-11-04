@@ -1,8 +1,7 @@
-
 import { describe, expect, jest, test } from "@jest/globals";
-import Combo from "../src/combo";
-import Producto from "../src/producto";
-import ComboBeneficio from "../src/combo_beneficio";
+import Combo from "../src/componentes_del_menu/combos/combo";
+import Producto from "../src/componentes_del_menu/producto";
+import ComboBeneficio from "../src/componentes_del_menu/combos/combo_beneficio";
 
 describe("Test para la clase combo",() =>{
     test("deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio",() =>{

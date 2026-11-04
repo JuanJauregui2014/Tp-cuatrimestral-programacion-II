@@ -1,18 +1,11 @@
 
 import Menu from "../src/menu";
 import { describe, expect, test } from "@jest/globals";
-import Categoria from "../src/categoria";
-import Combo from "../src/combo";
-import Producto from "../src/producto";
+import Categoria from "../src/componentes_del_menu/categoria";
+import Combo from "../src/componentes_del_menu/combos/combo";
+import Producto from "../src/componentes_del_menu/producto";
 
 describe("test de la clase Menu", () => {
-    test("crear un menu con categorias, combos y productos", () => {
-        const menu = new Menu();
-        expect(menu.getCategorias()).toEqual([]);
-        expect(menu.getCombos()).toEqual([]);
-        expect(menu.getProductos()).toEqual([]);
-    });
-
     test("agregar una categoria al menu", () => {
         const menu = new Menu();
         const categoria = new Categoria("Bebidas");

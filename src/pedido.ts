@@ -20,6 +20,7 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     private totalBruto: number;
     private descuento: number;
     private totalCobrado: number;
+    private medioDePago: MedioDePago | undefined;
 
 
     public constructor(numeroPedido: number, nombreCliente: string) {
@@ -34,6 +35,7 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         this.descuento = CERO;
         this.totalCobrado = CERO;
         this.historialAcciones = [];
+        this.medioDePago = undefined;
     }
 
     public agregarItem(elemento: ElementoMenu, cantidad: number): void {
@@ -139,6 +141,10 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         // Ejemplo: (hamburguesa * cantHamburguesas) + (bebida * cantBebida) + etc...
     }
 
+    public setMedioDePago(medioPago: MedioDePago): void {
+        this.medioDePago = medioPago;
+    }
+
     public aplicarDescuento(medioPago: MedioDePago, descuentos: Descuento[]): void {
         let mejorDescuento = CERO;
         for (const descuento of descuentos) {
@@ -175,6 +181,10 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
     public getTotalBruto(): number {
         return this.totalBruto;
+    }
+
+    public getMedioDePago(): MedioDePago | undefined {
+        return this.medioDePago;
     }
 
     public getDescuento(): number {

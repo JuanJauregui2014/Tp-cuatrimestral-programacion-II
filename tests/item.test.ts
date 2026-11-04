@@ -1,4 +1,3 @@
-/// <reference types="jest" />
 import Item from "../src/item";
 import EstadoItem from "../src/estado_item";
 import ElementoMenu from "../src/elemento_menu";
@@ -10,7 +9,8 @@ describe("Test de la clase Item", () => {
             getPrecio: jest.fn(),
             getNombre: jest.fn(),
         };
-        const item = new Item(2, elementoMock);
+        const cantidadItems = 5;
+        const item = new Item(cantidadItems, elementoMock);
         expect(item.getEstado()).toBe(EstadoItem.PENDIENTE);
     });
 
@@ -19,11 +19,13 @@ describe("Test de la clase Item", () => {
             getPrecio: jest.fn(),
             getNombre: jest.fn(),
         };
-        const item = new Item(2, elementoMock);
+        const cantidadItems = 5;
+        const item = new Item(cantidadItems, elementoMock);
         
         item.avanzarEstado(); // Cambia el estado a EN_PREPARACION
-        
-        expect(() => item.setCantidad(3)).toThrow("No se puede modificar la cantidad de un item que no está pendiente.");
+        const cantidadModificada = 3;
+        expect(() => item.setCantidad(cantidadModificada))
+        .toThrow("No se puede modificar la cantidad de un item que no está pendiente.");
     });
 
 });

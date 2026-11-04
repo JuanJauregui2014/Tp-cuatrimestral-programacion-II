@@ -1,10 +1,11 @@
-import PedidoSalon from "../src/#pedido_salon";
+import PedidoSalon from "../src/pedido_salon";
+import Pedido from "../src/pedido";
 import Categoria from "../src/categoria";
 import Efectivo from "../src/efectivo";
 import Estacion from "../src/estacion";
 import Menu from "../src/menu";
 import Restaurante from "../src/restaurante";
-import { pedidoCompletoMock } from "./mocks";
+import { MockProxy, mock} from "jest-mock-extended";
 
 // eslint-disable-next-line max-lines-per-function
 describe("Test de la clase restaurante", () => {
@@ -16,9 +17,11 @@ describe("Test de la clase restaurante", () => {
     const estacionCocina = new Estacion("Cocina", categoriasParaCocinar);
     const estaciones = [estacionCocina];
     let restaurante: Restaurante;
+    let pedidoCompletoMock: MockProxy<Pedido>;
 
     beforeEach(() => {
-        restaurante = new Restaurante("Parrilla lo de Pepe", menu, estaciones);
+        restaurante = new Restaurante("Fogón del barrio", menu, estaciones);
+        pedidoCompletoMock = mock<Pedido>();
     });
 
     test("Verifico que sea instancia de Restaurante", () => {
@@ -26,7 +29,7 @@ describe("Test de la clase restaurante", () => {
     });
 
     test("Verifico que se haya creado el restaurante con su nombre, menú y estaciones", () => {
-        expect(restaurante.getNombre()).toEqual("Parrilla lo de Pepe");
+        expect(restaurante.getNombre()).toEqual("Fogón del barrio");
         expect(restaurante.getMenu()).toEqual(menu);
         expect(restaurante.getEstaciones()).toEqual(estaciones);
     });
@@ -49,6 +52,24 @@ describe("Test de la clase restaurante", () => {
     test("No hay pedidos finalizados por lo que no se puede mostrar el historial", () => {
         //Si no hay ningún pedido facturado y cargado en la lista de finalizados, debería lanzar un mensaje de error
         expect(() => restaurante.consultarHistorial()).toThrow("No hay pedidos finalizados. No hay nada para mostrar");
+    });
+
+    test("Verificamos que, al facturar un pedido, se guarde en el historial de pedidos", () => {
+        restaurante.agregarPedido(pedidoCompletoMock);
+
+        const metodoPago: Efectivo = new Efectivo();
+        const nroPedido = pedidoCompletoMock.getNumeroPedido();
+        pedidoCompletoMock.puedeFacturarse.mockReturnValue(true);
+        
+        restaurante.facturarPedido(nroPedido, metodoPago);
+
+        const listaVacia = 0;
+        //Primero que no esté vacío el map
+        expect(restaurante.getPedidosFinalizados().size).toBeGreaterThan(listaVacia);
+
+        //Segundo verificamos que se haya guardado el pedido en el historial
+        expect(restaurante.consultarHistorial().get(nroPedido)).toEqual(pedidoCompletoMock);
+        
     });
 
     test("El pedido que se desea facturar no existe", () => {

@@ -4,7 +4,7 @@ import Combo from "../src/combo";
 import Producto from "../src/producto";
 import ComboBeneficio from "../src/combo_beneficio";
 
-describe("test para laclase combo",() =>{
+describe("Test para la clase combo",() =>{
     test("deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio",() =>{
         const precioProducto1 = 100;
         const precioProducto2 = 200;
@@ -24,4 +24,4 @@ describe("test para laclase combo",() =>{
         const sumaDePreciosDeProductos = 300;
         expect(beneficioMock.aplicarBeneficio).toHaveBeenCalledWith(sumaDePreciosDeProductos); // (100 + 200) = 300
     });
-})
+});

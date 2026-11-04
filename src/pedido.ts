@@ -65,7 +65,7 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
         this.historialEliminaciones.push(item); // Lo agrega al historia lde eliminaciones
 
-        this.posicionesDeEliminaciones.push(this.historialAgregaciones.findIndex(actual => actual === item));
+        this.posicionesDeEliminaciones.push(this.items.findIndex(actual => actual === item));
         // Guarda la posicion en la que estaba el item por si se deshace la eliminación
 
         this.items = this.items.filter(actual => actual !== item); // Elimina el item recibido
@@ -82,20 +82,23 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
             ); // Solo se puede deshacer una modificacion antes de confirmar el pedido
         }
 
-        const ultimaEliminacion = this.historialEliminaciones.pop(); 
+        const listaVacia = 0;
+        if (this.historialEliminaciones.length === listaVacia || this.posicionesDeEliminaciones.length === listaVacia) {
+            throw new Error("No se realizo ninguna modificación para deshacer");
+        }
+
+        const ultimaEliminacion = this.historialEliminaciones.pop()!;
         // Obtengo la última eliminación realizada
-        const posicionDeUltimaEliminacion = this.posicionesDeEliminaciones.pop();
+        const posicionUltimaEliminacion = this.posicionesDeEliminaciones.pop()!;
         // Obtengo la posicion de la última eliminación realizada
 
         const parametroParaInsertar = 0; //Este parámetro "0" le indica al método splice que solo debe insertar el dato
 
-        if (ultimaEliminacion && posicionDeUltimaEliminacion) {
-            this.items.splice(posicionDeUltimaEliminacion, parametroParaInsertar, ultimaEliminacion);
-            // Agrega nuevamente ese último item eliminado en la posición exacta en la que estaba
-            this.historialAgregaciones.splice(posicionDeUltimaEliminacion, parametroParaInsertar, ultimaEliminacion);
-            // Se agrega al historial de agregaciones, porque se entiende que se volvió a agregar el item, en la 
-            // posicion exacta en la que estaba
-        }
+        this.items.splice(posicionUltimaEliminacion, parametroParaInsertar, ultimaEliminacion);
+        // Agrega nuevamente ese último item eliminado en la posición exacta en la que estaba
+        this.historialAgregaciones.splice(posicionUltimaEliminacion, parametroParaInsertar, ultimaEliminacion);
+        // Se agrega al historial de agregaciones, porque se entiende que se volvió a agregar el item, en la 
+        // posicion exacta en la que estaba
 
     }
 
@@ -107,13 +110,15 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
             ); // Solo se puede deshacer una modificacion antes de confirmar el pedido
         }
 
-        const ultimaAgregacion = this.historialAgregaciones.pop(); // Obtiene la última agregación realizada
-
-        if (ultimaAgregacion) {
-            this.items = this.items.filter(actual => actual !== ultimaAgregacion);
-            // Elimina ese último item agregado
+        const listaVacia = 0;
+        if (this.historialAgregaciones.length === listaVacia) {
+            throw new Error("No se realizo ninguna modificación para deshacer");
         }
 
+        const ultimaAgregacion = this.historialAgregaciones.pop(); // Obtiene la última agregación realizada
+
+        this.items = this.items.filter(actual => actual !== ultimaAgregacion);
+        // Elimina ese último item agregado
     }
 
     public confirmarPedido(): void {

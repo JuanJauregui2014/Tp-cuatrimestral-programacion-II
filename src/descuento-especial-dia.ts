@@ -1,5 +1,6 @@
 import Descuento from "./descuento";
 import { DiaSemana } from "./dia_semana";
+import MedioDePago from "./medio_de_pago";
 import Pedido from "./pedido";
 
 export default class DescuentoEspecialDia implements Descuento {
@@ -11,10 +12,10 @@ export default class DescuentoEspecialDia implements Descuento {
         this.porcentajeDescuento = 0.2;
     }
 
-    public aplicable(pedido: Pedido): boolean {
+    public aplicable(pedido: Pedido, medioPago: MedioDePago): boolean {
         return pedido.getFecha().getDay() === this.diaDescuento;
     }
-    public calcularMontoDescuento(pedido: Pedido): number {
+    public calcularMontoDescuento(pedido: Pedido, medioPago: MedioDePago): number {
         return pedido.getTotalBruto() * this.porcentajeDescuento;
     }
 }

@@ -5,9 +5,6 @@ import Efectivo from "../src/efectivo";
 import Estacion from "../src/estacion";
 import Menu from "../src/menu";
 import Restaurante from "../src/restaurante";
-import Descuento from "../src/descuento";
-import DescuentoEfectivo from "../src/descuento-efectivo.ts"
-import DescuentoEspecialDia from "../src/descuento-especial-dia.ts"
 import { MockProxy, mock} from "jest-mock-extended";
 
 // eslint-disable-next-line max-lines-per-function
@@ -21,10 +18,9 @@ describe("Test de la clase restaurante", () => {
     const estaciones = [estacionCocina];
     let restaurante: Restaurante;
     let pedidoCompletoMock: MockProxy<Pedido>;
-    const descuentos: Descuento[] = [new DescuentoEfectivo(), new DescuentoEspecialDia()]
 
     beforeEach(() => {
-        restaurante = new Restaurante("Fogón del barrio", menu, estaciones, descuentos);
+        restaurante = new Restaurante("Fogón del barrio", menu, estaciones);
         pedidoCompletoMock = mock<Pedido>();
     });
 

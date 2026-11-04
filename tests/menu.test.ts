@@ -1,3 +1,5 @@
+/* eslint-disable */
+/* eslint-env jest */
 
 import Menu from "../src/menu";
 import { describe, expect, test } from "@jest/globals";
@@ -22,21 +24,16 @@ describe("test de la clase Menu", () => {
 
     test("agregar un combo al menu", () => {
         const menu = new Menu();
-        const porcentajeDesc = 0.9;
-        const beneficio = {aplicarBeneficio: jest.fn((precio: number) => precio * porcentajeDesc) // 10% de descuento
+        const beneficio = { aplicarBeneficio: (precio: number) => precio * 0.9, // 10% de descuento
         };
-        const precioProducto = 100;
-        const combo = new Combo(
-            "Combo 1", [new Producto("Hamburguesa", precioProducto, new Categoria("Comidas"))], beneficio
-        );
+        const combo = new Combo("Combo 1", [new Producto("Hamburguesa", 5, new Categoria("Comidas"))], beneficio);
         menu.agregarCombo(combo);
         expect(menu.getCombos()).toEqual([combo]);
     });
 
     test("agregar un producto al menu", () => {
         const menu = new Menu();
-        const precioProducto = 100;
-        const producto = new Producto("Hamburguesa", precioProducto, new Categoria("Comidas"));
+        const producto = new Producto("Hamburguesa", 5, new Categoria("Comidas"));
         menu.agregarProducto(producto);
         expect(menu.getProductos()).toEqual([producto]);
     });

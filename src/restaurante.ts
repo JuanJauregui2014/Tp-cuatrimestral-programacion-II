@@ -1,8 +1,7 @@
 import Menu from "./menu";
 import Estacion from "./estacion";
-import Pedido from "./pedido";
+import Pedido from "./#pedido";
 import MedioDePago from "./medio_de_pago";
-import Descuento from "./descuento";
 
 const VACIO = 0;
 
@@ -12,15 +11,13 @@ export default class Restaurante {
     private estaciones: Estacion[];
     private pedidosActivos: Map<number, Pedido>;
     private pedidosFinalizados: Map<number, Pedido>;
-    private descuentos: Descuento[];
 
-    public constructor(nombre: string, menu: Menu, estaciones: Estacion[], descuentos: Descuento[]) {
+    public constructor(nombre: string, menu: Menu, estaciones: Estacion[]) {
         this.nombre = nombre;
         this.menu = menu;
         this.estaciones = estaciones;
         this.pedidosActivos = new Map();
         this.pedidosFinalizados = new Map();
-        this.descuentos = descuentos;
     }
 
     public getNombre(): string {
@@ -60,13 +57,27 @@ export default class Restaurante {
         this.pedidosActivos.set(pedido.getNumeroPedido(), pedido);
     }
 
-    public consultarHistorial(): Map<number, Pedido> {
+    public consultarHistorial(): void {
 
         if (this.pedidosFinalizados.size === VACIO) {
             throw new Error("No hay pedidos finalizados. No hay nada para mostrar");
         }
 
-        return this.getPedidosFinalizados();
+        this.pedidosFinalizados.forEach((pedido, nroDePedido) => {
+            console.log(`Nro de pedido: ${nroDePedido} - Fecha: ${pedido.getFecha()}`);
+            //Probablemente haya que cambiar esta linea más adelante
+            //Porque getItems() te devuelve los objetos de tipo Item, nosé si se puedan imprimir
+            //Pienso en hacer que items sea un Map en pedido y agregarle un nombre a Item para que sea la key, 
+            //ya que también hay que manejar cantidad de items
+            for (const item of pedido.getItems()) {
+                console.log(`Elemento: ${item.getElemento().getNombre()} - Precio: ${item.getElemento().getPrecio()}`);
+            }
+            console.log(`Costo total del pedido: ${pedido.getTotalBruto()}`);
+            console.log(`Descuento aplicado: ${pedido.getDescuento()}`);
+            console.log(`Total abonado: ${pedido.getTotalCobrado()}`);
+            //Total abonado falta desarrollar, ya que en pedido, al calcular el total, 
+            //se deben ingresar medio de pago y dia, eso obstruye para agregarlo directamente acá
+        });
 
     }
 
@@ -83,8 +94,7 @@ export default class Restaurante {
         }
         
         pedido.calcularTotalBruto();
-        pedido.setMedioDePago(medioPago);
-        pedido.aplicarDescuento(medioPago, this.descuentos);
+        pedido.aplicarDescuento(medioPago);
         pedido.calcularTotalFinal();
 
         medioPago.procesarPago(pedido.getTotalCobrado()); // Procesa el pago seleccionado

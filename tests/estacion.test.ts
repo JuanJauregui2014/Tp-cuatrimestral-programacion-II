@@ -4,10 +4,8 @@ import Item from "../src/item";
 import ElementoMenu from "../src/elemento_menu";
 import EstadoItem from "../src/estado_item";
 
-const PRECIO_ELEMENTO = 10;
-
 const crearElementoMock = (): ElementoMenu => ({
-    getPrecio: jest.fn().mockReturnValue(PRECIO_ELEMENTO),
+    getPrecio: jest.fn().mockReturnValue(10),
     getNombre: jest.fn().mockReturnValue("Elemento de prueba"),
 });
 describe("test de la clase Estacion", () => {
@@ -24,8 +22,7 @@ describe("test de la clase Estacion", () => {
     test("agregar un item a la estacion", () => {
         const categoria = new Categoria("Bebidas");
         const estacion = new Estacion("Estacion 1", [categoria]);
-        const cantidadItems = 2;
-        const item = new Item(cantidadItems, crearElementoMock());
+        const item = new Item(2, crearElementoMock());
 
         estacion.agregarItem(item);
 
@@ -35,8 +32,7 @@ describe("test de la clase Estacion", () => {
     test("avanzar el estado de un item en la estacion", () => {
         const categoria = new Categoria("Bebidas");
         const estacion = new Estacion("Estacion 1", [categoria]);
-        const cantidadItems = 2;        
-        const item = new Item(cantidadItems, crearElementoMock());
+        const item = new Item(2, crearElementoMock());
 
         estacion.agregarItem(item);
         estacion.avanzarItem(item);

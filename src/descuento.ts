@@ -1,4 +1,3 @@
-import MedioDePago from "./medio_de_pago";
 import Pedido from "./pedido";
 
 export default interface Descuento {

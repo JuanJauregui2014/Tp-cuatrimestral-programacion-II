@@ -1,4 +1,4 @@
-@startuml
+@startuml -Gestión de Pedidos:-
 
 title -Gestión de Pedidos:-
 
@@ -218,5 +218,7 @@ BilleteraVirtual .u.|> MedioDePago
 Pedido <|-- PedidoSalon
 Pedido <|-- PedidoRetirar
 Pedido <|-- PedidoEnvioPropio
+
+Restaurante *-- Descuento
 
 @enduml

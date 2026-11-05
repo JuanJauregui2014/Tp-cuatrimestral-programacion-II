@@ -1,4 +1,4 @@
-import  ComboBeneficio  from "./combo_beneficio";
+import ComboBeneficio from "./combo_beneficio";
 export default class ComboPorcentual implements ComboBeneficio {
     private porcentajeDescuento: number;
 

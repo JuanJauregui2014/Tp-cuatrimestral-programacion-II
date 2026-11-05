@@ -1,6 +1,5 @@
 import Descuento from "./descuento";
-import MedioDePago from "./medio_de_pago";
-import Pedido from "./pedido";
+import Pedido from "../pedidos/pedido";
 
 export default class DescuentoEfectivo implements Descuento {
     private efectivo: string;
@@ -11,10 +10,10 @@ export default class DescuentoEfectivo implements Descuento {
         this.porcentajeDescuento = 0.1;
     }
 
-    public aplicable(pedido: Pedido, medioPago: MedioDePago): boolean {
-        return medioPago.getTipoDePago() === this.efectivo;
+    public aplicable(pedido: Pedido): boolean {
+        return pedido.getMedioDePago().getTipoDePago() === this.efectivo;
     }
-    public calcularMontoDescuento(pedido: Pedido, medioPago: MedioDePago): number {
+    public calcularMontoDescuento(pedido: Pedido): number {
         return pedido.getTotalBruto() * this.porcentajeDescuento;
     }
 }

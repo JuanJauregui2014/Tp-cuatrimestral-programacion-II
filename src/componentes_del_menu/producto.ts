@@ -1,5 +1,5 @@
-import  Categoria  from "./categoria";
-import  ElementoMenu from "./elemento_menu";
+import Categoria from "./categoria";
+import ElementoMenu from "./elemento_menu";
 
 export default class Producto implements ElementoMenu {
     private nombre: string;

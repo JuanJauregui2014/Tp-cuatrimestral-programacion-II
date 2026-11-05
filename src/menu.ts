@@ -1,6 +1,6 @@
-import Categoria from "./categoria";
-import Combo from "./combo";
-import Producto from "./producto";
+import Categoria from "./componentes_del_menu/categoria";
+import Combo from "./componentes_del_menu/combos/combo";
+import Producto from "./componentes_del_menu/producto";
 
 export default class Menu {
 

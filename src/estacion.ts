@@ -1,5 +1,5 @@
-import Categoria from "./categoria";
-import  Item  from "./item";
+import Categoria from "./componentes_del_menu/categoria";
+import Item from "./items/item";
 
 export default class Estacion {
     private nombre: string;

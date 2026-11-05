@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/30</span>
+                <span class='fraction'>32/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">73.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/30</span>
+                <span class='fraction'>32/32</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,35 +92,39 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import Pedido from "./pedido";
 &nbsp;
 export default class PedidoSalon extends Pedido {
@@ -129,27 +133,29 @@ export default class PedidoSalon extends Pedido {
     private mozo: string; // Mozo responsable del pedido
 &nbsp;
     public constructor(numeroPedido: number, nombreCliente: string, numeroMesa: number, mozo: string) {
-        super(numeroPedido, nombreCliente); // Inicializa lo heredado
+        const costoEnvio = 0;
+        super(numeroPedido, nombreCliente, costoEnvio); // Inicializa lo heredado
 &nbsp;
         this.numeroMesa = numeroMesa;
         this.mozo = mozo;
     }
 &nbsp;
-    public <span class="fstat-no" title="function not covered" >getNumeroMesa(): number {</span>
-<span class="cstat-no" title="statement not covered" >        return this.numeroMesa;</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+    public getNumeroMesa(): number {
+        return this.numeroMesa;
+    }
 &nbsp;
-    public <span class="fstat-no" title="function not covered" >getMozo(): string {</span>
-<span class="cstat-no" title="statement not covered" >        return this.mozo;</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+    public getMozo(): string {
+        return this.mozo;
+    }
 &nbsp;
-    public <span class="fstat-no" title="function not covered" >setNumeroMesa(numeroMesa: number): void {</span>
-<span class="cstat-no" title="statement not covered" >        this.numeroMesa = numeroMesa;</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+    public setNumeroMesa(numeroMesa: number): void {
+        this.numeroMesa = numeroMesa;
+    }
 &nbsp;
-    public <span class="fstat-no" title="function not covered" >setMozo(mozo: string): void {</span>
-<span class="cstat-no" title="statement not covered" >        this.mozo = mozo;</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+    public setMozo(mozo: string): void {
+        this.mozo = mozo;
+    }
+&nbsp;
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -157,7 +163,7 @@ export default class PedidoSalon extends Pedido {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-10-27T22:09:28.718Z
+                at 2026-11-04T02:13:58.379Z
             </div>
         <script src="prettify.js"></script>
         <script>

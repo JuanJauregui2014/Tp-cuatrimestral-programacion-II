@@ -1,10 +1,10 @@
 import { describe, expect, jest, test } from "@jest/globals";
-import Combo from "../src/componentes_del_menu/combos/combo";
-import Producto from "../src/componentes_del_menu/producto";
-import ComboBeneficio from "../src/componentes_del_menu/combos/combo_beneficio";
+import Combo from "../../src/componentes_del_menu/combo";
+import Producto from "../../src/componentes_del_menu/producto";
+import ComboBeneficio from "../../src/combos/combo_beneficio";
 
 describe("Test para la clase combo",() =>{
-    test("deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio",() =>{
+    test("Deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio",() =>{
         const precioProducto1 = 100;
         const precioProducto2 = 200;
         //mockeamos productos falsos y le metemos el precio que devuelven
@@ -18,8 +18,12 @@ describe("Test para la clase combo",() =>{
         };
         const combo = new Combo("Combo hamburguesa", [producto1, producto2], beneficioMock);
         
+        expect(combo.getProductos()).toEqual([producto1, producto2]);
+        expect(combo.getBeneficio()).toEqual(beneficioMock);
+        //Verificamos la correcta instancia del combo
+
         const precioEsperadoDelCombo = (precioProducto1 + precioProducto2) * porcentajeDescuento;
-        expect(combo.getPrecio()).toBe(precioEsperadoDelCombo); // (100 + 200) * 0.9 = 270
+        expect(combo.getPrecio()).toEqual(precioEsperadoDelCombo); // (100 + 200) * 0.9 = 270
         const sumaDePreciosDeProductos = 300;
         expect(beneficioMock.aplicarBeneficio).toHaveBeenCalledWith(sumaDePreciosDeProductos); // (100 + 200) = 300
     });

@@ -1,4 +1,4 @@
-import PedidoEnvioPropio from "../src/pedidos/pedido_envio_propio";
+import PedidoEnvioPropio from "../../src/pedidos/pedido_envio_propio";
 
 describe("Test de la clase PedidoEnvioPropio", () => {
     const nroPedido = 8;

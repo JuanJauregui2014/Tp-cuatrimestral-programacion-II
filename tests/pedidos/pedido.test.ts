@@ -1,10 +1,10 @@
 //import { mock, MockProxy } from "jest-mock-extended";
-import Pedido from "../src/pedidos/pedido";
-import PedidoEnvioPropio from "../src/pedidos/pedido_envio_propio";
-import PedidoRetirar from "../src/pedidos/pedido_retirar";
-import PedidoSalon from "../src/pedidos/pedido_salon";
-import ElementoMenu from "../src/componentes_del_menu/elemento_menu";
-import Item from "../src/items/item";
+import Pedido from "../../src/pedidos/pedido";
+import PedidoEnvioPropio from "../../src/pedidos/pedido_envio_propio";
+import PedidoRetirar from "../../src/pedidos/pedido_retirar";
+import PedidoSalon from "../../src/pedidos/pedido_salon";
+import ElementoMenu from "../../src/componentes_del_menu/elemento_menu";
+import Item from "../../src/items/item";
 
 const PRECIO_ELEMENTO = 300;
 

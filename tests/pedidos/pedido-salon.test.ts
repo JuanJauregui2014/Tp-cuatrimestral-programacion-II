@@ -1,4 +1,4 @@
-import PedidoSalon from "../src/pedidos/pedido_salon";
+import PedidoSalon from "../../src/pedidos/pedido_salon";
 
 describe("Test de la clase PedidoSalon", () => {
     const nroPedido = 5;

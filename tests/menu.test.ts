@@ -2,7 +2,7 @@
 import Menu from "../src/menu";
 import { describe, expect, test } from "@jest/globals";
 import Categoria from "../src/componentes_del_menu/categoria";
-import Combo from "../src/componentes_del_menu/combos/combo";
+import Combo from "../src/componentes_del_menu/combo";
 import Producto from "../src/componentes_del_menu/producto";
 
 describe("test de la clase Menu", () => {

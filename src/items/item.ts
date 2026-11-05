@@ -1,4 +1,4 @@
-import ElementoMenu from "./elemento_menu";
+import ElementoMenu from "../componentes_del_menu/elemento_menu";
 import EstadoItem from "./estado_item";
 export default class Item {
     private cantidad: number;

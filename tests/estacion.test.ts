@@ -1,8 +1,8 @@
 import Estacion from "../src/estacion";
-import Categoria from "../src/categoria";
-import Item from "../src/item";
-import ElementoMenu from "../src/elemento_menu";
-import EstadoItem from "../src/estado_item";
+import Categoria from "../src/componentes_del_menu/categoria";
+import Item from "../src/items/item";
+import ElementoMenu from "../src/componentes_del_menu/elemento_menu";
+import EstadoItem from "../src/items/estado_item";
 
 const PRECIO_ELEMENTO = 10;
 

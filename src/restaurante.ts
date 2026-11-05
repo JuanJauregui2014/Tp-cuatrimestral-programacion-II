@@ -1,7 +1,8 @@
 import Menu from "./menu";
 import Estacion from "./estacion";
-import Pedido from "./pedido";
-import MedioDePago from "./medio_de_pago";
+import Pedido from "./pedidos/pedido";
+import MedioDePago from "./medios_de_pago/medio_de_pago";
+import Descuento from "./descuentos/descuento";
 
 const VACIO = 0;
 
@@ -11,13 +12,15 @@ export default class Restaurante {
     private estaciones: Estacion[];
     private pedidosActivos: Map<number, Pedido>;
     private pedidosFinalizados: Map<number, Pedido>;
+    private descuentos: Descuento[];
 
-    public constructor(nombre: string, menu: Menu, estaciones: Estacion[]) {
+    public constructor(nombre: string, menu: Menu, estaciones: Estacion[], descuentos: Descuento[]) {
         this.nombre = nombre;
         this.menu = menu;
         this.estaciones = estaciones;
         this.pedidosActivos = new Map();
         this.pedidosFinalizados = new Map();
+        this.descuentos = descuentos;
     }
 
     public getNombre(): string {
@@ -38,6 +41,10 @@ export default class Restaurante {
 
     public getPedidosFinalizados(): Map<number, Pedido> {
         return this.pedidosFinalizados;
+    }
+
+    public getDescuentos(): Descuento[] {
+        return this.descuentos;
     }
 
     public setNombre(nombre: string): void {
@@ -80,7 +87,8 @@ export default class Restaurante {
         }
         
         pedido.calcularTotalBruto();
-        pedido.aplicarDescuento(medioPago);
+        pedido.setMedioDePago(medioPago);
+        pedido.aplicarDescuento(this.descuentos);
         pedido.calcularTotalFinal();
 
         medioPago.procesarPago(pedido.getTotalCobrado()); // Procesa el pago seleccionado

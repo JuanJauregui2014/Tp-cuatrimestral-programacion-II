@@ -6,7 +6,8 @@ export default class PedidoSalon extends Pedido {
     private mozo: string; // Mozo responsable del pedido
 
     public constructor(numeroPedido: number, nombreCliente: string, numeroMesa: number, mozo: string) {
-        super(numeroPedido, nombreCliente); // Inicializa lo heredado
+        const costoEnvio = 0;
+        super(numeroPedido, nombreCliente, costoEnvio); // Inicializa lo heredado
 
         this.numeroMesa = numeroMesa;
         this.mozo = mozo;
@@ -27,4 +28,5 @@ export default class PedidoSalon extends Pedido {
     public setMozo(mozo: string): void {
         this.mozo = mozo;
     }
+
 }

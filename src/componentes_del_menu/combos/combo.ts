@@ -1,6 +1,6 @@
-import  ElementoMenu  from "./elemento_menu";
-import  Producto from "./producto";
-import  ComboBeneficio  from "./combo_beneficio";
+import ElementoMenu from "../elemento_menu";
+import Producto from "../producto";
+import ComboBeneficio from "./combo_beneficio";
 
 export default class Combo implements ElementoMenu {
     private nombre: string;

@@ -1,4 +1,3 @@
-import Pedido from "./#pedido";
 import Descuento from "./descuento";
 import { DiaSemana } from "./dia_semana";
 import MedioDePago from "./medio_de_pago";

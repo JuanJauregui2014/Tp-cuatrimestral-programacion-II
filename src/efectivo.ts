@@ -1,7 +1,7 @@
 import MedioDePago from "./medio_de_pago";
 export default class Efectivo implements MedioDePago {
     private tipoDePago: string;
-
+    
     public constructor() {
         this.tipoDePago = "Efectivo";
     }

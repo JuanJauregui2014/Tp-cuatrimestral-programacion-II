@@ -8,8 +8,16 @@ export default class BilleteraVirtual implements MedioDePago {
         this.tipoDePago = "Billetera Virtual";
     }
 
+    public getAlias(): string {
+        return this.alias;
+    }
+
     public getTipoDePago(): string {
         return this.tipoDePago;
+    }
+
+    public setAlias(alias: string): void {
+        this.alias = alias;
     }
 
     public procesarPago(monto: number): void {

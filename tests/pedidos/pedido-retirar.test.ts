@@ -1,4 +1,4 @@
-import PedidoRetirar from "../src/pedidos/pedido_retirar";
+import PedidoRetirar from "../../src/pedidos/pedido_retirar";
 
 describe("Test de la clase PedidoRetirar", () => {
     const nroPedido = 12;

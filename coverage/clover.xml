@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1793760049384" clover="3.2.0">
-  <project timestamp="1793760049384" name="All files">
-    <metrics statements="704" coveredstatements="641" conditionals="114" coveredconditionals="113" methods="109" coveredmethods="82" elements="927" coveredelements="836" complexity="0" loc="704" ncloc="704" packages="7" files="17" classes="17"/>
+<coverage generated="1793920915238" clover="3.2.0">
+  <project timestamp="1793920915238" name="All files">
+    <metrics statements="830" coveredstatements="764" conditionals="146" coveredconditionals="145" methods="139" coveredmethods="114" elements="1115" coveredelements="1023" complexity="0" loc="830" ncloc="830" packages="7" files="22" classes="22"/>
     <package name="src">
       <metrics statements="188" coveredstatements="182" conditionals="31" coveredconditionals="31" methods="29" coveredmethods="26"/>
       <file name="dia_semana.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\dia_semana.ts">
@@ -205,59 +205,71 @@
         <line num="100" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.componentes_del_menu">
-      <metrics statements="40" coveredstatements="36" conditionals="7" coveredconditionals="7" methods="9" coveredmethods="7"/>
-      <file name="categoria.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\componentes_del_menu\categoria.ts">
-        <metrics statements="14" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="11" type="stmt"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-      </file>
-      <file name="producto.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\componentes_del_menu\producto.ts">
-        <metrics statements="26" coveredstatements="26" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
+    <package name="src.combos">
+      <metrics statements="35" coveredstatements="35" conditionals="10" coveredconditionals="10" methods="10" coveredmethods="10"/>
+      <file name="combo_porcentual.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\combos\combo_porcentual.ts">
+        <metrics statements="17" coveredstatements="17" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+      <file name="combo_preciofijo.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\combos\combo_preciofijo.ts">
+        <metrics statements="18" coveredstatements="18" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="10" count="4" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="13" count="4" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
         <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.componentes_del_menu.combos">
-      <metrics statements="32" coveredstatements="30" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="3"/>
-      <file name="combo.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\componentes_del_menu\combos\combo.ts">
-        <metrics statements="32" coveredstatements="30" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="3"/>
+    <package name="src.componentes_del_menu">
+      <metrics statements="72" coveredstatements="70" conditionals="15" coveredconditionals="15" methods="15" coveredmethods="14"/>
+      <file name="categoria.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\componentes_del_menu\categoria.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="14" type="stmt"/>
+        <line num="5" count="14" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="combo.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\componentes_del_menu\combo.ts">
+        <metrics statements="32" coveredstatements="30" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -287,9 +299,38 @@
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
+        <line num="30" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="32" count="1" type="stmt"/>
+      </file>
+      <file name="producto.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\componentes_del_menu\producto.ts">
+        <metrics statements="26" coveredstatements="26" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.descuentos">
@@ -409,9 +450,39 @@
       </file>
     </package>
     <package name="src.medios_de_pago">
-      <metrics statements="20" coveredstatements="18" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="3"/>
+      <metrics statements="111" coveredstatements="102" conditionals="21" coveredconditionals="21" methods="24" coveredmethods="21"/>
+      <file name="billetera_virtual.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\medios_de_pago\billetera_virtual.ts">
+        <metrics statements="27" coveredstatements="24" conditionals="5" coveredconditionals="5" methods="6" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+      </file>
       <file name="efectivo.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\medios_de_pago\efectivo.ts">
-        <metrics statements="20" coveredstatements="18" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="3"/>
+        <metrics statements="20" coveredstatements="20" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -419,12 +490,12 @@
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="65" type="stmt"/>
-        <line num="9" count="65" type="stmt"/>
+        <line num="8" count="67" type="stmt"/>
+        <line num="9" count="67" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="16" count="1" type="stmt"/>
@@ -432,6 +503,76 @@
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
+      </file>
+      <file name="tarjeta_de_credito.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\medios_de_pago\tarjeta_de_credito.ts">
+        <metrics statements="37" coveredstatements="34" conditionals="7" coveredconditionals="7" methods="8" coveredmethods="7"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+      </file>
+      <file name="tarjeta_de_debito.ts" path="C:\Users\jijau\OneDrive\Documentos\Juan\Tarea\Programacion II\Trabajo-Practico-Programacion-II\src\medios_de_pago\tarjeta_de_debito.ts">
+        <metrics statements="27" coveredstatements="24" conditionals="5" coveredconditionals="5" methods="6" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.pedidos">

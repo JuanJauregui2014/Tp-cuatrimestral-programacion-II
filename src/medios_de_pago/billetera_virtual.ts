@@ -3,7 +3,7 @@ export default class BilleteraVirtual implements MedioDePago {
     private alias: string;
     private tipoDePago: string;
 
-    public constructor(alias: string, tipoDePago: string) {
+    public constructor(alias: string) {
         this.alias = alias;
         this.tipoDePago = "Billetera Virtual";
     }

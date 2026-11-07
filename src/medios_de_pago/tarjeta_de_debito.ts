@@ -3,7 +3,7 @@ export default class TarjetaDeDebito implements MedioDePago {
     private numeroTarjeta: number;
     private tipoDePago: string;
 
-    public constructor(numeroTarjeta: number, tipoDePago: string) {
+    public constructor(numeroTarjeta: number) {
         this.numeroTarjeta = numeroTarjeta;
         this.tipoDePago = "Tarjeta de debito";
     }

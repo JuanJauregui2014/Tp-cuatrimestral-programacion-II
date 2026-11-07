@@ -41,27 +41,19 @@ __ Getters y Setters __
 }
 
 interface ComboBeneficio {
-    +aplicarBeneficio(productos: List<Producto>): number
+    +aplicarBeneficio(precio: number): number
 }
 
 class ComboPorcentual {
     -porcentajeDescuento: number
-<<<<<<< HEAD
-    +aplicarBeneficio(productos: List<Producto>): number
-=======
 __ Getters y Setters __
     +aplicarBeneficio(precio: number): number
->>>>>>> develop
 }
 
 class ComboPrecioFijo {
     -precioFijo: number
-<<<<<<< HEAD
-    +aplicarBeneficio(productos: List<Producto>): number
-=======
 __ Getters y Setters __
     +aplicarBeneficio(precio: number): number
->>>>>>> develop
 }
 
 abstract class Pedido {
@@ -158,17 +150,10 @@ class BilleteraVirtual {
 __ Getters y Setters __
 }
 
-<<<<<<< HEAD
-abstract class Descuento {
-     +esAplicable(pedido: Pedido, dia: DiaSemana): boolean
-     +calcularMontoDescuento(pedido: Pedido): number
-}   
-=======
 interface Descuento {
      +aplicable(pedido: Pedido, medioPago: MedioDePago): boolean
      +calcularMontoDescuento(pedido: Pedido, medioPago: MedioDePago): number
 }
->>>>>>> develop
 
 class DescuentoEfectivo implements Descuento {
      -efectivo: string

@@ -136,9 +136,35 @@ npm run test
 **Ventajas:** agregar un nuevo medio de pago o un nuevo tipo de beneficio no requiere tocar el código existente.
 
 ---
+Strategy — Selección de estaciones para distribuir ítems
+Categoría: Comportamiento. Es otra aplicación del mismo patrón Strategy, no un tercer tipo de patrón.
 
-### *(Segundo patrón — completar con el equipo)*
+Problema que resuelve: los productos deben enviarse a una estación capaz de preparar su categoría. La lógica que distribuye el pedido no necesita decidir por sí misma qué estación elegir.
 
+Participantes:
+- EstrategiaSeleccion: interfaz con seleccionarEstacion(categoria, estaciones).
+- PrimeraCompatible: estrategia concreta que devuelve la primera estación compatible.
+- DistribuidorPedidos: recibe una EstrategiaSeleccion en el constructor y delega la elección mediante buscarEstacion().
+- Estacion: determina si puede preparar una categoría y administra su cola FIFO.
+- Restaurante: encuentra el pedido y delega su distribución.
+Funcionamiento: DistribuidorPedidos recorre los ítems y, para los combos, crea preparaciones separadas por producto sin reemplazar el combo original del pedido. Primero verifica que cada preparación tenga una estación compatible; después registra las preparaciones, las asigna a las estaciones y confirma el pedido.
+
+Justificación: se separa el criterio de selección del proceso de distribución. Actualmente solo existe PrimeraCompatible, porque satisface la necesidad del TP. La interfaz permite sustituirla por otro criterio en el futuro sin reescribir el distribuidor.
+
+## Command — Modificaciones reversibles de pedidos
+Categoría: Comportamiento.
+
+**Problema que resuelve**: el requisito de deshacer la última modificación debe funcionar tanto si la operación fue agregar como si fue quitar un ítem. En vez de administrar historiales independientes por tipo de operación, se mantiene un único historial de comandos.
+
+**Participantes**:
+- Interfaz ComandoPedido: define las operaciones ejecutar() y deshacer().
+- AgregarItemCommand: agrega un ítem y puede retirar esa agregación.
+- QuitarItemCommand: elimina un ítem, guarda su posición original y puede restaurarlo allí.
+- Pedido: ejecuta cada comando al modificar los ítems, lo guarda en historialComandos y utiliza deshacerUltimaModificacion() para revertir el último comando ejecutado.
+
+**Funcionamiento**: al agregar o quitar un ítem, Pedido crea el comando correspondiente y lo ejecuta. Si la operación tuvo éxito, guarda el comando en su historial. Al solicitar deshacer, obtiene el último comando, invoca su método deshacer() y lo retira del historial. Solo se permite modificar o deshacer mientras el pedido está en construcción.
+
+**Ventajas**: unifica el historial, conserva el orden de las modificaciones y encapsula en cada comando la lógica necesaria para revertir su propia operación. Además, Pedido no necesita distinguir el tipo del último comando para deshacerlo.
 ---
 
 ## Diagrama de clases

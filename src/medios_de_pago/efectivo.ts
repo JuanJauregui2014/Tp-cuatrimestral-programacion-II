@@ -1,9 +1,7 @@
 import MedioDePago from "./medio_de_pago";
-
 export default class Efectivo implements MedioDePago {
-
     private tipoDePago: string;
-
+    
     public constructor() {
         this.tipoDePago = "Efectivo";
     }
@@ -16,5 +14,4 @@ export default class Efectivo implements MedioDePago {
         console.log(`Monto a cobrar: ${monto} --- Tipo de pago: ${this.tipoDePago}`);
         console.log("---Pago procesado---");
     }
-
 }

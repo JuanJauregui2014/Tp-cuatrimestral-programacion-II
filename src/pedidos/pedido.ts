@@ -1,11 +1,16 @@
+
 import EstadoPedido from "./estado_pedido";
 import Item from "../items/item";
 import MedioDePago from "../medios_de_pago/medio_de_pago";
 import EstadoItem from "../items/estado_item";
 import Descuento from "../descuentos/descuento";
 import Efectivo from "../medios_de_pago/efectivo";
-
+import ComandoPedido from "../command/comando_pedido";
+import AgregarItemCommand from "../command/agregar_item";
+import QuitarItemCommand from "../command/quitar_item";
 const CERO = 0;
+// eslint-disable-next-line id-length
+const UNO = 1;
 
 export default abstract class Pedido { // Abstracta porque no existe un pedido genérico
 
@@ -15,13 +20,11 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     private fecha: Date;
     private estado: EstadoPedido; // Estado actual del pedido
     private items: Item[]; // Lista de productos y combos agregados
-    private historialAgregaciones: Item[]; // Funciona como pila para deshacer cambios
-    private historialEliminaciones: Item[];
-    private posicionesDeEliminaciones: number[]
     private totalBruto: number;
     private descuento: number;
     private totalCobrado: number;
     private medioPagoElegido: MedioDePago;
+    private historialComandos: ComandoPedido[] = [];//aca guardamos los comandos
 
 
     public constructor(numeroPedido: number, nombreCliente: string, costoEnvio: number) {
@@ -31,97 +34,67 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         this.fecha = new Date(); // Guarda fecha y hora actual
         this.estado = EstadoPedido.EN_CONSTRUCCION; // Todo pedido comenzaria así, para consultar en quitar item
         this.items = []; // Inicializa colección vacía
-        this.historialAgregaciones = []; // Inicializa historial vacío
-        this.historialEliminaciones = []; // Inicializa historial vacío
-        this.posicionesDeEliminaciones = []; // Inicializa vacío
         this.totalBruto = CERO;
         this.descuento = CERO;
         this.totalCobrado = CERO;
         this.medioPagoElegido = new Efectivo(); //Al crear un pedido nuevo, el medio de pago predeterminado es efectivo
     }
-
+    //lo cambie xq antes solo agregabamos el item
+    //ahora con el command podemos agregar y deshacer la accion de agregar el item
     public agregarItem(item: Item): void {
 
         if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
-            throw new Error("Pedido no se encuentra en construcción. No se puede agregar el item");
+            throw new Error(
+                "Pedido no se encuentra en construcción. No se puede agregar el item"
+            );
         }
 
-        this.items.push(item); // Agrega el item al pedido
+        const comando = new AgregarItemCommand(this.items, item);
 
-        this.historialAgregaciones.push(item); // Guarda el cambio para poder deshacerlo
+        comando.ejecutar();
 
+        this.historialComandos.push(comando);
     }
-
+    //ahora se encarga de eliminar el producto y guardar la poscion
     public quitarItem(item: Item): void {
 
         if (item.getEstado() !== EstadoItem.PENDIENTE) {
             throw new Error(
                 "Item ya pasó a preparación. No se puede modificar"
-            ); // Solo se puede modificar o quitar un item antes de que esté en preparación
+            );
         }
 
         if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
             throw new Error(
                 "Pedido no se encuentra en construcción. No se puede eliminar el item"
-            ); // Solo se puede modificar o quitar un item antes de confirmar el pedido
+            );
         }
 
-        this.historialEliminaciones.push(item); // Lo agrega al historia lde eliminaciones
+        const comando = new QuitarItemCommand(this.items, item);
 
-        this.posicionesDeEliminaciones.push(this.items.findIndex(actual => actual === item));
-        // Guarda la posicion en la que estaba el item por si se deshace la eliminación
+        comando.ejecutar();
 
-        this.items = this.items.filter(actual => actual !== item); // Elimina el item recibido
-
-        this.historialAgregaciones = this.historialAgregaciones.filter(actual => actual !== item);
-        // Elimina el item del historial de agregaciones
+        this.historialComandos.push(comando);
     }
-
-    public deshacerEliminacion(): void {
-
+    //deshacemos la ultima modificacion, ya sea agregar o quitar item
+    public deshacerUltimaModificacion(): void {
+        // Solo se puede deshacer una modificacion antes de confirmar el pedido
         if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
             throw new Error(
                 "Pedido no se encuentra en construcción. No se puede deshacer las modificaciones"
-            ); // Solo se puede deshacer una modificacion antes de confirmar el pedido
+            );
         }
-
-        const listaVacia = 0;
-        if (this.historialEliminaciones.length === listaVacia || this.posicionesDeEliminaciones.length === listaVacia) {
+        // Verificamos si hay comandos en el historial
+        if (!this.historialComandos.length) {
             throw new Error("No se realizo ninguna modificación para deshacer");
         }
 
-        const ultimaEliminacion = this.historialEliminaciones.pop()!;
-        // Obtengo la última eliminación realizada
-        const posicionUltimaEliminacion = this.posicionesDeEliminaciones.pop()!;
-        // Obtengo la posicion de la última eliminación realizada
+        const posicionUltimo = this.historialComandos.length - UNO;
+        const ultimoComando = this.historialComandos[posicionUltimo];
 
-        const parametroParaInsertar = 0; //Este parámetro "0" le indica al método splice que solo debe insertar el dato
+        ultimoComando.deshacer();
 
-        this.items.splice(posicionUltimaEliminacion, parametroParaInsertar, ultimaEliminacion);
-        // Agrega nuevamente ese último item eliminado en la posición exacta en la que estaba
-        this.historialAgregaciones.splice(posicionUltimaEliminacion, parametroParaInsertar, ultimaEliminacion);
-        // Se agrega al historial de agregaciones, porque se entiende que se volvió a agregar el item, en la 
-        // posicion exacta en la que estaba
-
-    }
-
-    public deshacerAgregacion(): void {
-
-        if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
-            throw new Error(
-                "Pedido no se encuentra en construcción. No se puede deshacer las modificaciones"
-            ); // Solo se puede deshacer una modificacion antes de confirmar el pedido
-        }
-
-        const listaVacia = 0;
-        if (this.historialAgregaciones.length === listaVacia) {
-            throw new Error("No se realizo ninguna modificación para deshacer");
-        }
-
-        const ultimaAgregacion = this.historialAgregaciones.pop(); // Obtiene la última agregación realizada
-
-        this.items = this.items.filter(actual => actual !== ultimaAgregacion);
-        // Elimina ese último item agregado
+        this.historialComandos.pop();
     }
 
     public confirmarPedido(): void {
@@ -143,7 +116,7 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         // Ejemplo: (hamburguesa * cantHamburguesas) + (bebida * cantBebida) + etc...
 
         this.totalBruto += this.costoEnvio;
-        //Sumo al subtotal el costo de envío.
+        //Sumo al subtotal de envío.
         //Dependiendo el tipo de pedido, se sumará el envío cargado o quedará igual.
 
     }
@@ -151,7 +124,7 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     public aplicarDescuento(descuentos: Descuento[]): void {
         let mejorDescuento = CERO;
         for (const descuento of descuentos) {
-            if (descuento.aplicable(this) && 
+            if (descuento.aplicable(this) &&
                 descuento.calcularMontoDescuento(this) > mejorDescuento) {
                 mejorDescuento = descuento.calcularMontoDescuento(this);
             }
@@ -186,18 +159,6 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
     public getItems(): Item[] {
         return this.items;
-    }
-
-    public getHistorialAgregaciones(): Item[] {
-        return this.historialAgregaciones;
-    }
-
-    public getHistorialEliminaciones(): Item[] {
-        return this.historialEliminaciones;
-    }
-
-    public getPosicionesDeEliminaciones(): number[] {
-        return this.posicionesDeEliminaciones;
     }
 
     public getTotalBruto(): number {

@@ -1,14 +1,14 @@
-import PedidoSalon from "../src/pedidos/pedido_salon";
-import Pedido from "../src/pedidos/pedido";
-import Categoria from "../src/componentes_del_menu/categoria";
-import Efectivo from "../src/medios_de_pago/efectivo";
-import Estacion from "../src/estacion";
-import Menu from "../src/menu";
-import Restaurante from "../src/restaurante";
+import PedidoSalon from "../../src/pedidos/pedido_salon";
+import Pedido from "../../src/pedidos/pedido";
+import Categoria from "../../src/componentes_del_menu/categoria";
+import Efectivo from "../../src/medios_de_pago/efectivo";
+import Estacion from "../../src/estacion/estacion";
+import Menu from "../../src/menu";
+import Restaurante from "../../src/restaurante";
 import { MockProxy, mock} from "jest-mock-extended";
-import DescuentoEspecialDia from "../src/descuentos/descuento-especial-dia";
-import DescuentoEfectivo from "../src/descuentos/descuento-efectivo";
-import Descuento from "../src/descuentos/descuento";
+import DescuentoEspecialDia from "../../src/descuentos/descuento-especial-dia";
+import DescuentoEfectivo from "../../src/descuentos/descuento-efectivo";
+import Descuento from "../../src/descuentos/descuento";
 
 // eslint-disable-next-line max-lines-per-function
 describe("Test de la clase restaurante", () => {

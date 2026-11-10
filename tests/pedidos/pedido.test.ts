@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/max-len */
 //import { mock, MockProxy } from "jest-mock-extended";
 import Pedido from "../../src/pedidos/pedido";
 import PedidoEnvioPropio from "../../src/pedidos/pedido_envio_propio";
@@ -87,14 +88,6 @@ describe("Test de la clase Pedido", () => {
         expect(pedidoSalon.getItems()[0]).toEqual(itemNuevo);
     })
 
-    test("Verifico que, al agregar un item, se guarde en la lista de agregaciones por si se quiere deshacer", () => {
-        const cantidadItem = 4;
-        const elemento = crearElementoMock();
-        const itemNuevo: Item = new Item(cantidadItem, elemento);
-        pedidoEnvio.agregarItem(itemNuevo);
-        expect(pedidoEnvio.getHistorialAgregaciones()[0]).toEqual(itemNuevo);
-    })
-
     test("El pedido se encuentra en construcción, por lo que no se pueden eliminar más items", () => {
         const cantidadItem1 = 4;
         const elemento1 = crearElementoMock();
@@ -141,26 +134,7 @@ describe("Test de la clase Pedido", () => {
         // De esta forma verifico que se eliminó el primer item cargado y el segundo ocupó su lugar en la lista
     })
 
-    test("Verifico que, al eliminar un item, se guarde el mismo y su poisición actual por si se quiere deshacer", () =>{
-        const cantidadItem1 = 4;
-        const elemento1 = crearElementoMock();
-        const itemNuevo1: Item = new Item(cantidadItem1, elemento1);
-        pedidoEnvio.agregarItem(itemNuevo1)
-
-        const cantidadItems2 = 2;
-        const elemento2 = crearElementoMock();
-        const itemNuevo2: Item = new Item(cantidadItems2, elemento2);
-        pedidoEnvio.agregarItem(itemNuevo2);
-
-        const itemAEliminar = itemNuevo2;
-        const posicionDeItemEsperada = 1;
-        pedidoEnvio.quitarItem(itemAEliminar);
-
-        expect(pedidoEnvio.getHistorialEliminaciones()[0]).toEqual(itemNuevo2);
-        expect(pedidoEnvio.getPosicionesDeEliminaciones()[0]).toEqual(posicionDeItemEsperada);
-    })
-
-    test("No se puede deshacer una agregación si el pedido ya no está en construcción", () => {
+    test("No se puede deshacer la última modificación si el pedido ya no está en construcción", () => {
         const cantidadItem1 = 4;
         const elemento1 = crearElementoMock();
         const itemNuevo1: Item = new Item(cantidadItem1, elemento1);
@@ -174,12 +148,12 @@ describe("Test de la clase Pedido", () => {
         pedidoEnvio.confirmarPedido();
 
         expect(() => 
-            pedidoEnvio.deshacerAgregacion()
+            pedidoEnvio.deshacerUltimaModificacion()
         ).toThrow("Pedido no se encuentra en construcción. No se puede deshacer las modificaciones")
     });
 
-    test("No se puede deshacer una agregación si todavía no se agregó nada al pedido", () => {
-        expect(() => pedidoEnvio.deshacerAgregacion()).toThrow("No se realizo ninguna modificación para deshacer");
+    test("No se puede deshacer si el pedido no tiene modificaciones", () => {
+        expect(() => pedidoEnvio.deshacerUltimaModificacion()).toThrow("No se realizo ninguna modificación para deshacer");
     });
 
     test("Verifico que, al deshacer una agregación, el ultimo item desaparezca. Incluso si son dos seguidos", () => {
@@ -198,14 +172,14 @@ describe("Test de la clase Pedido", () => {
         const itemNuevo3: Item = new Item(cantidadItem3, elemento3);
         pedidoRetirar.agregarItem(itemNuevo3);
 
-        pedidoRetirar.deshacerAgregacion();
-        pedidoRetirar.deshacerAgregacion();
+        pedidoRetirar.deshacerUltimaModificacion();
+        pedidoRetirar.deshacerUltimaModificacion();
         // Al deshacer las ultimas dos agregaciones, solo nos queda el primer item en la lista.
-        // Esto demuestra el correcto funcionamiento del historial de agregaciones.
+        // Esto demuestra que Command deshace las agregaciones en orden inverso.
         expect(pedidoRetirar.getItems()).toEqual([itemNuevo1]);
     });
 
-    test("No se puede deshacer una eliminación si el pedido ya no está en construcción", () => {
+    test("No se puede deshacer la última eliminación si el pedido ya no está en construcción", () => {
         const cantidadItem1 = 4;
         const elemento1 = crearElementoMock();
         const itemNuevo1: Item = new Item(cantidadItem1, elemento1);
@@ -221,12 +195,12 @@ describe("Test de la clase Pedido", () => {
         pedidoRetirar.confirmarPedido();
 
         expect(() => 
-            pedidoRetirar.deshacerEliminacion()
+            pedidoRetirar.deshacerUltimaModificacion()
         ).toThrow("Pedido no se encuentra en construcción. No se puede deshacer las modificaciones")
     });
 
-    test("No se puede deshacer una eliminación si todavía no se eliminó nada del pedido", () => {
-        expect(() => pedidoRetirar.deshacerEliminacion()).toThrow("No se realizo ninguna modificación para deshacer");
+    test("No se puede deshacer si no hubo modificaciones en el pedido de retiro", () => {
+        expect(() => pedidoRetirar.deshacerUltimaModificacion()).toThrow("No se realizo ninguna modificación para deshacer");
     });
 
     test("Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos",
@@ -249,14 +223,14 @@ describe("Test de la clase Pedido", () => {
         pedidoRetirar.quitarItem(itemNuevo1);
         pedidoRetirar.quitarItem(itemNuevo3);
 
-        pedidoRetirar.deshacerEliminacion();
-        pedidoRetirar.deshacerEliminacion();
+        pedidoRetirar.deshacerUltimaModificacion();
+        pedidoRetirar.deshacerUltimaModificacion();
 
         expect(pedidoRetirar.getItems()).toEqual([itemNuevo1, itemNuevo2, itemNuevo3]);
         /*  
             Al deshacer las ultimas dos eliminaciones, se reinsertan ambos items previamente eliminados
             y mantienen la ubicación que tenían anteriormente. Esto deja en visto el correcto funcionamiento 
-            del historial de eliminaciones y de las posiciones en la que se encontraban los items previamente
+            del comando de eliminación y de las posiciones en la que se encontraban los items previamente
             eliminados. 
         */
         

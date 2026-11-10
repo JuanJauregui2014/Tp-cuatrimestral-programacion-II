@@ -1,9 +1,9 @@
 import Menu from "./menu";
-import Estacion from "./estacion";
+import Estacion from "./estacion/estacion";
 import Pedido from "./pedidos/pedido";
 import MedioDePago from "./medios_de_pago/medio_de_pago";
 import Descuento from "./descuentos/descuento";
-
+import DistribuidorPedidos from "./distribucion_item/distribuidor_pedido";
 const VACIO = 0;
 
 export default class Restaurante {
@@ -62,6 +62,17 @@ export default class Restaurante {
     public agregarPedido(pedido: Pedido): void {
 
         this.pedidosActivos.set(pedido.getNumeroPedido(), pedido);
+    }
+
+    public confirmarPedido(nroDePedido: number, distribuidor: DistribuidorPedidos): void {
+        //buscamos el pedido entre los activos
+        const pedido = this.pedidosActivos.get(nroDePedido);
+        //si no lo encontramos lanzamos un error
+        if (!pedido) {
+            throw new Error("no se encuentra el pedido con el numero ingresado");
+        }
+        //llamamos al distribuidor para confirmar el pedido
+        distribuidor.distribuirPedido(pedido, this.estaciones);
     }
 
     public consultarHistorial(): Map<number, Pedido> {

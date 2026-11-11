@@ -1,181 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="95" failures="0" errors="0" time="18.382">
-  <testsuite name="test de la clase Menu" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:24" time="2.944" tests="3">
-    <testcase classname="test de la clase Menu agregar una categoria al menu agregar una categoria al menu" name="test de la clase Menu agregar una categoria al menu agregar una categoria al menu" time="0.01">
+<testsuites name="jest tests" tests="99" failures="0" errors="0" time="10.463">
+  <testsuite name="Test de la clase Pedido" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:11" time="2.895" tests="17">
+    <testcase classname="Test de la clase Pedido Verifico que sea instancia de Pedido Verifico que sea instancia de Pedido" name="Test de la clase Pedido Verifico que sea instancia de Pedido Verifico que sea instancia de Pedido" time="0.004">
     </testcase>
-    <testcase classname="test de la clase Menu agregar un combo al menu agregar un combo al menu" name="test de la clase Menu agregar un combo al menu agregar un combo al menu" time="0.002">
+    <testcase classname="Test de la clase Pedido Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente" name="Test de la clase Pedido Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente" time="0.001">
     </testcase>
-    <testcase classname="test de la clase Menu agregar un producto al menu agregar un producto al menu" name="test de la clase Menu agregar un producto al menu agregar un producto al menu" time="0.001">
+    <testcase classname="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden agregar más items El pedido se encuentra en construcción, por lo que no se pueden agregar más items" name="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden agregar más items El pedido se encuentra en construcción, por lo que no se pueden agregar más items" time="0.011">
     </testcase>
-  </testsuite>
-  <testsuite name="Test de la clase Item" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:27" time="0.392" tests="2">
-    <testcase classname="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" name="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" time="0.003">
+    <testcase classname="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de items Verifico que, al agregar un item, se guarde en la lista de items" name="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de items Verifico que, al agregar un item, se guarde en la lista de items" time="0">
     </testcase>
-    <testcase classname="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" name="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" time="0.017">
+    <testcase classname="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden eliminar más items El pedido se encuentra en construcción, por lo que no se pueden eliminar más items" name="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden eliminar más items El pedido se encuentra en construcción, por lo que no se pueden eliminar más items" time="0.001">
     </testcase>
-  </testsuite>
-  <testsuite name="Test de la clase Pedido" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:27" time="2.266" tests="15">
-    <testcase classname="Test de la clase Pedido Verifico que sea instancia de Pedido Verifico que sea instancia de Pedido" name="Test de la clase Pedido Verifico que sea instancia de Pedido Verifico que sea instancia de Pedido" time="0.003">
+    <testcase classname="Test de la clase Pedido El item ya pasó a preparación, por lo que no se puede eliminar El item ya pasó a preparación, por lo que no se puede eliminar" name="Test de la clase Pedido El item ya pasó a preparación, por lo que no se puede eliminar El item ya pasó a preparación, por lo que no se puede eliminar" time="0">
     </testcase>
-    <testcase classname="Test de la clase Pedido Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente" name="Test de la clase Pedido Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente Verifico que cada tipo de pedido se haya creado con sus respectivos datos correctamente" time="0.002">
-    </testcase>
-    <testcase classname="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden agregar más items El pedido se encuentra en construcción, por lo que no se pueden agregar más items" name="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden agregar más items El pedido se encuentra en construcción, por lo que no se pueden agregar más items" time="0.022">
-    </testcase>
-    <testcase classname="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de items Verifico que, al agregar un item, se guarde en la lista de items" name="Test de la clase Pedido Verifico que, al agregar un item, se guarde en la lista de items Verifico que, al agregar un item, se guarde en la lista de items" time="0.001">
-    </testcase>
-    <testcase classname="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden eliminar más items El pedido se encuentra en construcción, por lo que no se pueden eliminar más items" name="Test de la clase Pedido El pedido se encuentra en construcción, por lo que no se pueden eliminar más items El pedido se encuentra en construcción, por lo que no se pueden eliminar más items" time="0.002">
-    </testcase>
-    <testcase classname="Test de la clase Pedido El item ya pasó a preparación, por lo que no se puede eliminar El item ya pasó a preparación, por lo que no se puede eliminar" name="Test de la clase Pedido El item ya pasó a preparación, por lo que no se puede eliminar El item ya pasó a preparación, por lo que no se puede eliminar" time="0.001">
-    </testcase>
-    <testcase classname="Test de la clase Pedido Verifico que, al eliminar un item, se borre de la lista de items sin perder los demás Verifico que, al eliminar un item, se borre de la lista de items sin perder los demás" name="Test de la clase Pedido Verifico que, al eliminar un item, se borre de la lista de items sin perder los demás Verifico que, al eliminar un item, se borre de la lista de items sin perder los demás" time="0.001">
+    <testcase classname="Test de la clase Pedido Verifico que, al eliminar un item, se borre de la lista de items sin perder los demás Verifico que, al eliminar un item, se borre de la lista de items sin perder los demás" name="Test de la clase Pedido Verifico que, al eliminar un item, se borre de la lista de items sin perder los demás Verifico que, al eliminar un item, se borre de la lista de items sin perder los demás" time="0">
     </testcase>
     <testcase classname="Test de la clase Pedido No se puede deshacer la última modificación si el pedido ya no está en construcción No se puede deshacer la última modificación si el pedido ya no está en construcción" name="Test de la clase Pedido No se puede deshacer la última modificación si el pedido ya no está en construcción No se puede deshacer la última modificación si el pedido ya no está en construcción" time="0.001">
     </testcase>
     <testcase classname="Test de la clase Pedido No se puede deshacer si el pedido no tiene modificaciones No se puede deshacer si el pedido no tiene modificaciones" name="Test de la clase Pedido No se puede deshacer si el pedido no tiene modificaciones No se puede deshacer si el pedido no tiene modificaciones" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase Pedido Verifico que, al deshacer una agregación, el ultimo item desaparezca. Incluso si son dos seguidos Verifico que, al deshacer una agregación, el ultimo item desaparezca. Incluso si son dos seguidos" name="Test de la clase Pedido Verifico que, al deshacer una agregación, el ultimo item desaparezca. Incluso si son dos seguidos Verifico que, al deshacer una agregación, el ultimo item desaparezca. Incluso si son dos seguidos" time="0.002">
+    <testcase classname="Test de la clase Pedido Verifico que, al deshacer una agregación, el ultimo item desaparezca. Incluso si son dos seguidos Verifico que, al deshacer una agregación, el ultimo item desaparezca. Incluso si son dos seguidos" name="Test de la clase Pedido Verifico que, al deshacer una agregación, el ultimo item desaparezca. Incluso si son dos seguidos Verifico que, al deshacer una agregación, el ultimo item desaparezca. Incluso si son dos seguidos" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase Pedido No se puede deshacer la última eliminación si el pedido ya no está en construcción No se puede deshacer la última eliminación si el pedido ya no está en construcción" name="Test de la clase Pedido No se puede deshacer la última eliminación si el pedido ya no está en construcción No se puede deshacer la última eliminación si el pedido ya no está en construcción" time="0.002">
+    <testcase classname="Test de la clase Pedido No se puede deshacer la última eliminación si el pedido ya no está en construcción No se puede deshacer la última eliminación si el pedido ya no está en construcción" name="Test de la clase Pedido No se puede deshacer la última eliminación si el pedido ya no está en construcción No se puede deshacer la última eliminación si el pedido ya no está en construcción" time="0">
     </testcase>
-    <testcase classname="Test de la clase Pedido No se puede deshacer si no hubo modificaciones en el pedido de retiro No se puede deshacer si no hubo modificaciones en el pedido de retiro" name="Test de la clase Pedido No se puede deshacer si no hubo modificaciones en el pedido de retiro No se puede deshacer si no hubo modificaciones en el pedido de retiro" time="0.001">
+    <testcase classname="Test de la clase Pedido No se puede deshacer si no hubo modificaciones en el pedido de retiro No se puede deshacer si no hubo modificaciones en el pedido de retiro" name="Test de la clase Pedido No se puede deshacer si no hubo modificaciones en el pedido de retiro No se puede deshacer si no hubo modificaciones en el pedido de retiro" time="0">
     </testcase>
-    <testcase classname="Test de la clase Pedido Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos" name="Test de la clase Pedido Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos" time="0.002">
+    <testcase classname="Test de la clase Pedido Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos" name="Test de la clase Pedido Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase Pedido Verifico que un pedido se pueda facturar si sus items están listos Verifico que un pedido se pueda facturar si sus items están listos" name="Test de la clase Pedido Verifico que un pedido se pueda facturar si sus items están listos Verifico que un pedido se pueda facturar si sus items están listos" time="0.004">
+    <testcase classname="Test de la clase Pedido Verifico que un pedido se pueda facturar si sus items están listos Verifico que un pedido se pueda facturar si sus items están listos" name="Test de la clase Pedido Verifico que un pedido se pueda facturar si sus items están listos Verifico que un pedido se pueda facturar si sus items están listos" time="0">
     </testcase>
-    <testcase classname="Test de la clase Pedido Verifico el calculo correcto del total bruto del pedido Verifico el calculo correcto del total bruto del pedido" name="Test de la clase Pedido Verifico el calculo correcto del total bruto del pedido Verifico el calculo correcto del total bruto del pedido" time="0.001">
+    <testcase classname="Test de la clase Pedido Verifico el calculo correcto del total bruto del pedido Verifico el calculo correcto del total bruto del pedido" name="Test de la clase Pedido Verifico el calculo correcto del total bruto del pedido Verifico el calculo correcto del total bruto del pedido" time="0">
     </testcase>
-  </testsuite>
-  <testsuite name="Test de DistribuidorPedidos" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:29" time="0.691" tests="9">
-    <testcase classname="Test de DistribuidorPedidos debe distribuir un producto individual a su estacion debe distribuir un producto individual a su estacion" name="Test de DistribuidorPedidos debe distribuir un producto individual a su estacion debe distribuir un producto individual a su estacion" time="0.006">
+    <testcase classname="Test de la clase Pedido Verifico funcionamiento de AplicarDescuento() Verifico funcionamiento de AplicarDescuento()" name="Test de la clase Pedido Verifico funcionamiento de AplicarDescuento() Verifico funcionamiento de AplicarDescuento()" time="0.001">
     </testcase>
-    <testcase classname="Test de DistribuidorPedidos debe distribuir distintos productos a sus estaciones debe distribuir distintos productos a sus estaciones" name="Test de DistribuidorPedidos debe distribuir distintos productos a sus estaciones debe distribuir distintos productos a sus estaciones" time="0.002">
-    </testcase>
-    <testcase classname="Test de DistribuidorPedidos debe distribuir los productos de un combo por separado debe distribuir los productos de un combo por separado" name="Test de DistribuidorPedidos debe distribuir los productos de un combo por separado debe distribuir los productos de un combo por separado" time="0.002">
-    </testcase>
-    <testcase classname="Test de DistribuidorPedidos un combo debe estar listo solo cuando terminan todas sus preparaciones un combo debe estar listo solo cuando terminan todas sus preparaciones" name="Test de DistribuidorPedidos un combo debe estar listo solo cuando terminan todas sus preparaciones un combo debe estar listo solo cuando terminan todas sus preparaciones" time="0.002">
-    </testcase>
-    <testcase classname="Test de DistribuidorPedidos debe respetar la cantidad solicitada de un combo debe respetar la cantidad solicitada de un combo" name="Test de DistribuidorPedidos debe respetar la cantidad solicitada de un combo debe respetar la cantidad solicitada de un combo" time="0.001">
-    </testcase>
-    <testcase classname="Test de DistribuidorPedidos debe rechazar un producto sin estacion compatible debe rechazar un producto sin estacion compatible" name="Test de DistribuidorPedidos debe rechazar un producto sin estacion compatible debe rechazar un producto sin estacion compatible" time="0.022">
-    </testcase>
-    <testcase classname="Test de DistribuidorPedidos no debe distribuir parcialmente un pedido no debe distribuir parcialmente un pedido" name="Test de DistribuidorPedidos no debe distribuir parcialmente un pedido no debe distribuir parcialmente un pedido" time="0.002">
-    </testcase>
-    <testcase classname="Test de DistribuidorPedidos no debe confirmar un pedido vacio no debe confirmar un pedido vacio" name="Test de DistribuidorPedidos no debe confirmar un pedido vacio no debe confirmar un pedido vacio" time="0.001">
-    </testcase>
-    <testcase classname="Test de DistribuidorPedidos no debe distribuir nuevamente un pedido confirmado no debe distribuir nuevamente un pedido confirmado" name="Test de DistribuidorPedidos no debe distribuir nuevamente un pedido confirmado no debe distribuir nuevamente un pedido confirmado" time="0.001">
+    <testcase classname="Test de la clase Pedido Verifico funcionamiento del Calculo Final del costo del pedido Verifico funcionamiento del Calculo Final del costo del pedido" name="Test de la clase Pedido Verifico funcionamiento del Calculo Final del costo del pedido Verifico funcionamiento del Calculo Final del costo del pedido" time="0">
     </testcase>
   </testsuite>
-  <testsuite name="Test de la clase restaurante" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:30" time="0.981" tests="7">
-    <testcase classname="Test de la clase restaurante Verifico que sea instancia de Restaurante Verifico que sea instancia de Restaurante" name="Test de la clase restaurante Verifico que sea instancia de Restaurante Verifico que sea instancia de Restaurante" time="0.003">
+  <testsuite name="Test de la clase TarjetaDeDebito" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:14" time="0.278" tests="3">
+    <testcase classname="Test de la clase TarjetaDeDebito Verifico que sea instancia de TarjetaDeDebito Verifico que sea instancia de TarjetaDeDebito" name="Test de la clase TarjetaDeDebito Verifico que sea instancia de TarjetaDeDebito Verifico que sea instancia de TarjetaDeDebito" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase restaurante Verifico que se haya creado el restaurante con su nombre, menú, estaciones y descuentos Verifico que se haya creado el restaurante con su nombre, menú, estaciones y descuentos" name="Test de la clase restaurante Verifico que se haya creado el restaurante con su nombre, menú, estaciones y descuentos Verifico que se haya creado el restaurante con su nombre, menú, estaciones y descuentos" time="0.002">
+    <testcase classname="Test de la clase TarjetaDeDebito Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" name="Test de la clase TarjetaDeDebito Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase restaurante Verifico que un pedido se haya agregado a la lista de pedidos activos Verifico que un pedido se haya agregado a la lista de pedidos activos" name="Test de la clase restaurante Verifico que un pedido se haya agregado a la lista de pedidos activos Verifico que un pedido se haya agregado a la lista de pedidos activos" time="0.002">
-    </testcase>
-    <testcase classname="Test de la clase restaurante No hay pedidos finalizados por lo que no se puede mostrar el historial No hay pedidos finalizados por lo que no se puede mostrar el historial" name="Test de la clase restaurante No hay pedidos finalizados por lo que no se puede mostrar el historial No hay pedidos finalizados por lo que no se puede mostrar el historial" time="0.021">
-    </testcase>
-    <testcase classname="Test de la clase restaurante Verifico que, al facturar un pedido, se guarde en el historial de pedidos Verifico que, al facturar un pedido, se guarde en el historial de pedidos" name="Test de la clase restaurante Verifico que, al facturar un pedido, se guarde en el historial de pedidos Verifico que, al facturar un pedido, se guarde en el historial de pedidos" time="0.008">
-    </testcase>
-    <testcase classname="Test de la clase restaurante El pedido que se desea facturar no existe El pedido que se desea facturar no existe" name="Test de la clase restaurante El pedido que se desea facturar no existe El pedido que se desea facturar no existe" time="0.001">
-    </testcase>
-    <testcase classname="Test de la clase restaurante El pedido que se desea facturar no tiene sus items listos El pedido que se desea facturar no tiene sus items listos" name="Test de la clase restaurante El pedido que se desea facturar no tiene sus items listos El pedido que se desea facturar no tiene sus items listos" time="0.001">
+    <testcase classname="Test de la clase TarjetaDeDebito Verifico que puedo cambiar el nroTarjeta ante un error de ingreso Verifico que puedo cambiar el nroTarjeta ante un error de ingreso" name="Test de la clase TarjetaDeDebito Verifico que puedo cambiar el nroTarjeta ante un error de ingreso Verifico que puedo cambiar el nroTarjeta ante un error de ingreso" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="Test de la clase PedidoRetirar" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:31" time="0.631" tests="3">
-    <testcase classname="Test de la clase PedidoRetirar Verifico que sea instancia de PedidoRetirar Verifico que sea instancia de PedidoRetirar" name="Test de la clase PedidoRetirar Verifico que sea instancia de PedidoRetirar Verifico que sea instancia de PedidoRetirar" time="0.007">
+  <testsuite name="Test de la clase TarjetaDeCredito" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:14" time="0.292" tests="3">
+    <testcase classname="Test de la clase TarjetaDeCredito Verifico que sea instancia de TarjetaDeCredito Verifico que sea instancia de TarjetaDeCredito" name="Test de la clase TarjetaDeCredito Verifico que sea instancia de TarjetaDeCredito Verifico que sea instancia de TarjetaDeCredito" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase PedidoRetirar Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" name="Test de la clase PedidoRetirar Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" time="0.003">
+    <testcase classname="Test de la clase TarjetaDeCredito Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" name="Test de la clase TarjetaDeCredito Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase PedidoRetirar Verifico que puedo cambiar el horario de retiro ante un error de ingreso Verifico que puedo cambiar el horario de retiro ante un error de ingreso" name="Test de la clase PedidoRetirar Verifico que puedo cambiar el horario de retiro ante un error de ingreso Verifico que puedo cambiar el horario de retiro ante un error de ingreso" time="0.004">
-    </testcase>
-  </testsuite>
-  <testsuite name="test de la clase Producto" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:32" time="0.512" tests="2">
-    <testcase classname="test de la clase Producto crear un producto con nombre, precio y categoria crear un producto con nombre, precio y categoria" name="test de la clase Producto crear un producto con nombre, precio y categoria crear un producto con nombre, precio y categoria" time="0.004">
-    </testcase>
-    <testcase classname="test de la clase Producto obtener el precio, nombre y categoria de un producto obtener el precio, nombre y categoria de un producto" name="test de la clase Producto obtener el precio, nombre y categoria de un producto obtener el precio, nombre y categoria de un producto" time="0.002">
+    <testcase classname="Test de la clase TarjetaDeCredito Verifico que puedo cambiar el nroTarjeta y las cuotas ante un error de ingreso Verifico que puedo cambiar el nroTarjeta y las cuotas ante un error de ingreso" name="Test de la clase TarjetaDeCredito Verifico que puedo cambiar el nroTarjeta y las cuotas ante un error de ingreso Verifico que puedo cambiar el nroTarjeta y las cuotas ante un error de ingreso" time="0">
     </testcase>
   </testsuite>
-  <testsuite name="Test para la clase combo" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:32" time="0.511" tests="1">
-    <testcase classname="Test para la clase combo Deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio Deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio" name="Test para la clase combo Deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio Deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio" time="0.007">
+  <testsuite name="Test de la clase Item" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:15" time="0.312" tests="2">
+    <testcase classname="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" name="Test de la clase Item Deberia inicializar en estado PENDIENTE Deberia inicializar en estado PENDIENTE" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" name="Test de la clase Item No deberia permitir modificar la cantidad de un item que no esta pendiente No deberia permitir modificar la cantidad de un item que no esta pendiente" time="0.007">
     </testcase>
   </testsuite>
-  <testsuite name="Test de la clase PedidoSalon" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:33" time="0.621" tests="3">
-    <testcase classname="Test de la clase PedidoSalon Verifico que sea instancia de PedidoSalon Verifico que sea instancia de PedidoSalon" name="Test de la clase PedidoSalon Verifico que sea instancia de PedidoSalon Verifico que sea instancia de PedidoSalon" time="0.003">
+  <testsuite name="test de la clase Estacion" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:15" time="0.323" tests="15">
+    <testcase classname="test de la clase Estacion crear una estacion con nombre y categorias crear una estacion con nombre y categorias" name="test de la clase Estacion crear una estacion con nombre y categorias crear una estacion con nombre y categorias" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase PedidoSalon Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" name="Test de la clase PedidoSalon Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" time="0.003">
+    <testcase classname="test de la clase Estacion agregar un item a la estacion agregar un item a la estacion" name="test de la clase Estacion agregar un item a la estacion agregar un item a la estacion" time="0">
     </testcase>
-    <testcase classname="Test de la clase PedidoSalon Verifico que puedo cambiar el número de mesa y el mozo ante un error de ingreso Verifico que puedo cambiar el número de mesa y el mozo ante un error de ingreso" name="Test de la clase PedidoSalon Verifico que puedo cambiar el número de mesa y el mozo ante un error de ingreso Verifico que puedo cambiar el número de mesa y el mozo ante un error de ingreso" time="0.002">
-    </testcase>
-  </testsuite>
-  <testsuite name="Test de la clase categoría" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:33" time="0.544" tests="3">
-    <testcase classname="Test de la clase categoría Verifico que sea instancia de Categoria Verifico que sea instancia de Categoria" name="Test de la clase categoría Verifico que sea instancia de Categoria Verifico que sea instancia de Categoria" time="0.002">
-    </testcase>
-    <testcase classname="Test de la clase categoría Verifico que la categoría se haya creado con sus respectivos datos Verifico que la categoría se haya creado con sus respectivos datos" name="Test de la clase categoría Verifico que la categoría se haya creado con sus respectivos datos Verifico que la categoría se haya creado con sus respectivos datos" time="0.002">
-    </testcase>
-    <testcase classname="Test de la clase categoría Verifico que puedo cambiar el nombre de la categoria ante un error de ingreso Verifico que puedo cambiar el nombre de la categoria ante un error de ingreso" name="Test de la clase categoría Verifico que puedo cambiar el nombre de la categoria ante un error de ingreso Verifico que puedo cambiar el nombre de la categoria ante un error de ingreso" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="Confirmacion y distribucion desde Restaurante" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:34" time="0.741" tests="5">
-    <testcase classname="Confirmacion y distribucion desde Restaurante debe confirmar y distribuir un pedido debe confirmar y distribuir un pedido" name="Confirmacion y distribucion desde Restaurante debe confirmar y distribuir un pedido debe confirmar y distribuir un pedido" time="0.004">
-    </testcase>
-    <testcase classname="Confirmacion y distribucion desde Restaurante debe distribuir productos a diferentes estaciones debe distribuir productos a diferentes estaciones" name="Confirmacion y distribucion desde Restaurante debe distribuir productos a diferentes estaciones debe distribuir productos a diferentes estaciones" time="0.001">
-    </testcase>
-    <testcase classname="Confirmacion y distribucion desde Restaurante debe lanzar error si el pedido no existe debe lanzar error si el pedido no existe" name="Confirmacion y distribucion desde Restaurante debe lanzar error si el pedido no existe debe lanzar error si el pedido no existe" time="0.018">
-    </testcase>
-    <testcase classname="Confirmacion y distribucion desde Restaurante no debe confirmar un pedido sin estacion compatible no debe confirmar un pedido sin estacion compatible" name="Confirmacion y distribucion desde Restaurante no debe confirmar un pedido sin estacion compatible no debe confirmar un pedido sin estacion compatible" time="0.006">
-    </testcase>
-    <testcase classname="Confirmacion y distribucion desde Restaurante no debe confirmar dos veces el mismo pedido no debe confirmar dos veces el mismo pedido" name="Confirmacion y distribucion desde Restaurante no debe confirmar dos veces el mismo pedido no debe confirmar dos veces el mismo pedido" time="0.002">
-    </testcase>
-  </testsuite>
-  <testsuite name="Test de PrimeraCompatible" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:35" time="0.604" tests="4">
-    <testcase classname="Test de PrimeraCompatible debe seleccionar la primera estacion compatible debe seleccionar la primera estacion compatible" name="Test de PrimeraCompatible debe seleccionar la primera estacion compatible debe seleccionar la primera estacion compatible" time="0.003">
-    </testcase>
-    <testcase classname="Test de PrimeraCompatible debe ignorar las estaciones incompatibles debe ignorar las estaciones incompatibles" name="Test de PrimeraCompatible debe ignorar las estaciones incompatibles debe ignorar las estaciones incompatibles" time="0.001">
-    </testcase>
-    <testcase classname="Test de PrimeraCompatible debe lanzar error si no existe estacion compatible debe lanzar error si no existe estacion compatible" name="Test de PrimeraCompatible debe lanzar error si no existe estacion compatible debe lanzar error si no existe estacion compatible" time="0.014">
-    </testcase>
-    <testcase classname="Test de PrimeraCompatible debe lanzar error si no hay estaciones debe lanzar error si no hay estaciones" name="Test de PrimeraCompatible debe lanzar error si no hay estaciones debe lanzar error si no hay estaciones" time="0.004">
-    </testcase>
-  </testsuite>
-  <testsuite name="Test de la clase PedidoEnvioPropio" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:35" time="0.683" tests="3">
-    <testcase classname="Test de la clase PedidoEnvioPropio Verifico que sea instancia de PedidoEnvioPropio Verifico que sea instancia de PedidoEnvioPropio" name="Test de la clase PedidoEnvioPropio Verifico que sea instancia de PedidoEnvioPropio Verifico que sea instancia de PedidoEnvioPropio" time="0.002">
-    </testcase>
-    <testcase classname="Test de la clase PedidoEnvioPropio Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" name="Test de la clase PedidoEnvioPropio Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" time="0.001">
-    </testcase>
-    <testcase classname="Test de la clase PedidoEnvioPropio Verifico que puedo cambiar la dirección del envío ante un error de ingreso Verifico que puedo cambiar la dirección del envío ante un error de ingreso" name="Test de la clase PedidoEnvioPropio Verifico que puedo cambiar la dirección del envío ante un error de ingreso Verifico que puedo cambiar la dirección del envío ante un error de ingreso" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="Test de la clase ComboPorcentual" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:36" time="0.601" tests="4">
-    <testcase classname="Test de la clase ComboPorcentual Verifico que sea instancia de ComboPorcentual Verifico que sea instancia de ComboPorcentual" name="Test de la clase ComboPorcentual Verifico que sea instancia de ComboPorcentual Verifico que sea instancia de ComboPorcentual" time="0.004">
-    </testcase>
-    <testcase classname="Test de la clase ComboPorcentual Verifico que el tipo de combo se haya creado con sus respectivos datos Verifico que el tipo de combo se haya creado con sus respectivos datos" name="Test de la clase ComboPorcentual Verifico que el tipo de combo se haya creado con sus respectivos datos Verifico que el tipo de combo se haya creado con sus respectivos datos" time="0.002">
-    </testcase>
-    <testcase classname="Test de la clase ComboPorcentual Verifico que puedo cambiar el porcentaje de descuento ante un error de ingreso Verifico que puedo cambiar el porcentaje de descuento ante un error de ingreso" name="Test de la clase ComboPorcentual Verifico que puedo cambiar el porcentaje de descuento ante un error de ingreso Verifico que puedo cambiar el porcentaje de descuento ante un error de ingreso" time="0.002">
-    </testcase>
-    <testcase classname="Test de la clase ComboPorcentual Verifico que se aplique el beneficio indicado Verifico que se aplique el beneficio indicado" name="Test de la clase ComboPorcentual Verifico que se aplique el beneficio indicado Verifico que se aplique el beneficio indicado" time="0.002">
-    </testcase>
-  </testsuite>
-  <testsuite name="test de la clase Estacion" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:37" time="0.638" tests="15">
-    <testcase classname="test de la clase Estacion crear una estacion con nombre y categorias crear una estacion con nombre y categorias" name="test de la clase Estacion crear una estacion con nombre y categorias crear una estacion con nombre y categorias" time="0.003">
-    </testcase>
-    <testcase classname="test de la clase Estacion agregar un item a la estacion agregar un item a la estacion" name="test de la clase Estacion agregar un item a la estacion agregar un item a la estacion" time="0.001">
-    </testcase>
-    <testcase classname="test de la clase Estacion avanzar el estado de un item en la estacion avanzar el estado de un item en la estacion" name="test de la clase Estacion avanzar el estado de un item en la estacion avanzar el estado de un item en la estacion" time="0.001">
+    <testcase classname="test de la clase Estacion avanzar el estado de un item en la estacion avanzar el estado de un item en la estacion" name="test de la clase Estacion avanzar el estado de un item en la estacion avanzar el estado de un item en la estacion" time="0">
     </testcase>
     <testcase classname="test de la clase Estacion debe devolver true si la estacion acepta la categoria debe devolver true si la estacion acepta la categoria" name="test de la clase Estacion debe devolver true si la estacion acepta la categoria debe devolver true si la estacion acepta la categoria" time="0.001">
     </testcase>
-    <testcase classname="test de la clase Estacion debe devolver false si la estacion no acepta la categoria debe devolver false si la estacion no acepta la categoria" name="test de la clase Estacion debe devolver false si la estacion no acepta la categoria debe devolver false si la estacion no acepta la categoria" time="0.002">
+    <testcase classname="test de la clase Estacion debe devolver false si la estacion no acepta la categoria debe devolver false si la estacion no acepta la categoria" name="test de la clase Estacion debe devolver false si la estacion no acepta la categoria debe devolver false si la estacion no acepta la categoria" time="0">
     </testcase>
-    <testcase classname="test de la clase Estacion una estacion vacia debe tener carga cero una estacion vacia debe tener carga cero" name="test de la clase Estacion una estacion vacia debe tener carga cero una estacion vacia debe tener carga cero" time="0.008">
+    <testcase classname="test de la clase Estacion una estacion vacia debe tener carga cero una estacion vacia debe tener carga cero" name="test de la clase Estacion una estacion vacia debe tener carga cero una estacion vacia debe tener carga cero" time="0.001">
     </testcase>
-    <testcase classname="test de la clase Estacion debe contar los items pendientes debe contar los items pendientes" name="test de la clase Estacion debe contar los items pendientes debe contar los items pendientes" time="0.001">
+    <testcase classname="test de la clase Estacion debe contar los items pendientes debe contar los items pendientes" name="test de la clase Estacion debe contar los items pendientes debe contar los items pendientes" time="0">
     </testcase>
     <testcase classname="test de la clase Estacion no debe contar los items que ya estan listos no debe contar los items que ya estan listos" name="test de la clase Estacion no debe contar los items que ya estan listos no debe contar los items que ya estan listos" time="0.001">
     </testcase>
-    <testcase classname="test de la clase Estacion debe procesar el primer item de la cola debe procesar el primer item de la cola" name="test de la clase Estacion debe procesar el primer item de la cola debe procesar el primer item de la cola" time="0.002">
+    <testcase classname="test de la clase Estacion debe procesar el primer item de la cola debe procesar el primer item de la cola" name="test de la clase Estacion debe procesar el primer item de la cola debe procesar el primer item de la cola" time="0">
     </testcase>
-    <testcase classname="test de la clase Estacion debe rechazar un item fuera del orden FIFO debe rechazar un item fuera del orden FIFO" name="test de la clase Estacion debe rechazar un item fuera del orden FIFO debe rechazar un item fuera del orden FIFO" time="0.021">
+    <testcase classname="test de la clase Estacion debe rechazar un item fuera del orden FIFO debe rechazar un item fuera del orden FIFO" name="test de la clase Estacion debe rechazar un item fuera del orden FIFO debe rechazar un item fuera del orden FIFO" time="0.01">
     </testcase>
     <testcase classname="test de la clase Estacion  permite avanzar el segundo item cuando termina el primero  permite avanzar el segundo item cuando termina el primero" name="test de la clase Estacion  permite avanzar el segundo item cuando termina el primero  permite avanzar el segundo item cuando termina el primero" time="0.001">
     </testcase>
@@ -185,51 +87,159 @@
     </testcase>
     <testcase classname="test de la clase Estacion debe estar LISTO solamente cuando todas las preparaciones terminan debe estar LISTO solamente cuando todas las preparaciones terminan" name="test de la clase Estacion debe estar LISTO solamente cuando todas las preparaciones terminan debe estar LISTO solamente cuando todas las preparaciones terminan" time="0.001">
     </testcase>
-    <testcase classname="test de la clase Estacion no debe permitir avanzar directamente un item con preparaciones no debe permitir avanzar directamente un item con preparaciones" name="test de la clase Estacion no debe permitir avanzar directamente un item con preparaciones no debe permitir avanzar directamente un item con preparaciones" time="0.003">
+    <testcase classname="test de la clase Estacion no debe permitir avanzar directamente un item con preparaciones no debe permitir avanzar directamente un item con preparaciones" name="test de la clase Estacion no debe permitir avanzar directamente un item con preparaciones no debe permitir avanzar directamente un item con preparaciones" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="Test de la clase ComboPrecioFijo" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:37" time="0.592" tests="4">
-    <testcase classname="Test de la clase ComboPrecioFijo Verifico que sea instancia de ComboPorcentual Verifico que sea instancia de ComboPorcentual" name="Test de la clase ComboPrecioFijo Verifico que sea instancia de ComboPorcentual Verifico que sea instancia de ComboPorcentual" time="0.004">
+  <testsuite name="Test de la clase PedidoEnvioPropio" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:15" time="0.315" tests="3">
+    <testcase classname="Test de la clase PedidoEnvioPropio Verifico que sea instancia de PedidoEnvioPropio Verifico que sea instancia de PedidoEnvioPropio" name="Test de la clase PedidoEnvioPropio Verifico que sea instancia de PedidoEnvioPropio Verifico que sea instancia de PedidoEnvioPropio" time="0.002">
     </testcase>
-    <testcase classname="Test de la clase ComboPrecioFijo Verifico que el tipo de combo se haya creado con sus respectivos datos Verifico que el tipo de combo se haya creado con sus respectivos datos" name="Test de la clase ComboPrecioFijo Verifico que el tipo de combo se haya creado con sus respectivos datos Verifico que el tipo de combo se haya creado con sus respectivos datos" time="0.002">
+    <testcase classname="Test de la clase PedidoEnvioPropio Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" name="Test de la clase PedidoEnvioPropio Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase PedidoEnvioPropio Verifico que puedo cambiar la dirección del envío ante un error de ingreso Verifico que puedo cambiar la dirección del envío ante un error de ingreso" name="Test de la clase PedidoEnvioPropio Verifico que puedo cambiar la dirección del envío ante un error de ingreso Verifico que puedo cambiar la dirección del envío ante un error de ingreso" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test de la clase Efectivo" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:16" time="0.327" tests="2">
+    <testcase classname="Test de la clase Efectivo Verifico que sea instancia de Efectivo Verifico que sea instancia de Efectivo" name="Test de la clase Efectivo Verifico que sea instancia de Efectivo Verifico que sea instancia de Efectivo" time="0.002">
+    </testcase>
+    <testcase classname="Test de la clase Efectivo Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" name="Test de la clase Efectivo Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test de la clase PedidoRetirar" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:16" time="0.313" tests="3">
+    <testcase classname="Test de la clase PedidoRetirar Verifico que sea instancia de PedidoRetirar Verifico que sea instancia de PedidoRetirar" name="Test de la clase PedidoRetirar Verifico que sea instancia de PedidoRetirar Verifico que sea instancia de PedidoRetirar" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase PedidoRetirar Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" name="Test de la clase PedidoRetirar Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase PedidoRetirar Verifico que puedo cambiar el horario de retiro ante un error de ingreso Verifico que puedo cambiar el horario de retiro ante un error de ingreso" name="Test de la clase PedidoRetirar Verifico que puedo cambiar el horario de retiro ante un error de ingreso Verifico que puedo cambiar el horario de retiro ante un error de ingreso" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test de la clase categoría" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:16" time="0.33" tests="3">
+    <testcase classname="Test de la clase categoría Verifico que sea instancia de Categoria Verifico que sea instancia de Categoria" name="Test de la clase categoría Verifico que sea instancia de Categoria Verifico que sea instancia de Categoria" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase categoría Verifico que la categoría se haya creado con sus respectivos datos Verifico que la categoría se haya creado con sus respectivos datos" name="Test de la clase categoría Verifico que la categoría se haya creado con sus respectivos datos Verifico que la categoría se haya creado con sus respectivos datos" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase categoría Verifico que puedo cambiar el nombre de la categoria ante un error de ingreso Verifico que puedo cambiar el nombre de la categoria ante un error de ingreso" name="Test de la clase categoría Verifico que puedo cambiar el nombre de la categoria ante un error de ingreso Verifico que puedo cambiar el nombre de la categoria ante un error de ingreso" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test de PrimeraCompatible" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:17" time="0.363" tests="4">
+    <testcase classname="Test de PrimeraCompatible debe seleccionar la primera estacion compatible debe seleccionar la primera estacion compatible" name="Test de PrimeraCompatible debe seleccionar la primera estacion compatible debe seleccionar la primera estacion compatible" time="0.001">
+    </testcase>
+    <testcase classname="Test de PrimeraCompatible debe ignorar las estaciones incompatibles debe ignorar las estaciones incompatibles" name="Test de PrimeraCompatible debe ignorar las estaciones incompatibles debe ignorar las estaciones incompatibles" time="0.001">
+    </testcase>
+    <testcase classname="Test de PrimeraCompatible debe lanzar error si no existe estacion compatible debe lanzar error si no existe estacion compatible" name="Test de PrimeraCompatible debe lanzar error si no existe estacion compatible debe lanzar error si no existe estacion compatible" time="0.012">
+    </testcase>
+    <testcase classname="Test de PrimeraCompatible debe lanzar error si no hay estaciones debe lanzar error si no hay estaciones" name="Test de PrimeraCompatible debe lanzar error si no hay estaciones debe lanzar error si no hay estaciones" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test de la clase BilleteraVirtual" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:17" time="0.329" tests="3">
+    <testcase classname="Test de la clase BilleteraVirtual Verifico que sea instancia de BilleteraVirtual Verifico que sea instancia de BilleteraVirtual" name="Test de la clase BilleteraVirtual Verifico que sea instancia de BilleteraVirtual Verifico que sea instancia de BilleteraVirtual" time="0.002">
+    </testcase>
+    <testcase classname="Test de la clase BilleteraVirtual Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" name="Test de la clase BilleteraVirtual Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase BilleteraVirtual Verifico que puedo cambiar el alias ante un error de ingreso Verifico que puedo cambiar el alias ante un error de ingreso" name="Test de la clase BilleteraVirtual Verifico que puedo cambiar el alias ante un error de ingreso Verifico que puedo cambiar el alias ante un error de ingreso" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Prueba" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:17" time="0.339" tests="1">
+    <testcase classname="Prueba placeholder placeholder" name="Prueba placeholder placeholder" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test de la clase restaurante" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:18" time="0.39" tests="7">
+    <testcase classname="Test de la clase restaurante Verifico que sea instancia de Restaurante Verifico que sea instancia de Restaurante" name="Test de la clase restaurante Verifico que sea instancia de Restaurante Verifico que sea instancia de Restaurante" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase restaurante Verifico que se haya creado el restaurante con su nombre, menú, estaciones y descuentos Verifico que se haya creado el restaurante con su nombre, menú, estaciones y descuentos" name="Test de la clase restaurante Verifico que se haya creado el restaurante con su nombre, menú, estaciones y descuentos Verifico que se haya creado el restaurante con su nombre, menú, estaciones y descuentos" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase restaurante Verifico que un pedido se haya agregado a la lista de pedidos activos Verifico que un pedido se haya agregado a la lista de pedidos activos" name="Test de la clase restaurante Verifico que un pedido se haya agregado a la lista de pedidos activos Verifico que un pedido se haya agregado a la lista de pedidos activos" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase restaurante No hay pedidos finalizados por lo que no se puede mostrar el historial No hay pedidos finalizados por lo que no se puede mostrar el historial" name="Test de la clase restaurante No hay pedidos finalizados por lo que no se puede mostrar el historial No hay pedidos finalizados por lo que no se puede mostrar el historial" time="0.007">
+    </testcase>
+    <testcase classname="Test de la clase restaurante Verifico que, al facturar un pedido, se guarde en el historial de pedidos Verifico que, al facturar un pedido, se guarde en el historial de pedidos" name="Test de la clase restaurante Verifico que, al facturar un pedido, se guarde en el historial de pedidos Verifico que, al facturar un pedido, se guarde en el historial de pedidos" time="0.006">
+    </testcase>
+    <testcase classname="Test de la clase restaurante El pedido que se desea facturar no existe El pedido que se desea facturar no existe" name="Test de la clase restaurante El pedido que se desea facturar no existe El pedido que se desea facturar no existe" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase restaurante El pedido que se desea facturar no tiene sus items listos El pedido que se desea facturar no tiene sus items listos" name="Test de la clase restaurante El pedido que se desea facturar no tiene sus items listos El pedido que se desea facturar no tiene sus items listos" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="test de la clase Menu" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:18" time="0.349" tests="3">
+    <testcase classname="test de la clase Menu agregar una categoria al menu agregar una categoria al menu" name="test de la clase Menu agregar una categoria al menu agregar una categoria al menu" time="0.002">
+    </testcase>
+    <testcase classname="test de la clase Menu agregar un combo al menu agregar un combo al menu" name="test de la clase Menu agregar un combo al menu agregar un combo al menu" time="0.001">
+    </testcase>
+    <testcase classname="test de la clase Menu agregar un producto al menu agregar un producto al menu" name="test de la clase Menu agregar un producto al menu agregar un producto al menu" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="test de la clase Producto" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:18" time="0.35" tests="2">
+    <testcase classname="test de la clase Producto crear un producto con nombre, precio y categoria crear un producto con nombre, precio y categoria" name="test de la clase Producto crear un producto con nombre, precio y categoria crear un producto con nombre, precio y categoria" time="0.002">
+    </testcase>
+    <testcase classname="test de la clase Producto obtener el precio, nombre y categoria de un producto obtener el precio, nombre y categoria de un producto" name="test de la clase Producto obtener el precio, nombre y categoria de un producto obtener el precio, nombre y categoria de un producto" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test para la clase combo" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:19" time="0.358" tests="1">
+    <testcase classname="Test para la clase combo Deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio Deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio" name="Test para la clase combo Deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio Deberia calcular el precio total sumando los productos y aplicando el descuento o beneficio" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="Confirmacion y distribucion desde Restaurante" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:19" time="0.369" tests="5">
+    <testcase classname="Confirmacion y distribucion desde Restaurante debe confirmar y distribuir un pedido debe confirmar y distribuir un pedido" name="Confirmacion y distribucion desde Restaurante debe confirmar y distribuir un pedido debe confirmar y distribuir un pedido" time="0.002">
+    </testcase>
+    <testcase classname="Confirmacion y distribucion desde Restaurante debe distribuir productos a diferentes estaciones debe distribuir productos a diferentes estaciones" name="Confirmacion y distribucion desde Restaurante debe distribuir productos a diferentes estaciones debe distribuir productos a diferentes estaciones" time="0.001">
+    </testcase>
+    <testcase classname="Confirmacion y distribucion desde Restaurante debe lanzar error si el pedido no existe debe lanzar error si el pedido no existe" name="Confirmacion y distribucion desde Restaurante debe lanzar error si el pedido no existe debe lanzar error si el pedido no existe" time="0.008">
+    </testcase>
+    <testcase classname="Confirmacion y distribucion desde Restaurante no debe confirmar un pedido sin estacion compatible no debe confirmar un pedido sin estacion compatible" name="Confirmacion y distribucion desde Restaurante no debe confirmar un pedido sin estacion compatible no debe confirmar un pedido sin estacion compatible" time="0.002">
+    </testcase>
+    <testcase classname="Confirmacion y distribucion desde Restaurante no debe confirmar dos veces el mismo pedido no debe confirmar dos veces el mismo pedido" name="Confirmacion y distribucion desde Restaurante no debe confirmar dos veces el mismo pedido no debe confirmar dos veces el mismo pedido" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="Test de la clase ComboPrecioFijo" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:19" time="0.383" tests="4">
+    <testcase classname="Test de la clase ComboPrecioFijo Verifico que sea instancia de ComboPorcentual Verifico que sea instancia de ComboPorcentual" name="Test de la clase ComboPrecioFijo Verifico que sea instancia de ComboPorcentual Verifico que sea instancia de ComboPorcentual" time="0.001">
+    </testcase>
+    <testcase classname="Test de la clase ComboPrecioFijo Verifico que el tipo de combo se haya creado con sus respectivos datos Verifico que el tipo de combo se haya creado con sus respectivos datos" name="Test de la clase ComboPrecioFijo Verifico que el tipo de combo se haya creado con sus respectivos datos Verifico que el tipo de combo se haya creado con sus respectivos datos" time="0.001">
     </testcase>
     <testcase classname="Test de la clase ComboPrecioFijo Verifico que puedo cambiar el precio fijo ante un error de ingreso Verifico que puedo cambiar el precio fijo ante un error de ingreso" name="Test de la clase ComboPrecioFijo Verifico que puedo cambiar el precio fijo ante un error de ingreso Verifico que puedo cambiar el precio fijo ante un error de ingreso" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase ComboPrecioFijo Verifico que no se aplica ningún beneficio Verifico que no se aplica ningún beneficio" name="Test de la clase ComboPrecioFijo Verifico que no se aplica ningún beneficio Verifico que no se aplica ningún beneficio" time="0.002">
+    <testcase classname="Test de la clase ComboPrecioFijo Verifico que no se aplica ningún beneficio Verifico que no se aplica ningún beneficio" name="Test de la clase ComboPrecioFijo Verifico que no se aplica ningún beneficio Verifico que no se aplica ningún beneficio" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="Test de la clase Efectivo" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:38" time="0.628" tests="2">
-    <testcase classname="Test de la clase Efectivo Verifico que sea instancia de Efectivo Verifico que sea instancia de Efectivo" name="Test de la clase Efectivo Verifico que sea instancia de Efectivo Verifico que sea instancia de Efectivo" time="0.002">
+  <testsuite name="Test de la clase ComboPorcentual" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:20" time="0.364" tests="4">
+    <testcase classname="Test de la clase ComboPorcentual Verifico que sea instancia de ComboPorcentual Verifico que sea instancia de ComboPorcentual" name="Test de la clase ComboPorcentual Verifico que sea instancia de ComboPorcentual Verifico que sea instancia de ComboPorcentual" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase Efectivo Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" name="Test de la clase Efectivo Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" time="0.002">
+    <testcase classname="Test de la clase ComboPorcentual Verifico que el tipo de combo se haya creado con sus respectivos datos Verifico que el tipo de combo se haya creado con sus respectivos datos" name="Test de la clase ComboPorcentual Verifico que el tipo de combo se haya creado con sus respectivos datos Verifico que el tipo de combo se haya creado con sus respectivos datos" time="0">
     </testcase>
-  </testsuite>
-  <testsuite name="Prueba" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:38" time="0.606" tests="1">
-    <testcase classname="Prueba placeholder placeholder" name="Prueba placeholder placeholder" time="0.002">
+    <testcase classname="Test de la clase ComboPorcentual Verifico que puedo cambiar el porcentaje de descuento ante un error de ingreso Verifico que puedo cambiar el porcentaje de descuento ante un error de ingreso" name="Test de la clase ComboPorcentual Verifico que puedo cambiar el porcentaje de descuento ante un error de ingreso Verifico que puedo cambiar el porcentaje de descuento ante un error de ingreso" time="0">
     </testcase>
-  </testsuite>
-  <testsuite name="Test de la clase TarjetaDeDebito" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:39" time="0.636" tests="3">
-    <testcase classname="Test de la clase TarjetaDeDebito Verifico que sea instancia de TarjetaDeDebito Verifico que sea instancia de TarjetaDeDebito" name="Test de la clase TarjetaDeDebito Verifico que sea instancia de TarjetaDeDebito Verifico que sea instancia de TarjetaDeDebito" time="0.003">
-    </testcase>
-    <testcase classname="Test de la clase TarjetaDeDebito Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" name="Test de la clase TarjetaDeDebito Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" time="0.002">
-    </testcase>
-    <testcase classname="Test de la clase TarjetaDeDebito Verifico que puedo cambiar el nroTarjeta ante un error de ingreso Verifico que puedo cambiar el nroTarjeta ante un error de ingreso" name="Test de la clase TarjetaDeDebito Verifico que puedo cambiar el nroTarjeta ante un error de ingreso Verifico que puedo cambiar el nroTarjeta ante un error de ingreso" time="0.002">
+    <testcase classname="Test de la clase ComboPorcentual Verifico que se aplique el beneficio indicado Verifico que se aplique el beneficio indicado" name="Test de la clase ComboPorcentual Verifico que se aplique el beneficio indicado Verifico que se aplique el beneficio indicado" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="Test de la clase TarjetaDeCredito" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:40" time="0.64" tests="3">
-    <testcase classname="Test de la clase TarjetaDeCredito Verifico que sea instancia de TarjetaDeCredito Verifico que sea instancia de TarjetaDeCredito" name="Test de la clase TarjetaDeCredito Verifico que sea instancia de TarjetaDeCredito Verifico que sea instancia de TarjetaDeCredito" time="0.003">
+  <testsuite name="Test de DistribuidorPedidos" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:20" time="0.404" tests="9">
+    <testcase classname="Test de DistribuidorPedidos debe distribuir un producto individual a su estacion debe distribuir un producto individual a su estacion" name="Test de DistribuidorPedidos debe distribuir un producto individual a su estacion debe distribuir un producto individual a su estacion" time="0.002">
     </testcase>
-    <testcase classname="Test de la clase TarjetaDeCredito Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" name="Test de la clase TarjetaDeCredito Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" time="0.003">
+    <testcase classname="Test de DistribuidorPedidos debe distribuir distintos productos a sus estaciones debe distribuir distintos productos a sus estaciones" name="Test de DistribuidorPedidos debe distribuir distintos productos a sus estaciones debe distribuir distintos productos a sus estaciones" time="0.001">
     </testcase>
-    <testcase classname="Test de la clase TarjetaDeCredito Verifico que puedo cambiar el nroTarjeta y las cuotas ante un error de ingreso Verifico que puedo cambiar el nroTarjeta y las cuotas ante un error de ingreso" name="Test de la clase TarjetaDeCredito Verifico que puedo cambiar el nroTarjeta y las cuotas ante un error de ingreso Verifico que puedo cambiar el nroTarjeta y las cuotas ante un error de ingreso" time="0.006">
+    <testcase classname="Test de DistribuidorPedidos debe distribuir los productos de un combo por separado debe distribuir los productos de un combo por separado" name="Test de DistribuidorPedidos debe distribuir los productos de un combo por separado debe distribuir los productos de un combo por separado" time="0.001">
+    </testcase>
+    <testcase classname="Test de DistribuidorPedidos un combo debe estar listo solo cuando terminan todas sus preparaciones un combo debe estar listo solo cuando terminan todas sus preparaciones" name="Test de DistribuidorPedidos un combo debe estar listo solo cuando terminan todas sus preparaciones un combo debe estar listo solo cuando terminan todas sus preparaciones" time="0.001">
+    </testcase>
+    <testcase classname="Test de DistribuidorPedidos debe respetar la cantidad solicitada de un combo debe respetar la cantidad solicitada de un combo" name="Test de DistribuidorPedidos debe respetar la cantidad solicitada de un combo debe respetar la cantidad solicitada de un combo" time="0.001">
+    </testcase>
+    <testcase classname="Test de DistribuidorPedidos debe rechazar un producto sin estacion compatible debe rechazar un producto sin estacion compatible" name="Test de DistribuidorPedidos debe rechazar un producto sin estacion compatible debe rechazar un producto sin estacion compatible" time="0.01">
+    </testcase>
+    <testcase classname="Test de DistribuidorPedidos no debe distribuir parcialmente un pedido no debe distribuir parcialmente un pedido" name="Test de DistribuidorPedidos no debe distribuir parcialmente un pedido no debe distribuir parcialmente un pedido" time="0.001">
+    </testcase>
+    <testcase classname="Test de DistribuidorPedidos no debe confirmar un pedido vacio no debe confirmar un pedido vacio" name="Test de DistribuidorPedidos no debe confirmar un pedido vacio no debe confirmar un pedido vacio" time="0">
+    </testcase>
+    <testcase classname="Test de DistribuidorPedidos no debe distribuir nuevamente un pedido confirmado no debe distribuir nuevamente un pedido confirmado" name="Test de DistribuidorPedidos no debe distribuir nuevamente un pedido confirmado no debe distribuir nuevamente un pedido confirmado" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="Test de la clase BilleteraVirtual" errors="0" failures="0" skipped="0" timestamp="2026-11-08T16:11:40" time="0.634" tests="3">
-    <testcase classname="Test de la clase BilleteraVirtual Verifico que sea instancia de BilleteraVirtual Verifico que sea instancia de BilleteraVirtual" name="Test de la clase BilleteraVirtual Verifico que sea instancia de BilleteraVirtual Verifico que sea instancia de BilleteraVirtual" time="0.003">
+  <testsuite name="Test de la clase PedidoSalon" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:21" time="0.384" tests="3">
+    <testcase classname="Test de la clase PedidoSalon Verifico que sea instancia de PedidoSalon Verifico que sea instancia de PedidoSalon" name="Test de la clase PedidoSalon Verifico que sea instancia de PedidoSalon Verifico que sea instancia de PedidoSalon" time="0.002">
     </testcase>
-    <testcase classname="Test de la clase BilleteraVirtual Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" name="Test de la clase BilleteraVirtual Verifico que el medio de pago se haya creado con sus respectivos datos Verifico que el medio de pago se haya creado con sus respectivos datos" time="0.003">
+    <testcase classname="Test de la clase PedidoSalon Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" name="Test de la clase PedidoSalon Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente Verifico que el pedido se haya creado con sus respectivos datos únicos correctamente" time="0.002">
     </testcase>
-    <testcase classname="Test de la clase BilleteraVirtual Verifico que puedo cambiar el alias ante un error de ingreso Verifico que puedo cambiar el alias ante un error de ingreso" name="Test de la clase BilleteraVirtual Verifico que puedo cambiar el alias ante un error de ingreso Verifico que puedo cambiar el alias ante un error de ingreso" time="0.002">
+    <testcase classname="Test de la clase PedidoSalon Verifico que puedo cambiar el número de mesa y el mozo ante un error de ingreso Verifico que puedo cambiar el número de mesa y el mozo ante un error de ingreso" name="Test de la clase PedidoSalon Verifico que puedo cambiar el número de mesa y el mozo ante un error de ingreso Verifico que puedo cambiar el número de mesa y el mozo ante un error de ingreso" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="test de la clase DescuentoEfectivo" errors="0" failures="0" skipped="0" timestamp="2026-11-11T00:22:21" time="0.386" tests="2">
+    <testcase classname="test de la clase DescuentoEfectivo aplicar descuento cuando el medio de pago es efectivo aplicar descuento cuando el medio de pago es efectivo" name="test de la clase DescuentoEfectivo aplicar descuento cuando el medio de pago es efectivo aplicar descuento cuando el medio de pago es efectivo" time="0.001">
+    </testcase>
+    <testcase classname="test de la clase DescuentoEfectivo no aplicar descuento cuando el medio de pago no es efectivo no aplicar descuento cuando el medio de pago no es efectivo" name="test de la clase DescuentoEfectivo no aplicar descuento cuando el medio de pago no es efectivo no aplicar descuento cuando el medio de pago no es efectivo" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>

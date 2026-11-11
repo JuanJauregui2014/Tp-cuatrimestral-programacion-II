@@ -5,15 +5,16 @@ export default class DescuentoEfectivo implements Descuento {
     private efectivo: string;
     private porcentajeDescuento: number;
 
-    public constructor () {
+    public constructor (porcentajeIngresado: number) {
         this.efectivo = "Efectivo";
-        this.porcentajeDescuento = 0.1;
+        this.porcentajeDescuento = porcentajeIngresado;
+    }
+
+    public getPorcentaje(): number {
+        return this.porcentajeDescuento;
     }
 
     public aplicable(pedido: Pedido): boolean {
         return pedido.getMedioDePago().getTipoDePago() === this.efectivo;
-    }
-    public calcularMontoDescuento(pedido: Pedido): number {
-        return pedido.getTotalBruto() * this.porcentajeDescuento;
     }
 }

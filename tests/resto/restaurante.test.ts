@@ -5,10 +5,11 @@ import Efectivo from "../../src/medios_de_pago/efectivo";
 import Estacion from "../../src/estacion/estacion";
 import Menu from "../../src/menu";
 import Restaurante from "../../src/restaurante";
-import { MockProxy, mock} from "jest-mock-extended";
+import { MockProxy, mock } from "jest-mock-extended";
 import DescuentoEspecialDia from "../../src/descuentos/descuento-especial-dia";
 import DescuentoEfectivo from "../../src/descuentos/descuento-efectivo";
 import Descuento from "../../src/descuentos/descuento";
+import DiaSemana from "../../src/dia_semana";
 
 // eslint-disable-next-line max-lines-per-function
 describe("Test de la clase restaurante", () => {
@@ -19,9 +20,12 @@ describe("Test de la clase restaurante", () => {
     const menu = new Menu();
     const estacionCocina = new Estacion("Cocina", categoriasParaCocinar);
     const estaciones = [estacionCocina];
-    const descuentoDiaEspecial = new DescuentoEspecialDia();
-    const descuentoEfectivo = new DescuentoEfectivo();
-    const descuentos: Descuento[] = [descuentoDiaEspecial, descuentoEfectivo];
+    const porcentDescEfectivo = 0.1;
+    const descuentoEfectivo: DescuentoEfectivo = new DescuentoEfectivo(porcentDescEfectivo);
+    const diaElegido = DiaSemana.MARTES;
+    const porcentDescDiaEsp = 0.3;
+    const descuentoDiaEspecial: DescuentoEspecialDia = new DescuentoEspecialDia(diaElegido, porcentDescDiaEsp);
+    const descuentos: Descuento[] = [descuentoEfectivo, descuentoDiaEspecial];
     let restaurante: Restaurante;
     let pedidoCompletoMock: MockProxy<Pedido>;
 
@@ -67,7 +71,7 @@ describe("Test de la clase restaurante", () => {
         const metodoPago: Efectivo = new Efectivo();
         const nroPedido = pedidoCompletoMock.getNumeroPedido();
         pedidoCompletoMock.puedeFacturarse.mockReturnValue(true);
-        
+
         restaurante.facturarPedido(nroPedido, metodoPago);
 
         const listaVacia = 0;
@@ -76,7 +80,7 @@ describe("Test de la clase restaurante", () => {
 
         //Segundo verificamos que se haya guardado el pedido en el historial
         expect(restaurante.consultarHistorial().get(nroPedido)).toEqual(pedidoCompletoMock);
-        
+
     });
 
     test("El pedido que se desea facturar no existe", () => {
@@ -94,7 +98,7 @@ describe("Test de la clase restaurante", () => {
     });
 
     test("El pedido que se desea facturar no tiene sus items listos", () => {
-       
+
         restaurante.agregarPedido(pedidoCompletoMock);
 
         pedidoCompletoMock.puedeFacturarse.mockReturnValue(false);

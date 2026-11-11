@@ -125,11 +125,11 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         let mejorDescuento = CERO;
         for (const descuento of descuentos) {
             if (descuento.aplicable(this) &&
-                descuento.calcularMontoDescuento(this) > mejorDescuento) {
-                mejorDescuento = descuento.calcularMontoDescuento(this);
+                descuento.getPorcentaje() > mejorDescuento) {
+                mejorDescuento = descuento.getPorcentaje();
             }
         }
-        this.descuento = mejorDescuento;
+        this.descuento = this.totalBruto * mejorDescuento;
     }
 
     public calcularTotalFinal(): void {
@@ -188,10 +188,6 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
     public setCostoEnvio(costoEnvio: number): void {
         this.costoEnvio = costoEnvio;
-    }
-
-    public setFecha(fecha: Date): void {
-        this.fecha = fecha;
     }
 
     public setEstado(estado: EstadoPedido): void {

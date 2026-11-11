@@ -6,6 +6,11 @@ import PedidoRetirar from "../../src/pedidos/pedido_retirar";
 import PedidoSalon from "../../src/pedidos/pedido_salon";
 import ElementoMenu from "../../src/componentes_del_menu/elemento_menu";
 import Item from "../../src/items/item";
+import Efectivo from "../../src/medios_de_pago/efectivo";
+import DescuentoEfectivo from "../../src/descuentos/descuento-efectivo";
+import DescuentoEspecialDia from "../../src/descuentos/descuento-especial-dia";
+import DiaSemana from "../../src/dia_semana";
+import Descuento from "../../src/descuentos/descuento";
 
 const PRECIO_ELEMENTO = 300;
 
@@ -147,7 +152,7 @@ describe("Test de la clase Pedido", () => {
 
         pedidoEnvio.confirmarPedido();
 
-        expect(() => 
+        expect(() =>
             pedidoEnvio.deshacerUltimaModificacion()
         ).toThrow("Pedido no se encuentra en construcción. No se puede deshacer las modificaciones")
     });
@@ -194,7 +199,7 @@ describe("Test de la clase Pedido", () => {
 
         pedidoRetirar.confirmarPedido();
 
-        expect(() => 
+        expect(() =>
             pedidoRetirar.deshacerUltimaModificacion()
         ).toThrow("Pedido no se encuentra en construcción. No se puede deshacer las modificaciones")
     });
@@ -204,37 +209,37 @@ describe("Test de la clase Pedido", () => {
     });
 
     test("Verifico que, al deshacer una eliminación, se reinserte el item eliminado. Incluso si son dos seguidos",
-         () => {
-        const cantidadItem1 = 4;
-        const elemento1 = crearElementoMock();
-        const itemNuevo1: Item = new Item(cantidadItem1, elemento1);
-        pedidoRetirar.agregarItem(itemNuevo1);
+        () => {
+            const cantidadItem1 = 4;
+            const elemento1 = crearElementoMock();
+            const itemNuevo1: Item = new Item(cantidadItem1, elemento1);
+            pedidoRetirar.agregarItem(itemNuevo1);
 
-        const cantidadItem2 = 2;
-        const elemento2 = crearElementoMock();
-        const itemNuevo2: Item = new Item(cantidadItem2, elemento2);
-        pedidoRetirar.agregarItem(itemNuevo2);
+            const cantidadItem2 = 2;
+            const elemento2 = crearElementoMock();
+            const itemNuevo2: Item = new Item(cantidadItem2, elemento2);
+            pedidoRetirar.agregarItem(itemNuevo2);
 
-        const cantidadItem3 = 2;
-        const elemento3 = crearElementoMock();
-        const itemNuevo3: Item = new Item(cantidadItem3, elemento3);
-        pedidoRetirar.agregarItem(itemNuevo3);
+            const cantidadItem3 = 2;
+            const elemento3 = crearElementoMock();
+            const itemNuevo3: Item = new Item(cantidadItem3, elemento3);
+            pedidoRetirar.agregarItem(itemNuevo3);
 
-        pedidoRetirar.quitarItem(itemNuevo1);
-        pedidoRetirar.quitarItem(itemNuevo3);
+            pedidoRetirar.quitarItem(itemNuevo1);
+            pedidoRetirar.quitarItem(itemNuevo3);
 
-        pedidoRetirar.deshacerUltimaModificacion();
-        pedidoRetirar.deshacerUltimaModificacion();
+            pedidoRetirar.deshacerUltimaModificacion();
+            pedidoRetirar.deshacerUltimaModificacion();
 
-        expect(pedidoRetirar.getItems()).toEqual([itemNuevo1, itemNuevo2, itemNuevo3]);
-        /*  
-            Al deshacer las ultimas dos eliminaciones, se reinsertan ambos items previamente eliminados
-            y mantienen la ubicación que tenían anteriormente. Esto deja en visto el correcto funcionamiento 
-            del comando de eliminación y de las posiciones en la que se encontraban los items previamente
-            eliminados. 
-        */
-        
-    });
+            expect(pedidoRetirar.getItems()).toEqual([itemNuevo1, itemNuevo2, itemNuevo3]);
+            /*  
+                Al deshacer las ultimas dos eliminaciones, se reinsertan ambos items previamente eliminados
+                y mantienen la ubicación que tenían anteriormente. Esto deja en visto el correcto funcionamiento 
+                del comando de eliminación y de las posiciones en la que se encontraban los items previamente
+                eliminados. 
+            */
+
+        });
 
     test("Verifico que un pedido se pueda facturar si sus items están listos", () => {
         const cantidadItem1 = 3;
@@ -274,13 +279,82 @@ describe("Test de la clase Pedido", () => {
 
         /* Calculamos el resultado directamente, porque ya se verifica si se puede facturar en
            la clase restaurante. */
-        
+
         const totalBrutoEsperado = elemento1.getPrecio() * cantidadItem1 + elemento2.getPrecio() * cantidadItem2;
         pedidoEnvio.calcularTotalBruto();
 
         expect(pedidoEnvio.getTotalBruto()).toEqual(totalBrutoEsperado + costoEnvio);
         //Como estamos probando un pedido con envío, le sumamos eso al valor esperado.
         //A su vez verificamos que se diferencia el total bruto dependiendo el tipo de pedido.
+    });
+
+    test("Verifico funcionamiento de AplicarDescuento()", () => {
+        const cantidadItem1 = 3;
+        const elemento1 = crearElementoMock();
+        const itemNuevo1: Item = new Item(cantidadItem1, elemento1);
+        pedidoEnvio.agregarItem(itemNuevo1);
+
+        const cantidadItem2 = 6;
+        const elemento2 = crearElementoMock();
+        const itemNuevo2: Item = new Item(cantidadItem2, elemento2);
+        pedidoEnvio.agregarItem(itemNuevo2);
+
+        const porcentDescEfectivo = 0.3;
+        const descuentoEfectivo: DescuentoEfectivo = new DescuentoEfectivo(porcentDescEfectivo);
+        const diaElegido = DiaSemana.MARTES;
+        const porcentDescDiaEsp = 0.1;
+        const descuentoDiaEspecial: DescuentoEspecialDia = new DescuentoEspecialDia(diaElegido, porcentDescDiaEsp);
+        const descuentosResto: Descuento[] = [descuentoEfectivo, descuentoDiaEspecial];
+
+        const medioPago: Efectivo = new Efectivo();
+        pedidoEnvio.setMedioDePago(medioPago);
+
+        /* Calculamos el resultado directamente, porque ya se verifica si se puede facturar en
+           la clase restaurante. */
+        pedidoEnvio.calcularTotalBruto();
+
+        pedidoEnvio.aplicarDescuento(descuentosResto);
+
+        /* El resultado esperado es el bruto por el porcentaje de DescuentoEfectivo en este caso. 
+           Se definió de esta forma para verificar que aplicar descuento elija el mejor de ambos, ya que hoy
+           MARTES 10/11, el DescuentoDiaEspecial también se aplicaría.
+         */
+        expect(pedidoEnvio.getDescuento()).toEqual(pedidoEnvio.getTotalBruto() * porcentDescEfectivo);
+
+    });
+
+    test("Verifico funcionamiento del Calculo Final del costo del pedido", () => {
+        const cantidadItem1 = 3;
+        const elemento1 = crearElementoMock();
+        const itemNuevo1: Item = new Item(cantidadItem1, elemento1);
+        pedidoEnvio.agregarItem(itemNuevo1);
+
+        const cantidadItem2 = 10;
+        const elemento2 = crearElementoMock();
+        const itemNuevo2: Item = new Item(cantidadItem2, elemento2);
+        pedidoEnvio.agregarItem(itemNuevo2);
+
+        const porcentDescEfectivo = 0.3;
+        const descuentoEfectivo: DescuentoEfectivo = new DescuentoEfectivo(porcentDescEfectivo);
+        const diaElegido = DiaSemana.MARTES;
+        const porcentDescDiaEsp = 0.1;
+        const descuentoDiaEspecial: DescuentoEspecialDia = new DescuentoEspecialDia(diaElegido, porcentDescDiaEsp);
+        const descuentosResto: Descuento[] = [descuentoEfectivo, descuentoDiaEspecial];
+
+        const medioPago: Efectivo = new Efectivo();
+        pedidoEnvio.setMedioDePago(medioPago);
+
+        /* Calculamos el resultado directamente, porque ya se verifica si se puede facturar en
+           la clase restaurante. */
+        pedidoEnvio.calcularTotalBruto();
+
+        pedidoEnvio.aplicarDescuento(descuentosResto);
+
+        pedidoEnvio.calcularTotalFinal();
+
+        const valorEsperado = pedidoEnvio.getTotalBruto() - pedidoEnvio.getDescuento();
+
+        expect(pedidoEnvio.getTotalCobrado()).toEqual(valorEsperado);
     });
 
 });

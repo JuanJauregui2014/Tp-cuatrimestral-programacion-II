@@ -6,6 +6,9 @@ import Estacion from "../estacion/estacion";
  * Define el contrato para seleccionar una estación.
  * Cada estrategia implementará su propio criterio.
  */
+/**
+ * Define el contrato para seleccionar una estación de preparación.
+ */
 export default interface EstrategiaSeleccion {
     seleccionarEstacion(
         categoria: Categoria,// la categoria del producto que se quiere preparar

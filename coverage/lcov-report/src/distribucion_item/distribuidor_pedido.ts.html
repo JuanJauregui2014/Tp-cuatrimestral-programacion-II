@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.71% </span>
+                <span class="strong">96.2% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>134/140</span>
+                <span class='fraction'>152/158</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.71% </span>
+                <span class="strong">96.2% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>134/140</span>
+                <span class='fraction'>152/158</span>
             </div>
         
             
@@ -203,7 +203,32 @@
 <a name='L138'></a><a href='#L138'>138</a>
 <a name='L139'></a><a href='#L139'>139</a>
 <a name='L140'></a><a href='#L140'>140</a>
-<a name='L141'></a><a href='#L141'>141</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -228,6 +253,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
@@ -235,6 +266,12 @@
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -247,7 +284,6 @@
 <span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
@@ -353,9 +389,16 @@ import Producto from "../componentes_del_menu/producto";
 import Combo from "../componentes_del_menu/combo";
 import Item from "../items/item";
 &nbsp;
+/**
+ * Coordina la distribución de los ítems de un pedido entre las estaciones disponibles.
+ */
 export default class DistribuidorPedidos {
     private estrategia: EstrategiaSeleccion;
 &nbsp;
+/**
+ * Inicializa la instancia con los datos necesarios.
+ * @param estrategia - Parámetro de tipo EstrategiaSeleccion utilizado por la operación.
+ */
     public constructor(estrategia: EstrategiaSeleccion) {
         //al hacer esto usamos strategy
         //ya que no decide el distribuidor de pedidos que estacion es la correcta
@@ -367,6 +410,12 @@ export default class DistribuidorPedidos {
      //Busca una estación que acepte la categoría.
      ///La elección se delega a la estrategia.
      
+/**
+ * Realiza la operación buscarEstacion dentro del modelo del restaurante.
+ * @param categoria - Parámetro de tipo Categoria utilizado por la operación.
+ * @param estaciones - Parámetro de tipo Estacion[] utilizado por la operación.
+ * @returns Estacion con el resultado de la operación.
+ */
     public buscarEstacion(
         categoria: Categoria,
         estaciones: Estacion[]
@@ -377,6 +426,12 @@ export default class DistribuidorPedidos {
     }
 &nbsp;
    //realiza la distribucion de un pedido en las estaciones
+/**
+ * Distribuye los ítems del pedido entre las estaciones compatibles.
+ * @param pedido - Parámetro de tipo Pedido utilizado por la operación.
+ * @param estaciones - Parámetro de tipo Estacion[] utilizado por la operación.
+ * @throws {Error} Si no se cumplen las condiciones necesarias para realizar la operación.
+ */
     // eslint-disable-next-line max-lines-per-function
     public distribuirPedido(
         pedido: Pedido,
@@ -389,7 +444,6 @@ export default class DistribuidorPedidos {
         }
 &nbsp;
         const items = pedido.getItems();
-        //ODIO MAGIC NUMBERS
         // eslint-disable-next-line @typescript-eslint/no-magic-numbers
         if (items.length === 0) {
             throw new Error("No se puede confirmar un pedido vacío");
@@ -490,7 +544,7 @@ export default class DistribuidorPedidos {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-11-11T00:22:22.023Z
+                at 2026-11-13T16:57:38.259Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

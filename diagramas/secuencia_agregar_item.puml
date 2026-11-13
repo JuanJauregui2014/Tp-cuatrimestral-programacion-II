@@ -1,0 +1,31 @@
+@startuml Agregar un ítem a un pedido
+
+title Agregar un ítem a un pedido
+
+actor Empleado
+
+participant "pedido: Pedido" as Pedido
+participant "comando: AgregarItemCommand" as Comando
+
+Empleado -> Pedido: agregarItem(item)
+
+activate Pedido
+
+Pedido -> Pedido: verificar estado EN_CONSTRUCCION
+
+Pedido -> Comando: crear(items, item)
+activate Comando
+
+Pedido -> Comando: ejecutar()
+Comando -> Comando: agregar item a la lista
+
+Comando --> Pedido: operación realizada
+
+Pedido -> Pedido: guardar comando en historial
+
+deactivate Comando
+Pedido --> Empleado: operación finalizada
+
+deactivate Pedido
+
+@enduml

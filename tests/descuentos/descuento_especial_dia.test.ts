@@ -1,12 +1,12 @@
-import DescuentoEspecialDia from "../../src/descuentos/descuento_especial_dia";
+import DescuentoEspecialDia from "../../src/descuentos/descuento-especial-dia";
 import Pedido from "../../src/pedidos/pedido";
 import DiaSemana from "../../src/dia_semana";
 
 const PORCENTAJE_DESCUENTO = 0.2;
 
-const crearPedidoMock = (dia: DiaSemana): Pedido => ({
+const crearPedidoMock = (diaSemana: DiaSemana): Pedido => ({
     getFecha: jest.fn().mockReturnValue({
-        getDay: jest.fn().mockReturnValue(dia),
+        getDay: jest.fn().mockReturnValue(diaSemana),
     }),
 } as unknown as Pedido);
 

@@ -1,4 +1,4 @@
-import DescuentoEfectivo from "../../src/descuentos/descuento_efectivo";
+import DescuentoEfectivo from "../../src/descuentos/descuento-efectivo";
 import Pedido from "../../src/pedidos/pedido";
 import MedioDePago from "../../src/medios_de_pago/medio_de_pago";
 

@@ -12,6 +12,9 @@ const CERO = 0;
 // eslint-disable-next-line id-length
 const UNO = 1;
 
+/**
+ * Define la estructura y el comportamiento común de los pedidos del restaurante.
+ */
 export default abstract class Pedido { // Abstracta porque no existe un pedido genérico
 
     private numeroPedido: number;
@@ -27,6 +30,12 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
     private historialComandos: ComandoPedido[] = [];//aca guardamos los comandos
 
 
+/**
+ * Inicializa la instancia con los datos necesarios.
+ * @param numeroPedido - Parámetro de tipo number utilizado por la operación.
+ * @param nombreCliente - Parámetro de tipo string utilizado por la operación.
+ * @param costoEnvio - Parámetro de tipo number utilizado por la operación.
+ */
     public constructor(numeroPedido: number, nombreCliente: string, costoEnvio: number) {
         this.numeroPedido = numeroPedido;
         this.nombreCliente = nombreCliente;
@@ -39,8 +48,11 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         this.totalCobrado = CERO;
         this.medioPagoElegido = new Efectivo(); //Al crear un pedido nuevo, el medio de pago predeterminado es efectivo
     }
-    //lo cambie xq antes solo agregabamos el item
-    //ahora con el command podemos agregar y deshacer la accion de agregar el item
+/**
+ * Agrega un ítem al pedido si este se encuentra en construcción.
+ * @param item - Parámetro de tipo Item utilizado por la operación.
+ * @throws {Error} Si no se cumplen las condiciones necesarias para realizar la operación.
+ */
     public agregarItem(item: Item): void {
 
         if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
@@ -55,7 +67,11 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
         this.historialComandos.push(comando);
     }
-    //ahora se encarga de eliminar el producto y guardar la poscion
+/**
+ * Quita un ítem del pedido si se encuentra en un estado que permite modificarlo.
+ * @param item - Parámetro de tipo Item utilizado por la operación.
+ * @throws {Error} Si no se cumplen las condiciones necesarias para realizar la operación.
+ */
     public quitarItem(item: Item): void {
 
         if (item.getEstado() !== EstadoItem.PENDIENTE) {
@@ -76,7 +92,10 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
         this.historialComandos.push(comando);
     }
-    //deshacemos la ultima modificacion, ya sea agregar o quitar item
+/**
+ * Revierte la última modificación registrada en el historial de comandos.
+ * @throws {Error} Si no se cumplen las condiciones necesarias para realizar la operación.
+ */
     public deshacerUltimaModificacion(): void {
         // Solo se puede deshacer una modificacion antes de confirmar el pedido
         if (this.estado !== EstadoPedido.EN_CONSTRUCCION) {
@@ -97,16 +116,26 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         this.historialComandos.pop();
     }
 
+/**
+ * Confirma el pedido e inicia su proceso de preparación.
+ */
     public confirmarPedido(): void {
         this.estado = EstadoPedido.CONFIRMADO; // El pedido deja de ser editable
     }
 
+/**
+ * Realiza la operación puedeFacturarse dentro del modelo del restaurante.
+ * @returns boolean con el resultado de la operación.
+ */
     public puedeFacturarse(): boolean {
 
         return this.items.every(item => item.getEstado() === EstadoItem.LISTO);
         // Verifica que TODOS los items estén listos
     }
 
+/**
+ * Calcula el importe bruto del pedido, incluido el costo de envío.
+ */
     public calcularTotalBruto(): void {
 
         this.totalBruto = this.items.reduce(
@@ -121,6 +150,10 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
 
     }
 
+/**
+ * Determina y aplica el descuento más conveniente entre los recibidos.
+ * @param descuentos - Parámetro de tipo Descuento[] utilizado por la operación.
+ */
     public aplicarDescuento(descuentos: Descuento[]): void {
         let mejorDescuento = CERO;
         for (const descuento of descuentos) {
@@ -132,68 +165,131 @@ export default abstract class Pedido { // Abstracta porque no existe un pedido g
         this.descuento = this.totalBruto * mejorDescuento;
     }
 
+/**
+ * Calcula el importe final que debe abonarse.
+ */
     public calcularTotalFinal(): void {
         this.totalCobrado = this.totalBruto - this.descuento;
     }
 
     // Getters
+/**
+ * Devuelve numeropedido.
+ * @returns number con el resultado de la operación.
+ */
     public getNumeroPedido(): number {
         return this.numeroPedido;
     }
 
+/**
+ * Devuelve nombrecliente.
+ * @returns string con el resultado de la operación.
+ */
     public getNombreCliente(): string {
         return this.nombreCliente;
     }
 
+/**
+ * Devuelve costoenvio.
+ * @returns number con el resultado de la operación.
+ */
     public getCostoEnvio(): number {
         return this.costoEnvio;
     }
 
+/**
+ * Devuelve fecha.
+ * @returns Date con el resultado de la operación.
+ */
     public getFecha(): Date {
         return this.fecha;
     }
 
+/**
+ * Devuelve estado.
+ * @returns EstadoPedido con el resultado de la operación.
+ */
     public getEstado(): EstadoPedido {
         return this.estado;
     }
 
+/**
+ * Devuelve items.
+ * @returns Item[] con el resultado de la operación.
+ */
     public getItems(): Item[] {
         return this.items;
     }
 
+/**
+ * Devuelve totalbruto.
+ * @returns number con el resultado de la operación.
+ */
     public getTotalBruto(): number {
         return this.totalBruto;
     }
 
+/**
+ * Devuelve descuento.
+ * @returns number con el resultado de la operación.
+ */
     public getDescuento(): number {
         return this.descuento;
     }
 
+/**
+ * Devuelve totalcobrado.
+ * @returns number con el resultado de la operación.
+ */
     public getTotalCobrado(): number {
         return this.totalCobrado;
     }
 
+/**
+ * Devuelve mediodepago.
+ * @returns MedioDePago con el resultado de la operación.
+ */
     public getMedioDePago(): MedioDePago {
         return this.medioPagoElegido;
     }
 
     // Setters
+/**
+ * Actualiza numeropedido.
+ * @param numeroPedido - Parámetro de tipo number utilizado por la operación.
+ */
     public setNumeroPedido(numeroPedido: number): void {
         this.numeroPedido = numeroPedido;
     }
 
+/**
+ * Actualiza nombrecliente.
+ * @param nombreCliente - Parámetro de tipo string utilizado por la operación.
+ */
     public setNombreCliente(nombreCliente: string): void {
         this.nombreCliente = nombreCliente;
     }
 
+/**
+ * Actualiza costoenvio.
+ * @param costoEnvio - Parámetro de tipo number utilizado por la operación.
+ */
     public setCostoEnvio(costoEnvio: number): void {
         this.costoEnvio = costoEnvio;
     }
 
+/**
+ * Actualiza estado.
+ * @param estado - Parámetro de tipo EstadoPedido utilizado por la operación.
+ */
     public setEstado(estado: EstadoPedido): void {
         this.estado = estado;
     }
 
+/**
+ * Actualiza mediodepago.
+ * @param medioPago - Parámetro de tipo MedioDePago utilizado por la operación.
+ */
     public setMedioDePago(medioPago: MedioDePago): void {
         this.medioPagoElegido = medioPago;
     }

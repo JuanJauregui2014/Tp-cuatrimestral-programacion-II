@@ -1,0 +1,113 @@
+import PedidoSalon from "../../src/pedidos/pedido_salon";
+import Pedido from "../../src/pedidos/pedido";
+import Categoria from "../../src/componentes_del_menu/categoria";
+import Efectivo from "../../src/medios_de_pago/efectivo";
+import Estacion from "../../src/estacion/estacion";
+import Menu from "../../src/menu";
+import Restaurante from "../../src/restaurante";
+import { MockProxy, mock } from "jest-mock-extended";
+import DescuentoEspecialDia from "../../src/descuentos/descuento-especial-dia";
+import DescuentoEfectivo from "../../src/descuentos/descuento-efectivo";
+import Descuento from "../../src/descuentos/descuento";
+import DiaSemana from "../../src/dia_semana";
+
+// eslint-disable-next-line max-lines-per-function
+describe("Test de la clase restaurante", () => {
+
+    const categoriaPostres = new Categoria("Postres");
+    const categoriaCarnes = new Categoria("Carnes");
+    const categoriasParaCocinar = [categoriaPostres, categoriaCarnes];
+    const menu = new Menu();
+    const estacionCocina = new Estacion("Cocina", categoriasParaCocinar);
+    const estaciones = [estacionCocina];
+    const porcentDescEfectivo = 0.1;
+    const descuentoEfectivo: DescuentoEfectivo = new DescuentoEfectivo(porcentDescEfectivo);
+    const diaElegido = DiaSemana.MARTES;
+    const porcentDescDiaEsp = 0.3;
+    const descuentoDiaEspecial: DescuentoEspecialDia = new DescuentoEspecialDia(diaElegido, porcentDescDiaEsp);
+    const descuentos: Descuento[] = [descuentoEfectivo, descuentoDiaEspecial];
+    let restaurante: Restaurante;
+    let pedidoCompletoMock: MockProxy<Pedido>;
+
+    beforeEach(() => {
+        restaurante = new Restaurante("Fogón del barrio", menu, estaciones, descuentos);
+        pedidoCompletoMock = mock<Pedido>();
+    });
+
+    test("Verifico que sea instancia de Restaurante", () => {
+        expect(restaurante).toBeInstanceOf(Restaurante);
+    });
+
+    test("Verifico que se haya creado el restaurante con su nombre, menú, estaciones y descuentos", () => {
+        expect(restaurante.getNombre()).toEqual("Fogón del barrio");
+        expect(restaurante.getMenu()).toEqual(menu);
+        expect(restaurante.getEstaciones()).toEqual(estaciones);
+        expect(restaurante.getDescuentos()).toEqual(descuentos);
+    });
+
+    test("Verifico que un pedido se haya agregado a la lista de pedidos activos", () => {
+        const nroMesa = 5;
+        const nroPedido = 1;
+        const pedido = new PedidoSalon(nroPedido, "Juan", nroMesa, "Pedro");
+
+        restaurante.agregarPedido(pedido);
+
+        const listaVacia = 0;
+        //Primero que no esté vacío el map
+        expect(restaurante.getPedidosActivos().size).toBeGreaterThan(listaVacia);
+
+        //Segundo verificamos que se haya guardado el primer pedido cargado
+        expect(restaurante.getPedidosActivos().get(nroPedido)).toEqual(pedido);
+    });
+
+    test("No hay pedidos finalizados por lo que no se puede mostrar el historial", () => {
+        //Si no hay ningún pedido facturado y cargado en la lista de finalizados, debería lanzar un mensaje de error
+        expect(() => restaurante.consultarHistorial()).toThrow("No hay pedidos finalizados. No hay nada para mostrar");
+    });
+
+    test("Verifico que, al facturar un pedido, se guarde en el historial de pedidos", () => {
+        restaurante.agregarPedido(pedidoCompletoMock);
+
+        const metodoPago: Efectivo = new Efectivo();
+        const nroPedido = pedidoCompletoMock.getNumeroPedido();
+        pedidoCompletoMock.puedeFacturarse.mockReturnValue(true);
+
+        restaurante.facturarPedido(nroPedido, metodoPago);
+
+        const listaVacia = 0;
+        //Primero que no esté vacío el map
+        expect(restaurante.getPedidosFinalizados().size).toBeGreaterThan(listaVacia);
+
+        //Segundo verificamos que se haya guardado el pedido en el historial
+        expect(restaurante.consultarHistorial().get(nroPedido)).toEqual(pedidoCompletoMock);
+
+    });
+
+    test("El pedido que se desea facturar no existe", () => {
+        const nroMesa = 2;
+        const nroPedido = 3;
+        const pedido = new PedidoSalon(nroPedido, "Pablo", nroMesa, "Gustavo");
+
+        restaurante.agregarPedido(pedido);
+
+        const metodoPago: Efectivo = new Efectivo();
+        const nroPedidoFactura = 6;
+        expect(
+            () => restaurante.facturarPedido(nroPedidoFactura, metodoPago)
+        ).toThrow("No se encuentra el número de pedido ingresado");
+    });
+
+    test("El pedido que se desea facturar no tiene sus items listos", () => {
+
+        restaurante.agregarPedido(pedidoCompletoMock);
+
+        pedidoCompletoMock.puedeFacturarse.mockReturnValue(false);
+
+        const metodoPago: Efectivo = new Efectivo();
+        const nroPedidoFactura = pedidoCompletoMock.getNumeroPedido();
+        expect(
+            () => restaurante.facturarPedido(nroPedidoFactura, metodoPago)
+        ).toThrow("No se puede facturar el pedido, sus items no estan terminados");
+    });
+
+});

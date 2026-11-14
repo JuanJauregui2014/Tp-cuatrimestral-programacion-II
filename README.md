@@ -65,7 +65,9 @@ tests/
 └── restaurante.test.ts
 
 diagramas/
-└── diagramas.puml
+├── diagramas.puml
+├── secuencia_agregar_item.puml
+└── secuencia_facturar_pedido.puml
 ```
 
 ---
@@ -167,6 +169,10 @@ Categoría: Comportamiento.
 **Ventajas**: unifica el historial, conserva el orden de las modificaciones y encapsula en cada comando la lógica necesaria para revertir su propia operación. Además, Pedido no necesita distinguir el tipo del último comando para deshacerlo.
 ---
 
-## Diagrama de clases
+## Diagrama de clases y secuencia
 
-El diagrama se encuentra en `diagramas/diagramas.puml` y puede visualizarse con la extensión PlantUML en VS Code o en [plantuml.com](https://plantuml.com).
+El diagrama de clases se encuentra en `diagramas/diagramas.puml` y puede visualizarse con la extensión PlantUML en VS Code o en [plantuml.com](https://plantuml.com).
+
+El diagrama de secuencia del agregado de un item al pedido se encuentra en `diagramas/secuencia_agregar_item.puml` y puede visualizarse con la extensión PlantUML en VS Code o en [plantuml.com](https://plantuml.com).
+
+El diagrama de secuencia de la facturación de un pedido se encuentra en `diagramas/secuencia_facturar_pedido.puml` y puede visualizarse con la extensión PlantUML en VS Code o en [plantuml.com](https://plantuml.com).

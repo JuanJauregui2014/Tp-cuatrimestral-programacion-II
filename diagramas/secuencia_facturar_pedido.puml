@@ -1,0 +1,56 @@
+
+@startuml Facturar un pedido
+
+title Facturar un pedido
+
+actor Empleado
+
+participant "restaurante: Restaurante" as Restaurante
+participant "pedido: Pedido" as Pedido
+participant "medioPago: MedioDePago" as MedioPago
+
+Empleado -> Restaurante: facturarPedido(15, medioPago)
+
+activate Restaurante
+
+Restaurante -> Restaurante: buscar pedido en pedidosActivos
+Restaurante -> Pedido: puedeFacturarse()
+
+activate Pedido
+
+Pedido --> Restaurante: true
+
+deactivate Pedido
+
+Restaurante -> Pedido: calcularTotalBruto()
+activate Pedido
+Pedido --> Restaurante: total calculado
+deactivate Pedido
+
+Restaurante -> Pedido: setMedioDePago(medioPago)
+Restaurante -> Pedido: aplicarDescuento(descuentos)
+activate Pedido
+Pedido --> Restaurante: descuento aplicado
+deactivate Pedido
+
+Restaurante -> Pedido: calcularTotalFinal()
+activate Pedido
+Pedido --> Restaurante: total final calculado
+deactivate Pedido
+
+Restaurante -> Pedido: getTotalCobrado()
+Pedido --> Restaurante: totalCobrado
+
+Restaurante -> MedioPago: procesarPago(totalCobrado)
+activate MedioPago
+MedioPago --> Restaurante: pago procesado
+deactivate MedioPago
+
+Restaurante -> Restaurante: eliminar de pedidosActivos
+Restaurante -> Restaurante: agregar a pedidosFinalizados
+
+Restaurante --> Empleado: facturación finalizada
+
+deactivate Restaurante
+
+@enduml

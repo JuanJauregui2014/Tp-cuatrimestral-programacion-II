@@ -1,5 +1,7 @@
 import ElementoMenu from "../componentes_del_menu/elemento_menu";
 import EstadoItem from "./estado_item";
+
+const CERO = 0;
 /**
  * Representa un elemento solicitado en un pedido, junto con su cantidad, estado y posibles preparaciones.
  */
@@ -35,30 +37,28 @@ export default class Item {
  */
     public getEstado(): EstadoItem {
         // Si no tiene preparaciones, funciona como antes.
-        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-        if (this.preparaciones.length === 0) {
-            return this.estado;
-        }
+
+        let estado = EstadoItem.PENDIENTE;
 
         // Comprueba si todos los productos están listos.
         const todasListas = this.preparaciones.every(
             item => item.getEstado() === EstadoItem.LISTO
         );
 
-        if (todasListas) {
-            return EstadoItem.LISTO;
-        }
-
         // Comprueba si al menos uno comenzó a prepararse.
         const algunaIniciada = this.preparaciones.some(
             item => item.getEstado() !== EstadoItem.PENDIENTE
         );
 
-        if (algunaIniciada) {
-            return EstadoItem.EN_PREPARACION;
+        if (this.preparaciones.length === CERO) {
+            estado = this.estado;
+        } else if (todasListas) {
+            estado = EstadoItem.LISTO;
+        } else if (algunaIniciada) {
+            estado = EstadoItem.EN_PREPARACION;
         }
 
-        return EstadoItem.PENDIENTE;
+        return estado;
     }
 
 
@@ -132,4 +132,3 @@ export default class Item {
         return this.getEstado() === EstadoItem.PENDIENTE;
     }
 }
-

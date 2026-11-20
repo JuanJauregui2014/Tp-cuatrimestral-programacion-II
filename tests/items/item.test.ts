@@ -8,6 +8,8 @@ describe("Test de la clase Item", () => {
         const elementoMock: ElementoMenu = {
             getPrecio: jest.fn(),
             getNombre: jest.fn(),
+            procesarElemento: jest.fn(),
+            validarProcesamiento: jest.fn(),
         };
         const cantidadItems = 5;
         const item = new Item(cantidadItems, elementoMock);
@@ -18,6 +20,8 @@ describe("Test de la clase Item", () => {
         const elementoMock: ElementoMenu = {
             getPrecio: jest.fn(),
             getNombre: jest.fn(),
+            procesarElemento: jest.fn(),
+            validarProcesamiento: jest.fn(),
         };
         const cantidadItems = 5;
         const item = new Item(cantidadItems, elementoMock);

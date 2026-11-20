@@ -12,6 +12,8 @@ const CARGA_CERO = 0;
 const crearElementoMock = (): ElementoMenu => ({
     getPrecio: jest.fn().mockReturnValue(PRECIO_ELEMENTO),
     getNombre: jest.fn().mockReturnValue("Elemento de prueba"),
+    procesarElemento: jest.fn(),
+    validarProcesamiento: jest.fn(),
 });
 describe("test de la clase Estacion", () => {
     test("crear una estacion con nombre y categorias", () => {
@@ -157,7 +159,9 @@ test(" permite avanzar el segundo item cuando termina el primero", () => {
 test("debe registrar las preparaciones de un item", () => {
     const elementoMock: ElementoMenu = {
         getPrecio: jest.fn(),
-        getNombre: jest.fn()
+        getNombre: jest.fn(),
+        procesarElemento: jest.fn(),
+        validarProcesamiento: jest.fn()
     };
 
     const combo = new Item(CANTIDAD_ITEM_UNITARIO, elementoMock);
@@ -172,7 +176,9 @@ test("debe registrar las preparaciones de un item", () => {
 test("debe pasar a EN_PREPARACION cuando comienza un producto", () => {
     const elementoMock: ElementoMenu = {
         getPrecio: jest.fn(),
-        getNombre: jest.fn()
+        getNombre: jest.fn(),
+        procesarElemento: jest.fn(),
+        validarProcesamiento: jest.fn()
     };
 
     const combo = new Item(CANTIDAD_ITEM_UNITARIO, elementoMock);
@@ -189,7 +195,9 @@ test("debe pasar a EN_PREPARACION cuando comienza un producto", () => {
 test("debe estar LISTO solamente cuando todas las preparaciones terminan", () => {
     const elementoMock: ElementoMenu = {
         getPrecio: jest.fn(),
-        getNombre: jest.fn()
+        getNombre: jest.fn(),
+        procesarElemento: jest.fn(),
+        validarProcesamiento: jest.fn()
     };
 
     const combo = new Item(CANTIDAD_ITEM_UNITARIO, elementoMock);
@@ -212,7 +220,9 @@ test("debe estar LISTO solamente cuando todas las preparaciones terminan", () =>
 test("no debe permitir avanzar directamente un item con preparaciones", () => {
     const elementoMock: ElementoMenu = {
         getPrecio: jest.fn(),
-        getNombre: jest.fn()
+        getNombre: jest.fn(),
+        procesarElemento: jest.fn(),
+        validarProcesamiento: jest.fn()
     };
 
     const combo = new Item(CANTIDAD_ITEM_UNITARIO, elementoMock);

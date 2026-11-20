@@ -1,6 +1,11 @@
 import ElementoMenu from "./elemento_menu";
 import Producto from "./producto";
 import ComboBeneficio from "../combos/combo_beneficio";
+import DistribuidorPedidos from "../distribucion_item/distribuidor_pedido";
+import Estacion from "../estacion/estacion";
+import Item from "../items/item";
+
+const CERO = 0;
 
 /**
  * Representa una combinación de productos y el beneficio aplicado sobre su precio.
@@ -54,4 +59,30 @@ export default class Combo implements ElementoMenu {
  * @returns ComboBeneficio con el resultado de la operación.
  */
     public getBeneficio(): ComboBeneficio { return this.beneficio; }
+
+    public procesarElemento(distribuidor: DistribuidorPedidos, estaciones: Estacion[], item: Item): void {
+        const preparaciones: Item[] = [];
+
+        for (const producto of this.productos) {
+            const estacion = distribuidor.buscarEstacion(producto.getCategoria(), estaciones);
+            const preparacion = new Item(
+                item.getCantidad(),
+                producto
+            );
+            preparaciones.push(preparacion);
+            estacion.agregarItem(preparacion);
+        }
+        
+        item.registrarPreparacion(preparaciones);
+    }
+
+    public validarProcesamiento(distribuidor: DistribuidorPedidos, estaciones: Estacion[]): void {
+        if (this.productos.length === CERO) {
+            throw new Error("No se puede distribuir un combo vacío");
+        }
+
+        for (const producto of this.productos) {
+            distribuidor.buscarEstacion(producto.getCategoria(), estaciones);
+        }
+    }
 }

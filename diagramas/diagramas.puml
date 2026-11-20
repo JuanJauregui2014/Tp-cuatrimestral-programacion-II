@@ -31,6 +31,7 @@ class Categoria {
 interface ElementoMenu {
     +getPrecio(): number
     +getNombre(): String
+    +procesarElemento(distribuidor: DistribuidorPedidos, estaciones: Estacion[], item: Item): void
 }
 
 class Combo {
@@ -41,6 +42,7 @@ class Combo {
     +getPrecio(): number
     +getNombre(): String
     +getProductos(): ReadonlyArray<Producto>
+    +procesarElemento(distribuidor: DistribuidorPedidos, estaciones: Estacion[], item: Item): void
 }
 
 interface ComboBeneficio {
@@ -129,6 +131,7 @@ class Producto {
     +getCategoria(): Categoria
     +getPrecio(): number
     +getNombre(): String
+    +procesarElemento(distribuidor: DistribuidorPedidos, estaciones: Estacion[], item: Item): void
 }
 
 interface MedioDePago {

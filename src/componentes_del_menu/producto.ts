@@ -52,4 +52,8 @@ export default class Producto implements ElementoMenu {
         const estacion = distribuidor.buscarEstacion(this.categoria, estaciones);
         estacion.agregarItem(item);
     } 
+
+    public validarProcesamiento(distribuidor: DistribuidorPedidos, estaciones: Estacion[]): void {
+        distribuidor.buscarEstacion(this.categoria, estaciones);
+    }
 }

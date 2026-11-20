@@ -61,10 +61,6 @@ export default class Combo implements ElementoMenu {
     public getBeneficio(): ComboBeneficio { return this.beneficio; }
 
     public procesarElemento(distribuidor: DistribuidorPedidos, estaciones: Estacion[], item: Item): void {
-        if (this.productos.length === CERO) {
-            throw new Error("No se puede distribuir un combo vacío");
-        }
-
         const preparaciones: Item[] = [];
 
         for (const producto of this.productos) {
@@ -78,5 +74,15 @@ export default class Combo implements ElementoMenu {
         }
         
         item.registrarPreparacion(preparaciones);
+    }
+
+    public validarProcesamiento(distribuidor: DistribuidorPedidos, estaciones: Estacion[]): void {
+        if (this.productos.length === CERO) {
+            throw new Error("No se puede distribuir un combo vacío");
+        }
+
+        for (const producto of this.productos) {
+            distribuidor.buscarEstacion(producto.getCategoria(), estaciones);
+        }
     }
 }

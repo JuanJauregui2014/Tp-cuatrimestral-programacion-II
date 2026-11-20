@@ -69,6 +69,10 @@ export default class DistribuidorPedidos {
         //validamos y procesamos los elementos
         for (const item of items) {
             const elemento = item.getElemento();
+            elemento.validarProcesamiento(this, estaciones);
+        }
+        for (const item of items) {
+            const elemento = item.getElemento();
             elemento.procesarElemento(this, estaciones, item);
         }
     

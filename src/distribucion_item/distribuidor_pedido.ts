@@ -70,7 +70,6 @@ export default class DistribuidorPedidos {
         for (const item of items) {
             const elemento = item.getElemento();
             elemento.procesarElemento(this, estaciones, item);
-            
         }
     
         // Confirmamos después de realizar la distribución.

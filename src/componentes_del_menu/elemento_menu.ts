@@ -4,4 +4,5 @@
 export default interface ElementoMenu {
     getPrecio(): number;
     getNombre(): string;
+    procesarElemento(distribuidor: DistribuidorPedidos, estaciones: Estacion[], item: Item): void;
 }

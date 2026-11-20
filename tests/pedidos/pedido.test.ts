@@ -17,6 +17,8 @@ const PRECIO_ELEMENTO = 300;
 const crearElementoMock = (): ElementoMenu => ({
     getPrecio: jest.fn().mockReturnValue(PRECIO_ELEMENTO),
     getNombre: jest.fn().mockReturnValue("Elemento de prueba"),
+    procesarElemento: jest.fn(),
+    validarProcesamiento: jest.fn(),
 });
 
 // eslint-disable-next-line max-lines-per-function

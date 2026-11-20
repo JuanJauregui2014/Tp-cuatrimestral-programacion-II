@@ -1,5 +1,7 @@
 import ElementoMenu from "../componentes_del_menu/elemento_menu";
 import EstadoItem from "./estado_item";
+
+const CERO = 0;
 /**
  * Representa un elemento solicitado en un pedido, junto con su cantidad, estado y posibles preparaciones.
  */
@@ -35,7 +37,6 @@ export default class Item {
  */
     public getEstado(): EstadoItem {
         // Si no tiene preparaciones, funciona como antes.
-        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
 
         let estado = EstadoItem.PENDIENTE;
 
@@ -49,7 +50,7 @@ export default class Item {
             item => item.getEstado() !== EstadoItem.PENDIENTE
         );
 
-        if (this.preparaciones.length === 0) {
+        if (this.preparaciones.length === CERO) {
             estado = this.estado;
         } else if (todasListas) {
             estado = EstadoItem.LISTO;
@@ -131,4 +132,3 @@ export default class Item {
         return this.getEstado() === EstadoItem.PENDIENTE;
     }
 }
-

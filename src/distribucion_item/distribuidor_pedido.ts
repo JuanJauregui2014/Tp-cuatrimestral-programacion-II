@@ -49,7 +49,6 @@ export default class DistribuidorPedidos {
  * @param estaciones - Parámetro de tipo Estacion[] utilizado por la operación.
  * @throws {Error} Si no se cumplen las condiciones necesarias para realizar la operación.
  */
-    // eslint-disable-next-line max-lines-per-function
     public distribuirPedido(
         pedido: Pedido,
         estaciones: Estacion[]
